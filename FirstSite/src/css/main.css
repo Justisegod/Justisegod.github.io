@@ -113,22 +113,25 @@ header.fixed #logo {
 	/*background-attachment: fixed; ПРОКРУТКА БЕКГРАУНДА*/
 }
 
-@media (min-width: 1001px) and (min-width: 651px) {
+@media (min-width: 1001px)  {
 	#top{
       font-size: 2.7em;
+      height: 1000px;
 	}
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1000px)and (min-width: 651px) {
 	#top{
       font-size: 2em;
+      height:600px;
 	}
 }
 
 @media (max-width: 650px) {
 	#top{
       font-size: 1.3em;
-      padding-top: 50%; 
+      padding-top: 50%;
+      height: 500px; 
 	}
 }
 
@@ -227,6 +230,15 @@ float:left;
 	width:100%;
 	font-size: 2em;
 	margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+   #overview .img {
+   	width:80%!important;
+   	margin-right: 0!important;
+   	margin-left: 10%!important;
+
+   }
 }
 
 #overview .img:hover {
