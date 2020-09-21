@@ -264,3 +264,27 @@ h1,h2,h3,h4,h5 {
 }
 
 #contacts h5 {font-size:3em; color: #4f4f4f}
+
+#videoblock {
+	width:100%;
+	background-image: url(../img/1.jpg);
+	background-size: cover;
+	background-break: multiply;
+	float:left;
+	background-attachment: fixed;
+	text-align: center;
+}
+
+#videoblock video {
+
+}
+
+#videoblock h2{
+	margin-top: 300px;
+	font-weight:900;
+	font-size: 3em;
+	color:pink;
+	text-align: center;
+
+
+}
