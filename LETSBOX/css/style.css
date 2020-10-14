@@ -98,5 +98,42 @@ li {
   border: 1px solid #fff;
   border-radius: 100px;
   padding: 10px 20px;
-
+}
+.main-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.main__subtitle {
+  display: inline-block;
+}
+.main__title {
+  font-size: 60px;
+}
+.main__subtitle::after {
+content: '';
+width: 20px;
+height: 1px;
+background-color: #fff;
+display: inline-block;
+vertical-align: middle;
+margin-left: 10px;
+}
+.main__subtitle::before {
+content: '';
+width: 20px;
+height: 1px;
+background-color: #fff;
+display: inline-block;
+vertical-align: middle;
+margin-right: 10px;
+}
+.main__title h1 {
+  margin: 0.5rem;
+}
+.main__body {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
 }
