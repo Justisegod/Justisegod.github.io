@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+
+
+* ,*before,*:after {
+box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.main {
+  height: 100vh;
+  min-height: 600px;
+  /*background-image: url(../Img/Bg.jpg);*/
+  background-image: url(../Img/1588266693164585216.jpg);
+  position: relative;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+.header{
+  width: 90%;
+  /*display: flex;*/
+
+}
+.header__menu {
+  padding: 0;
+  margin: 0;
+ /* position: relative;
+  right:40px;*/
+}
+.header__overlay {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top:0;
+  opacity: 0.8;
+  background-image: -moz-linear-gradient( 150deg, rgb(136,211,206) 0%, rgb(110,69,226) 100%);
+  background-image: -webkit-linear-gradient( 150deg, rgb(136,211,206) 0%, rgb(110,69,226) 100%);
+  background-image: -ms-linear-gradient( 150deg, rgb(136,211,206) 0%, rgb(110,69,226) 100%);
+  position: absolute;
+  z-index: 0;
+}
+.header__body {
+  display: flex;
+  justify-content: space-between;
+  height: 10vh;
+  align-items: center;
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+.header__logo_text {
+color: #ffffff;
+font-family: 'Maven Pro', sans-serif;
+font-size: 30px;
+font-weight: 700;
+font-style: normal;
+letter-spacing: normal;
+line-height: 29px;
+text-align: left;
+text-transform: uppercase;
+font-style: normal;
+letter-spacing: 7px;
+line-height: normal;
+padding:0 0 0 17px;
+}
+.container {
+z-index: 2;
+position: relative;
+}
+li {
+  list-style-type: none;
+}
+
+.header__menu ul{
+  display: flex;
+  justify-content: space-around;
+}
+.header__menu ul a {
+  color: #fff;
+  text-decoration: none;
+  align-self: center;
+}
+.header__menu {
+  width: 70%;
+}
+.header__btn {
+  margin-left: 25px;
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  padding: 10px 20px;
+
+}
