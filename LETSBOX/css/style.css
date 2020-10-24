@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
 
 
 * ,*before,*:after {
@@ -10,7 +10,9 @@ body {
   font-family: sans-serif;
   margin: 0;
 }
-
+html {
+  /*font-size:10px;*/
+}
 .main {
   height: 100vh;
   min-height: 600px;
@@ -136,4 +138,169 @@ margin-right: 10px;
   flex-direction: column;
   justify-content:center;
   align-items: center;
+}
+.main-arrow {
+  height: 15vh;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.arrow__body {
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  
+  box-shadow: 0px 0px 18.69px 2.31px rgba(204,204, 223, 0.5);
+}
+.arrow__body img {
+  max-width: 60px;
+  max-height: 60px;
+  align-self: center;
+  justify-content: center;
+  /*border:1px solid #fff;*/
+  /*border-radius: 40px;*/
+ padding: 10px 10px;
+ line-height: 50px;
+}
+
+.arrow__body:hover{
+ border:1px solid black;
+ border-radius: 100px;
+ opacity: 0.8;
+}
+.table__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+}
+.table {
+  height: 100vh;
+  min-height: 600px;
+  background: #f9fafc;
+}
+.table__header {
+  text-align: center;
+}
+.table__row {
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+}
+.table__column {
+  background: #fff;
+  /*border:1px solid rgba(204, 204, 223, 0.71);*/
+  border-radius: 2rem;
+  height: 500px;
+  width: 300px;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.5;
+  }
+.table__column:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 60px 10px rgba(204, 204, 223, 0.71);
+}
+
+.table__subtitle {
+color: #9fa4af;
+font-family: "Maven Pro";
+font-size: 1.4rem;
+font-weight: 700;
+font-style: normal;
+letter-spacing: normal;
+line-height: 32px;
+text-align: left;
+text-transform: uppercase;
+font-style: normal;
+letter-spacing: 0.7px;
+line-height: normal;
+}
+.table__subtitle::after {
+  content: '';
+width: 20px;
+height: 1px;
+background-color: #6e45e2;
+display: inline-block;
+vertical-align: middle;
+margin-left: 10px;
+}
+.table__subtitle::before {
+  content: '';
+width: 20px;
+height: 1px;
+background-color: #6e45e2;
+display: inline-block;
+vertical-align: middle;
+margin-right: 10px;
+}
+.table__title h2{
+color: #4f4f6f;
+font-family: "Maven Pro";
+font-size:60px;
+margin:0;
+
+}
+.table__price h4{
+font-size:1.8em;
+margin: 0;
+font-family: "Maven Pro";
+color:#4f4f6f;
+}
+  .table__price h4 sub{
+  font-size: 1.4rem;
+}
+.table__text p {
+ font-size:15px;
+ display:inline-block;
+ width:100%;
+ line-height:1.4;
+ color: #9fa4af;
+
+}
+.table__price {
+  /*margin: 5%;*/
+}
+.table__text span{
+ /*font-size:1.4rem;*/
+ text-transform: uppercase;
+ }
+.table__text {
+  margin:5%;
+  vertical-align: super;
+
+}
+.table__image img {
+  width: 9rem;
+}
+
+/*.tp1 {
+  position: relative;
+  bottom: 32px;
+  left: 0;
+  vertical-align: super;
+}
+.tp3 {
+  position: relative;
+  bottom: 17px;
+  left:0;
+}
+.tt1{
+  position: relative;
+  bottom: 10px;
+  left: 0;
+}
+.tt3 {
+  position: relative;
+  bottom: 10px;
+  left:0;
+}*/
+* {
+  /*border:1px solid red;*/
 }
