@@ -265,7 +265,7 @@ margin:0;
 }
 .table__price h4{
 font-size:1.8em;
-margin: 0;
+margin: 1rem;
 font-family: "Maven Pro";
 color:#4f4f6f;
 }
@@ -281,7 +281,6 @@ color:#4f4f6f;
 
 }
 .table__price {
-  /*margin: 5%;*/
 
 }
 .table__text span{
@@ -289,7 +288,7 @@ color:#4f4f6f;
  text-transform: uppercase;
  }
 .table__text {
-  height: 30%;
+  height: 33%;
 }
 .table__image img {
   width: 9rem;
