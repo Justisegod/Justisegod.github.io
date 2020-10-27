@@ -41,6 +41,18 @@
     display: flex;
     flex-direction: column;
   }
+  .call-to-action {
+    padding: 10rem;
+  }
+  .main__subtitle{
+    font-size: 1.4rem;
+  }
+  .main__text {
+    font-size: 1.4rem;
+  }
+  .table__subtext {
+    font-size: 1.4rem;
+  }
 
 }
 
