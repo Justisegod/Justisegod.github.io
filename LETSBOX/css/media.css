@@ -25,7 +25,12 @@
 
 @media (max-width: 767px) {
   .wrapper {
-    height:100vh;
-    width: 139vw;
+    width: 180vw;
+    /*max-width: 100%;*/
+    margin: 0 auto;
   }
+  .main__title {
+    font-size:1.8rem;
+  }
+
 }
