@@ -29,6 +29,18 @@
   .footer {
     justify-content: center;
   }
+  .social-links {
+    margin-top: 3rem;
+    font-size: 3rem;
+    padding-bottom: 5rem;
+  }
+  .copy p{
+    font-size: 1.5rem;
+  }
+  .legal {
+    display: flex;
+    flex-direction: column;
+  }
 
 }
 
