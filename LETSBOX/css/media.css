@@ -1,0 +1,18 @@
+@media (max-width: 1199px) {
+  html {
+    font-size: 11px;
+  }
+
+}
+
+@media (max-width: 991px) {
+  html  {
+    font-size: 9px;
+  }
+  .visible-lg {
+    display: none;
+  }
+  .m-menu-link {
+    display: block;
+  }
+}
