@@ -11,7 +11,17 @@
 	<title>MAKET</title>
 </head>
 <body>
-	
+
+	<ul class="m-menu">
+		<li class="close-menu">&times;</li>
+							<a href="#"><li>Home</li></a>
+							<a href="#"><li>Why MISOCIAL</li></a>
+							<a href="#"><li>Features</li></a>
+							<a href="#"><li>Articles</li></a>
+							<a href="#"><li>Pricing</li></a>
+							<a href="https://genshin.mihoyo.com/en" class="header__btn"><li>GET STARTED</li></a>
+						</ul>
+
 <div class="wrapper">
 	<div class="main">
 		<div class="header">
@@ -27,8 +37,11 @@
 					<a href="#" class="m-menu-link">
 						<i class="fa fa-bars"></i>
 					</a>
+					
+						
+					
 					<div class="header__menu visible-lg">
-						<ul>
+						<ul >
 							<a href="#"><li>Home</li></a>
 							<a href="#"><li>Why MISOCIAL</li></a>
 							<a href="#"><li>Features</li></a>
@@ -36,6 +49,7 @@
 							<a href="#"><li>Pricing</li></a>
 							<a href="https://genshin.mihoyo.com/en" class="header__btn"><li>GET STARTED</li></a>
 						</ul>
+
 					</div>
 				</div>
 			</div>
@@ -155,7 +169,26 @@
 	</div>
 
 
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js">
+  </script>
 
+  <script>
+  	$(function() {
+  		var link = $('.m-menu-link');
+  		var close = $('.close-menu');
+  		var menu = $('.m-menu');
+  		link.on('click', function(event) {
+  		 event.preventDefault();
+  		 menu.toggleClass('m-menu__active');
+  		});
+  		close.on('click', function(event) {
+         event.preventDefault();
+  		 menu.toggleClass('m-menu__active');
+  		});
+
+  	});
+  </script>
 
 
 

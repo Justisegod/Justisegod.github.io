@@ -15,4 +15,17 @@
   .m-menu-link {
     display: block;
   }
+  .table__row {
+    flex-direction: column;
+  }
+  .table__column {
+    width: 90%;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    height:100vh;
+    width: 139vw;
+  }
 }
