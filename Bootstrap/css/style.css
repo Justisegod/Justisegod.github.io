@@ -1,31 +1,5 @@
-.wrapper {
-	height: 100vh;
-}
-.container {
-	height: 100%;
-}
-.row {
-	max-height: 400px;
-}
-.fir {
-	background-color: #E40303;
+.fblock {
+	background-color: #1A1037;
 	color: #fff;
-}
-.sec {
- background-color: #FF8C00;
-}
-.thi{
- background-color: #FFED00;
-}
-.fou {
-background-color: #008026;
-}
-.fiv {
-background-color: #004DFF;
-}
-.sex {
-background-color: #750787;
-}
-.col-md-12 {
 	text-align: center;
 }
