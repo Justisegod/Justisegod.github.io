@@ -1,4 +1,4 @@
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   html {
     font-size: 10px;
   }
@@ -15,10 +15,10 @@
             flex-direction: column;
   }
   .button {
-    width: 100%;
+    width: 90%;
     margin-top: 1rem;
   }
   .main-title span {
-    width: 100%;
+    width: 90%;
   }
 }

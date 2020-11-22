@@ -39,9 +39,11 @@ body {
   color: #ffffff;
   text-transform: uppercase;
   border: 0;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
 }
 .button:focus {
-  background: red;
+  background: #221C1F;
   border: 0 solid black;
 }
 /* Typography */
@@ -57,18 +59,21 @@ section {
   text-transform: uppercase;
 }
 .logo img {
-  width: 48px;
   height: 48px;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
 }
 .main {
-  padding: 2.5rem;
+  padding: 2.5rem 0;
+  background: #ffffff url(../img/bg-hz.jpg) center center no-repeat;
+  background-size: cover;
 }
 .main-content {
   margin-top: 8.3rem;
 }
 .main-content h1 {
   margin-bottom: 3.3rem;
+  line-height: 1.45;
   font-family: 'ProximaNova_bold', sans-serif;
   font-size: 3.3rem;
   text-transform: uppercase;
@@ -76,6 +81,51 @@ section {
 .main-subtitle {
   font-size: 2rem;
   margin-bottom: 3.3rem;
+}
+.main-trigger {
+  display: block;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-top: 2.5rem;
+  font-family: 'ProximaNova_bold', sans-serif;
+}
+.main-form {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+.main-form-header {
+  margin-bottom: 3.3rem;
+  font-size: 1.44rem;
+}
+.main-form-header strong {
+  font-size: 1.55rem;
+}
+.main-form small {
+  display: block;
+  margin-top: 1.25rem;
+}
+.main-form-btn {
+  display: block;
+  height: 4.58rem;
+  width: 100%;
+  font-size: 1.33rem;
+}
+.main-form-input {
+  display: block;
+  width: 100%;
+  padding: 1.1rem;
+  margin: 1.66rem 0;
+  border: 1px solid #dddddd;
+}
+.main-form label {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  padding: 0.416rem;
+  background-color: #ffffff;
+  font-size: 1.083rem;
 }
 .header {
   height: 5.8rem;
@@ -94,14 +144,20 @@ section {
   text-decoration: none;
 }
 .main-title span {
+  cursor: pointer;
   font-size: 1.5rem;
   display: inline-block;
   padding: 1.3rem 3rem;
   background-color: #0083c1;
   color: #ffffff;
   text-align: center;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
 }
-.main-title span strong {
+.main-title span:active {
+  background-color: red;
+}
+.main-title strong {
   font-size: 2.5rem;
   font-family: 'ProximaNova_bold', sans-serif;
 }
