@@ -15,9 +15,30 @@
 @font-face {
   font-family: 'Comfortaa';
   font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/comfortaa/v29/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4VrMPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/comfortaa/v29/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4bbLPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Comfortaa';
+  font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/comfortaa/v29/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4Y_LPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm45xW4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'ProximaNova_bold';
@@ -53,8 +74,12 @@ ul {
   margin: 0;
 }
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   padding: 0;
+  margin: 0;
 }
 .header {
   height: 39px;
@@ -210,7 +235,7 @@ section {
   height: 684px;
 }
 .bags-wrapper {
-  height: 100vh;
+  height: 684px;
   position: relative;
 }
 .bags-overlay-black {
@@ -223,7 +248,7 @@ section {
   color: #ffffff;
   font-size: 1.875rem‬;
   line-height: 33px;
-  font-weight: bold;
+  font-weight: 700;
 }
 .bags-content {
   text-align: center;
@@ -234,4 +259,74 @@ section {
   line-height: 27px;
   color: #ffffff;
   margin-top: 31px;
+}
+.vertical-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 77px 0 150px 0;
+}
+.vertical-line {
+  height: 389px;
+  width: 2px;
+  background-color: #000000;
+  text-align: center;
+}
+.contacts-wrapper {
+  height: 616px;
+  background-color: #F8F8F9;
+}
+.contacts-title {
+  font-size: 1.875rem‬;
+  font-weight: 700;
+  line-height: 33px;
+  margin: 96px 0 0 0;
+}
+.contacts-number {
+  font-family: Montserrat;
+  font-size: 1.25rem;
+  margin: 41px 0 21px 0;
+}
+.contacts-text {
+  width: 275px;
+  font-size: 1.125rem;
+  margin: 48px 0 0 0;
+}
+.contacts-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.hover-wrapper {
+  height: 59px;
+  clear: #F5F5F7;
+}
+.hover-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 59px;
+}
+.hover-mail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 59px;
+  font-size: 12px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  color: #000000;
 }
