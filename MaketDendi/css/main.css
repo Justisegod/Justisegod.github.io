@@ -352,11 +352,11 @@ section {
   border: 1px solid #C4C4C4;
   outline: none;
 }
-.hover-wrapper {
+.footer-wrapper {
   height: 59px;
   clear: #F5F5F7;
 }
-.hover-logo {
+.footer-logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -365,7 +365,7 @@ section {
           align-items: center;
   height: 59px;
 }
-.hover-mail {
+.footer-mail {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
