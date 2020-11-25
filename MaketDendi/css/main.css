@@ -303,6 +303,46 @@ section {
       -ms-flex-pack: center;
           justify-content: center;
 }
+.contacts-button {
+  margin: 26px 0;
+  border-top: 0px solid #000;
+  border-left: 0px solid #000;
+  border-right: 0px solid #000;
+  background-color: #F8F8F9;
+}
+.main-form-input {
+  display: block;
+  width: 149px;
+  border-top: 0px solid #000;
+  border-left: 0px solid #000;
+  border-right: 0px solid #000;
+  background-color: #F8F8F9;
+  outline: none;
+  margin: 10px 0;
+}
+.main-form-input:focus {
+  border-top: 0px solid #000;
+  border-left: 0px solid #000;
+  border-right: 0px solid #000;
+  border-bottom: 2px solid #000;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  background-color: #F8F8F9;
+  outline: none;
+}
+.contacts-form {
+  margin-top: 39px;
+}
+#main-form-text {
+  margin-top: 26px;
+  height: 168px;
+  width: 345px;
+  border-radius: 5px;
+  border: 1px solid #C4C4C4;
+  outline: none;
+}
 .hover-wrapper {
   height: 59px;
   clear: #F5F5F7;
