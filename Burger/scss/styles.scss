@@ -1,0 +1,241 @@
+* {padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box; -webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:activa{outline: none;}
+a:focus,a:activate{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding:0;border:0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li {vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+//
+$colorF: #5e5373;
+$white : #fff;
+$menubg :#000000;
+//
+
+li {
+list-style-type: none;
+}
+
+
+//<DEFAULT>===============================================================
+
+.header-burger {
+	display: none;
+}
+
+//</DEFAULT>===============================================================
+
+
+//<CONTAINER>===============================================================
+
+.container {
+
+	max-width: 1180px;
+	margin: 0 auto;
+	padding:0px 10px 0px 10px;
+
+}
+
+
+
+
+//</CONTAINER>==============================================================
+html,body {
+	height: 100%;
+	font-family: Arial, "Helvetica Neue" , Helvetica, sans-serif;
+}
+
+.wrapper {
+
+}
+
+.header {
+	 position: fixed;
+	 width: 100%;
+	 top: 0;
+	 left: 0;
+	 z-index: 50;
+
+	  &-body {
+	  	 position: relative;
+	  	 display: flex;
+	  	 justify-content: space-between;
+	  	 align-items: center;
+	  	 height: 70px;
+	  }
+
+	  .header-logo {
+    flex:0 0 52px;
+    border-radius:50%;
+    overflow:hidden;
+    position: relative;
+    z-index: 3;
+     img {
+     	max-width: 100%;
+     	max-height: 100%;
+     	display: block;
+
+     }
+	  }
+
+  @media (max-width: 767px) {
+  	.header-logo  {
+     flex:0 0 40px;
+   }
+  	
+  }
+
+	  &-list {
+	  	display: flex;
+	  	position: relative;
+	  	z-index: 5;
+	  	justify-content: space-between;
+	  	align-items: center;
+	  	 a{
+	  		 color:$white;
+	  	  }
+	  	 li {
+	  	 	margin: 0px 0px 0px 30px;
+	  	 }
+	   }
+	  &-link {
+	  		text-transform: uppercase;
+	  		font-size: 16px;
+	  		text-decoration: none;
+	  	}
+}
+.header:before {
+	  content: '';
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background-color: $colorF;
+	  z-index: 2;
+}
+
+
+.content {
+ padding: 100px 0px 0px 0px;
+
+  &-text {
+  	font-size: 18px;
+  	line-height: 25px;
+
+  	p {
+  		margin:0px 0px 20px 0px;
+  	}
+  }
+
+
+}
+
+
+//<MEDIA>===============================================================
+
+@media (max-width: 767px) {
+
+	 body.lock {
+   overflow:hidden;
+	 }
+
+ .header-body {
+ 	height: 50px;
+ }
+ 
+
+	.header-burger {
+   display: block;
+   width: 30px;
+   height: 20px;
+   position: relative;
+   z-index: 3;
+	}
+	.header-burger span {
+		position: absolute;
+		background-color: $white;
+		left: 0;
+		top: 9px;
+		width: 100%;
+		height: 2px;
+		transition: all 0.3s ease 0s;
+	}
+
+	.header-burger:before,
+	.header-burger:after {
+  content: '';
+  background-color: $white;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left:0;
+		transition: all 0.3s ease 0s;
+	}
+	.header-burger:before {
+		top: 0;
+	}
+	.header-burger:after {
+		bottom:0;
+	}
+
+	.header-menu {
+		position: fixed;
+		top: -100%;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $menubg;
+		padding: 70px 10px 20px 10px;
+		transition: all 0.3s ease 0s;
+		overflow:auto;
+	}
+	.header-menu.active {
+   top:0;
+	}
+
+	.header-list {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		
+		 li {
+		 	margin: 0px 0px 30px 0px;
+		 }
+	}
+
+	.header-burger.active:before {
+   transform: rotate(45deg);
+   top: 9px;
+	}
+	.header-burger.active:after {
+   transform: rotate(-45deg);
+   bottom:9px;
+	}
+	.header-burger.active span {
+		 transform: scale(0);
+	}
+
+ .content {
+   padding:60px 0px 0px 0px;  
+ }
+ 
+ .header-menu.active {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: flex-start;
+ }
+
+ .header-link {
+ 	 font-size: 22px;
+ }
+}
+
+
+//</MEDIA>===============================================================
