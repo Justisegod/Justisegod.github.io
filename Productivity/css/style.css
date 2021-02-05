@@ -129,15 +129,16 @@ color: #3D4F9F;
     font-size: 48px;
     line-height: 60px;
 /* identical to box height */
-
 text-align: center;
-
-color: #3D4F9F;
+color: #8D96BD;
+    margin: 10px 0px 20px 0px;
 }
 .header-title strong {
 	font-weight: 700;
+	color: #3D4F9F;
 }
 .header-sub-text {
+width: 80%;
 font-family: Roboto , sans-serif;
 font-style: normal;
 font-weight: normal;
@@ -145,9 +146,8 @@ font-size: 15px;
 line-height: 29px;
 text-align: center;
 letter-spacing: 0.03em;
-
 color: #8D96BD;
-
+margin: 0px 0px 0px 0px;
 }
 .header-button-act img{
 	/*width: 120px;
@@ -221,8 +221,80 @@ margin: 0px 0px 0px 14px;
 }
 /*</Menu>===========================================================================*/
 
+/*<plan>===========================================================================*/
+.plan {
+	width: 100%;
+	height: 100%;
+}
+.plan-body {
+	display: flex;
+	flex-direction:column;
+	/*background-image: url(../Image/Plan-and-manage/noyt.png);
+	background-size: contain;
+	background-position: 100% 0;
+	background-repeat: no-repeat;
+	background-origin: border-box;*/
+}
+.plan-row {
+	height: 100vh;
+	display: inline-flex;
+	flex-direction: row;
+}
+.plan-column {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 120px 0px 0px 0px;
+	justify-content: center;
+	align-items: center;
+}
+.plan-suptitle  {
+   font-family: Roboto, sans-serif;
+   font-style: normal;
+   font-weight: 600;
+   font-size:0.79vw;
+   /*font-size: 10px;*/
+   line-height: 12px
+   letter-spacing:0.1em;
+   color:#3D4F9F;
+   display: inline-block;
+}
+.plan-suptitle h4 {
+   display: inline-block;
 
+}
+.plan-title {
+	font-family: Quicksand, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 3.1vw;
+    /*font-size: 36px;*/
+    line-height: 45px;
+    color: #3D4F9F;
+    margin: 3% 0px 3% 0px;
+   display: inline-block;
 
+}
+.plan-text {
+	 width: 40%;
+	 padding: 0px 10px 10px 0px;
+	 font-family: Roboto ,sans-serif;
+     font-style: normal;
+     font-weight: normal;
+     font-size: 1vw;
+     /*font-size: 15px;*/
+     line-height: 29px;
+     letter-spacing: 0.03em;
+     color: #8D96BD;
+}
+.plan-image {
+
+}
+.plan-image img{
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+/*</plan>===========================================================================*/
 
 
 
@@ -251,6 +323,10 @@ margin: 0px 0px 0px 14px;
 	}
 	.header-button {
 		padding: 10px 5px 10px 5px;
+	}
+	.plan-body {
+		background-size: 60%;
+		background-position: 100% 5%;
 	}
 } 
 @media (max-width: 992px) {
