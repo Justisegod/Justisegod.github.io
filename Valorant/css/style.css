@@ -274,11 +274,12 @@ img {
 }
 .footer-row {
 	display: flex;
+	justify-content: space-around;
 	height: 200%;
 	width: 100%;
 	position: absolute;
 	top: -80px;
-	left: -20px;
+	left: -35px;
 }
 .footer-column {
 	position: relative;
@@ -295,7 +296,10 @@ img {
 	position: absolute;
 	display: flex;
 	flex-direction: column;
-	width: 50%;
+	justify-content: space-around;
+	align-items: center;
+	width: 55%;
+	height: 100%;
 	font-family: Montserrat,sans-serif;
  font-style: normal;
  font-weight: normal;
@@ -303,9 +307,53 @@ img {
  line-height: 10px;
  /*letter-spacing: 0.1em;*/
  color: #1F2326;
- margin: 0px auto;
 }
+.footer-basic-text img{
+	 height: 9px;
+	 width: 40%;
+ }
+.footer-basic-text p {
+	max-width: 80%;
+	margin: 0px auto;
+}
+.footer-basic-text img:nth-child(1) {
+	/*width: 50%;*/
+	max-width: 50%;
+	margin: 0px auto 0px 16px;
+	height: 13px;
+}
+.footer-basic-text img:nth-child(2) { 
+	 max-width: 40%;
+	 height: 8px;
+	 margin: 0px auto 0px 16px;
+	}
+	.footer-logo {
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		position: absolute;
+		top: -5px;
+		right: 6px;
+		width: 45%;
+		height: 100%;
+	}
+	.footer-logo img {
+		max-height: 60px;
+		max-width: 60px;
+	}
 
+ .next-hero {
+  max-width: 40%;
+  display: flex;
+  flex:0 1 15%;
+ }
+	.next-hero  img{
+		max-height: 100%;
+		max-height: 100%;
+ 	margin: 0px auto;
+
+		
+	}
 /*</Footer>======================================================================*/
 
 /*</Main Screen>======================================================================*/
