@@ -1,0 +1,277 @@
+/*<Fonts>==========================================================================================================================================================================================*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;900&display=swap');
+/*</Fonts>==========================================================================================================================================================================================*/
+body{margin: 0;}li{list-style: none;}a{text-decoration: none;}
+
+
+/*<Container>==========================================================================================================================================================================================*/
+.container {
+	width: 1170px;
+	margin: 0 auto;
+}
+@media (max-width: 1200px) {
+	.container {
+		width: 960px;
+	}
+} 
+@media (max-width: 992px) {
+	.container {
+		width: 720px;
+	}
+}
+@media (max-width: 768px) {
+	.container {
+		width: 540px;
+	}
+}
+@media (max-width: 576px) {
+	.container {
+		width: 100%;
+	}
+}
+/*</Container>==========================================================================================================================================================================================*/
+
+
+/*<БЛОКИ>==========================================================================================================================================================================================*/
+
+.title {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    color: #242121;
+ }
+
+/*</БЛОКИ>==========================================================================================================================================================================================*/
+
+
+
+/*<Header__top>==========================================================================================================================================================================================*/
+
+.header__top-inner {
+    display: flex;
+    height: 12.5vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu__list {
+    display: flex;
+}
+.menu__link {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #373A39;
+}
+.menu__list-item {
+    margin: 0px 0px 0px 50px;
+}
+
+/*</Header__top>==========================================================================================================================================================================================*/
+
+
+
+
+/*<Header__content>==========================================================================================================================================================================================*/
+
+.header__content{
+    height: 87.5vh;
+    background-image: url(../img/Header-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+}
+
+.header__content-inner {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__content-title {
+    margin: 0px 0px 18px 0px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 6em;
+    letter-spacing: 4px;
+    /* line-height: 122px; */
+    color: #fff;
+}
+
+.header__content-description {
+    margin: 0px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    letter-spacing: 1.4px;
+    color: #FCBB08;
+
+}
+.header__content-decor {
+    margin: 10% 0px 0px 0px;
+    
+}
+
+/*</Header__content>==========================================================================================================================================================================================*/
+
+
+.contact__content {
+    width: 585px;
+    height: 585px;
+}
+.contact__form {
+    display: flex;
+    flex-direction: column;
+   
+}
+.contact__container {
+    display: flex;
+    height: 600px;
+    justify-content: space-between;
+}
+.contact__map {
+    
+}
+
+
+.about__inner {
+    display: flex;
+    margin: 140px 0px 140px 0px;
+}
+
+.about__text {
+    max-width: 60%;
+    margin: 0px 0px 0px auto;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 24px;
+    color: #373A39;
+    
+}
+
+
+
+/* expertise */
+
+.experise__content {
+ 
+}
+
+.expertise__items {
+   display: flex;
+}
+.expertise__item {
+    max-width: 30%;
+    padding: 0px 1px 0px 80px;
+
+}
+.expertise__item--monitor {
+    margin: 0px auto;
+    background-image: url(../img/2.svg) ;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    background-position: 15px -4px;
+}
+
+.expertise__item--shout {
+    background-image: url(../img/3.svg) ;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    background-position: 15px -4px;
+}
+.expertise__item--vector {
+    background-image: url(../img/1.svg) ;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    background-position: 15px -2px;
+}
+
+.expertise__item-title {
+    font-family: Raleway,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color:#333333;
+    padding: 0px 10px;
+
+}
+.expertise__item-text {
+    font-family: Open Sans, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    color: #777777;
+    margin: 14px 0px 160px 0px;
+    padding: 0px 10px;
+}
+
+.expertise__content-items {
+    max-width: 40%;
+    width: 40%;
+}
+.expertise__body {
+    display: flex;
+    margin: 100px 0px 100px 0px;
+}
+.expertise__content-text {
+    max-width: 60%;
+    width: 60%;
+    margin: 0px 0px 0px auto;
+    font-family: Open Sans , sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    /* line-height: 24px; */
+    letter-spacing: 0px;
+    color: #373A39;
+
+}
+/* expertise */
+
+/* features__inner */
+
+.container__features {
+
+}
+
+.features__inner {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.features__img {
+    width: 50%;
+    flex: 0 1 50%;
+}
+
+.features__column {
+    flex-basis: 400px;
+    margin: auto auto;
+    /* align-items: center; */
+}
+
+.features__text {
+    font-family: Open Sans, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    color: #373A39;
+    padding: 70px 0px 0px 0px;
+
+}
+/* /features__inner */
