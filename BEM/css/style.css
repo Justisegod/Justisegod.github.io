@@ -137,8 +137,8 @@ img {
 
 
 .contact__content {
-    width: 585px;
-    height: 585px;
+    /* width: 585px;
+    height: 585px; */
 }
 .contact__form {
     display: flex;
@@ -469,7 +469,229 @@ img {
     background-color: #F6F8FA;
 }
 
+.price__title {
+    padding: 130px 0px 80px 0px;
+}
+
 .price__row {
+    display: flex;
+    justify-content: space-between;
+}
+.price__column {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 30%;
+    background: #fff;
+    flex-basis: 30%;
+    margin: 0px 0px 160px 0px;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.price__column-name {
+    font-family: Open Sans,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    color: #242121;
+    padding: 25px 25px 25px 25px;
+    align-self: start;
     
 }
+.price__column-cost {
+    color:#242121;
+    font-size: 50px;
+    font-family: Open Sans,sans-serif;
+    font-weight: normal;
+    margin: 0px 0px 60px 0px;
+    
+}
+
+.price__column-sup {
+    font-size: 30px;
+    padding: 0px 4px 0px 0px;
+}
+.price__column-sub {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.price__list {
+    padding: 0;
+    margin: 0;
+    /* margin: auto auto; */
+    padding: 0px 50px 0px 50px;
+    /* flex-basis: 33.3%; */
+}
+.price__list-item {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    color: #242121;
+
+    margin: 0px 0px 30px 0px;
+    
+}
+
+.price__column-btn {
+ margin: 60px auto 50px auto;
+ text-align: center;
+ background: #fff;
+ border: 0px solid #000;
+ color:#242121;
+ font-weight: bold;
+ font-size: 14px;
+ font-family: Montserrat ,sans-serif;
+}
+.price__column-btn:hover {
+    background: #000;
+    color: #fff;
+}
 /* price */
+
+.contact__flex {
+    margin: 292px 0px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    /* height: 100vh; */
+}
+
+.contact__content {
+    flex-basis: 600px;
+    max-width: 600px;
+    margin: 0px auto;
+}
+.contact__map {
+    /* flex-basis: 40%; */
+    flex: 0 1 50%;
+    max-width: 50%;
+}
+
+.contact__title {
+    padding: 160px 0px 0px 0px;
+    margin: 0px 0px 90px 0px;
+}
+.contact__form-input {
+    background: #fff;
+    border: 2px solid #fff;
+    border-bottom: 2px solid black;
+    margin: 0px 0px 20px 0px;
+    font-family: Open Sans,sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    color: #B8B8B8;
+
+
+}
+.contact__form-input:active {
+    background: #fff;
+    border: 2px solid #fff;
+    outline: none ;
+}
+.contact__form-input:focus {
+    background: #fff;
+    border: 2px solid #fff;
+    outline: none ;
+}
+
+.contact__form-textarea {
+    background: #fff;
+    border: 2px solid #fff;
+    border-bottom: 2px solid black;
+    height: 200px;
+}
+.contact__form-textarea:focus {
+    background: #fff;
+    border: 2px solid rgb(0, 0, 0);
+    outline: none;
+}
+
+.contact__form-btn {
+    margin: 40px 0px auto 0px;
+    padding: 17px 50px 15px 50px;
+    max-width: 230px;
+    background: #000;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 13px;
+    letter-spacing: 2px;
+    text-align: center;
+
+}
+.contact__form-btn:active {
+    background: #fff;
+    color:black;
+}
+
+/* footer */
+
+.footer__bg  {
+    background: #373A39;
+}
+.footer__content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    
+}
+
+.footer__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0px 60px 0px;
+}
+.footer__menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer__menu-link {
+    font-family: Montserrat,sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    color: #A8A8A8;
+    margin: 0px 15px 0px 15px;
+    
+}
+
+.footer__text {
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    font-family: Open Sans,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    color: #A8A8A8;
+    margin: 60px 0px 0px 0px;
+
+}
+.footer__text-number {
+    color: #A8A8A8;
+    margin: 10px 0px 10px 0px;
+}
+.footer__text-mail {
+    color: #A8A8A8;
+    padding:0px 0px 126px 0px;
+}
+
+.footer__copy {
+    background-color: #2A2C2B;
+    text-align: center;
+    padding: 43px 0px 41px 0px;
+    font-family: Open Sans,sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: #CCCCCC;
+
+}
+/* footer */

@@ -339,13 +339,13 @@ people who make shows
 </section>
 <section class="price">
    <div class="container">
-       <div class="title">Pricing Plans</div>
+       <div class="title price__title">Pricing Plans</div>
 
        <div class="price__inner">
            <div class="price__row">
                <div class="price__column">
                    <div class="price__column-name">Basic</div>
-                   <div class="price__column-cost">29</div>
+                   <div class="price__column-cost"><sup class="price__column-sup">$</sup>29<sub class="price__column-sub">/mo</sub></div>
 
                    <ul class="price__list">
                    <li class="price__list-item">1 Logo Design</li>
@@ -358,8 +358,11 @@ people who make shows
                    
                    <button class="price__column-btn">CHOOSE PLAN</button>
                </div>
+               <div class="price__column">
+                <div class="price__column-name">Starter</div>
+                <div class="price__column-cost"><sup class="price__column-sup">$</sup>50<sub class="price__column-sub">/mo</sub></div>
 
-               <ul class="price__list">
+                <ul class="price__list">
                 <li class="price__list-item">1 Logo Design</li>
                 <li class="price__list-item">1 Website Design</li>
                 <li class="price__list-item">1 Domain Free</li>
@@ -367,49 +370,50 @@ people who make shows
                 <li class="price__list-item">1 GB Storage</li>
                 </ul>
                 
-                <button class="price__column-btn">CHOOSE PLAN</button>
-            </div>
-
-            <div class="price__column">
-                <div class="price__column-name">Professional </div>
-                <div class="price__column-cost">29</div>
-
-                <ul class="price__list">
-                    <li class="price__list-item">1 Logo Design</li>
-                    <li class="price__list-item">1 Website Design</li>
-                    <li class="price__list-item">1 Domain Free</li>
-                    <li class="price__list-item">3 Month License</li>
-                    <li class="price__list-item">1 GB Storage</li>
-                    </ul>
                 
                 <button class="price__column-btn">CHOOSE PLAN</button>
             </div>
-           </div>
+            <div class="price__column">
+                <div class="price__column-name">Premium</div>
+                <div class="price__column-cost"><sup class="price__column-sup">$</sup>70<sub class="price__column-sub">/mo</sub></div>
+
+                <ul class="price__list">
+                <li class="price__list-item">1 Logo Design</li>
+                <li class="price__list-item">1 Website Design</li>
+                <li class="price__list-item">1 Domain Free</li>
+                <li class="price__list-item">3 Month License</li>
+                <li class="price__list-item">1 GB Storage</li>
+                </ul>
+                
+                
+                <button class="price__column-btn">CHOOSE PLAN</button>
+            </div>
+        </div>
+
+           
        </div>
    </div>
 </section>
-<section class="contact">
-    <div class="container contact__container">
+<section class="contact contact__flex">
         <div class="contact__content">
-            <div class="title">Get in Touch</div>
+            <div class="title contact__title">Get in Touch</div>
 
             <form class="contact__form" action="#">
                 <input class="contact__form-input" type="text" placeholder="YOUR NAME">
                 <input class="contact__form-input" type="text" placeholder="VALID EMAIL">
                 <textarea class="contact__form-textarea" name="comment" cols="40" rows="3"></textarea>
-                <button class="contact__form-btn">SEND MESSAGE</button>
+                <button class="contact__form-btn" placeholder="YOUR MESSAGE">SEND MESSAGE</button>
             </form>
 
         </div>
     
         <img class="contact__map" src="img/map.png" alt="">
-    </div>
 </section>
-<footer class="footer">
+<footer class="footer footer__bg">
 <div class="container">
     <div class="footer__content">
 
-        <div class="logo logo--line">
+        <div class="logo footer__logo logo--line">
             <a class="logo__link" href="#" >
                 <img class="logo__img" src="img/Logo.png" alt="" >
             </a>
@@ -430,9 +434,9 @@ people who make shows
             <a class="footer__text-mail" href="mailto:info@mail.com">info@mail.com</a>
         </div>
     </div>
-    <div class="footer__copy">@2015 Oxygen Theme</div>
 </div>
-    
+<div class="footer__copy">@2015 Oxygen Theme</div>
+        
 </footer>
 </body>
 </html>
