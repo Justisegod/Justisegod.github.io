@@ -295,28 +295,6 @@ body.lock {
 
 
 
-.header__burger span{
-  width: 30px;
-  background-color: #fff;
-}
-.header__burger::before {
-  content: '';
-  width: 30px;
-  background-color: #fff;
-}
-.header__burger::after {
-  content: '';
-  width: 30px;
-  background-color: #fff;
-}
-.header__burger{
-  position: relative;
-  width: 30px;
-  display: grid;
-  align-items: center;
-  grid-template: repeat(3, 10px) / 1fr;
-  z-index: 11;
-}
 
 
 
@@ -324,53 +302,12 @@ body.lock {
 
 
 
-.header__burger.active:before {
-  position: relative;
-  transform: rotate(45deg);
-  top: 9px; 
-  left: 0;
-  transition: all 0.3s ease 0s;
-}
+@media (min-width: 800px) and (max-width: 990px) {
+  .galery__item--last{
+    display: none;
   
-.header__burger.active:after {
-  position: relative;
-  transform: rotate(-45deg);
-  bottom: 11px;
-  left: 0;
-  transition: all 0.3s ease 0s;
  }
-.header__burger.active span {
-  transform: scale(0);
-  transition: all 0.3s ease 0s;
- }
-
- .header__burger:before,
- .header__burger:after,
- .header__burger span{
-  transition: all 0.4s ease 0s;
-  position: relative;
-  height: 3px;
 }
-.header__burger:before{
-  top: 0;
-  left: 0;
-
-}
-.header__burger:after{
-  bottom: 0;
-  left: 0;
-}
-.header__burger span{
-
-}
-
-
-
-
-
-
-
-
 
 
 @media (min-width: 550px) {
@@ -412,6 +349,9 @@ body.lock {
   }
   
 }
+
+
+
 @media (max-width: 992px) {
   .header__list{
     display: none;
@@ -425,6 +365,69 @@ body.lock {
     display: none;
   }
   
+
+.header__burger span{
+  width: 30px;
+  background-color: #fff;
+}
+.header__burger::before {
+  content: '';
+  width: 30px;
+  background-color: #fff;
+}
+.header__burger::after {
+  content: '';
+  width: 30px;
+  background-color: #fff;
+}
+.header__burger{
+  position: relative;
+  width: 30px;
+  display: grid;
+  align-items: center;
+  grid-template: repeat(3, 10px) / 1fr;
+  z-index: 11;
+}
+
+.header__burger.active:before {
+  position: relative;
+  transform: rotate(45deg);
+  top: 9px; 
+  left: 0;
+  transition: all 0.3s ease 0s;
+}
+  
+.header__burger.active:after {
+  position: relative;
+  transform: rotate(-45deg);
+  bottom: 11px;
+  left: 0;
+  transition: all 0.3s ease 0s;
+ }
+.header__burger.active span {
+  transform: scale(0);
+  transition: all 0.3s ease 0s;
+ }
+
+ .header__burger:before,
+ .header__burger:after,
+ .header__burger span{
+  transition: all 0.4s ease 0s;
+  position: relative;
+  height: 3px;
+}
+.header__burger:before{
+  top: 0;
+  left: 0;
+
+}
+.header__burger:after{
+  bottom: 0;
+  left: 0;
+}
+.header__burger span{
+
+}
 }
 
 @media (max-width: 550px) {
