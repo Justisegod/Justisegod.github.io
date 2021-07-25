@@ -68,7 +68,7 @@ body.lock {
 	flex-direction: column;
 	min-height: 100%;
 	display: grid;
-	grid-template: minmax(100px, auto) 1fr minmax(70px, auto) / 1fr;
+	grid-template: minmax(90px, auto) 1fr minmax(70px, auto) / 1fr;
   grid-template-areas: 
   "header"
   "main"
@@ -125,8 +125,8 @@ body.lock {
 }
 .header__logo{
   background-color: #fff;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: inline-block;
   grid-column: 2 / 3;
@@ -249,7 +249,7 @@ body.lock {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 100%;
+  top: -100%;
   left: 0;
   transition: all 1s ease 0s;
   z-index: 10;
