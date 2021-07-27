@@ -619,6 +619,52 @@
 }
 
 
-
+.blog-box{
+    
+    &__title{
+        @extend %title-font;
+        color: $title;
+        font-size: 36px;
+        line-height: 51px;
+        max-width: 430px;
+        margin: 0 auto 30px;
+        text-align: center;
+    }
+    &__items{
+        display: grid;
+        // grid-template: 1fr / repeat(auto-fit, minmax(450px, 1fr)) ;
+        grid-template-columns: repeat(auto-fit, minmax(auto, 540px));
+        column-gap: 15px ;
+        justify-content: center;
+        margin-bottom: 100px;
+        align-items: flex-start;
+    }
+    &__item{
+        display: grid;
+        position: relative;
+        grid-template: 1fr / 1fr;
+        margin-bottom: 30px;
+          
+    }
+    &__info{
+        margin: 30px 0 0 0;
+        
+        display: grid;
+        // grid-auto-rows: minmax();
+    }
+   
+    &__data{
+        color: #707070;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 28px;
+    }
+    &__text{
+        font-weight: bold;
+        @extend %title-font;
+        color: $title;
+        padding-top: 8px;
+    }
+}
 
 
