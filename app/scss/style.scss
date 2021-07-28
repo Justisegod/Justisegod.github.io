@@ -39,6 +39,20 @@
         color: rgba(54, 56, 56, 0.9);
         line-height: 22px;
     }
+    &__list-link--active{
+        padding-bottom: 4px;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            border-radius: 1px;
+            background-color: rgba($title, .7);
+        }
+    }
 }
 
 
@@ -265,6 +279,31 @@
         max-width: 485px;
     }
 }
+
+
+
+.breadcrumbs{
+    background-color: rgba(#DFDFDF , .5);
+    padding: 13px 14px;
+    &__list{
+        display: flex;
+    }
+    &__item::after{
+        content: '/';
+        margin-left: -4px;
+        margin-right: 4px;
+    }
+    &__item:last-child::after{
+        display: none;
+    }
+    &__link{
+        font-size: 14px;
+        line-height: 28px;
+        color: $default;
+    }
+}
+
+
 
 
 .top{
