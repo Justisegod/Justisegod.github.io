@@ -816,6 +816,11 @@ padding-top: 100px;
     &__content{
         max-width: 825px;
         
+        
+    }
+    &__item-content{
+        display: flex;
+        justify-content: space-between;
     }
     &__item{
         font-weight: 700;
