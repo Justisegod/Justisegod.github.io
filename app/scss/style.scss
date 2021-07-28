@@ -715,3 +715,23 @@
 }
 
 
+.about{
+
+    &__prev{
+        background-image: url(../images/about-bg.jpg);
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+        padding: 160px 0;
+        margin-top: -53px;
+        
+    }
+    &__prev-title{
+        margin: 0px auto;
+        text-align: center;
+        @extend %title-font;
+        font-size: 60px;
+        line-height: 80px;
+        color: $title;
+    }
+}
