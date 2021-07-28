@@ -734,4 +734,47 @@
         line-height: 80px;
         color: $title;
     }
+    &__content{
+        padding: 130px 0 40px;
+        // max-width: 1100px;
+        // margin: 0px auto;
+    }
+    &__title{
+        
+        @extend %title-font;
+        color: $title;
+        font-size: 36px;
+        line-height: 60px;
+        position: relative;
+        padding-bottom: 22px;
+        margin-bottom: 22px;
+        &::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #6D7278;
+            height: 1px;
+            width: 200px;
+            
+        }
+    }
+    &__text {
+        padding-left: 285px;
+
+        p{
+            margin-bottom: 30px;
+        }
+    }
+    &__popup{
+        background-image: url(../images/popup-bg.jpg);
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+        min-height: 414px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
