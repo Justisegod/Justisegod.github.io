@@ -634,7 +634,8 @@
         display: grid;
         // grid-template: 1fr / repeat(auto-fit, minmax(450px, 1fr)) ;
         grid-template-columns: repeat(auto-fit, minmax(auto, 540px));
-        column-gap: 15px ;
+        // grid-template-columns: 1fr 1fr;
+        column-gap: 30px ;
         justify-content: center;
         margin-bottom: 100px;
         align-items: flex-start;
@@ -646,25 +647,32 @@
         margin-bottom: 30px;
           
     }
-    &__info{
+    &__links{
         margin: 30px 0 0 0;
         
-        display: grid;
+        // display: grid;
         // grid-auto-rows: minmax();
     }
    
-    &__data{
+    &__links{
         color: #707070;
         font-weight: 600;
         font-size: 14px;
         line-height: 28px;
     }
-    &__text{
+    &__author{
+        color: inherit;
+    }
+    &__theme{
+        color: inherit;
+    }
+    &__item-titlelink{
         font-weight: bold;
         @extend %title-font;
         color: $title;
         padding-top: 8px;
     }
+
 }
 
 
