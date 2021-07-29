@@ -62,5 +62,35 @@ body{
 	}
 }
 
+.info-email{
+	font-weight: 600;
+	font-size: 14px;
+	color: $title;
+	margin-bottom: 22px;
+	padding-left: 30px;
+	display: inline-block;
+	font-family: 'Open Sans', sans-serif;
+	position: relative;
+	&::before{
+		content: '';
+		background-image: url(../images/mail.svg);
+		left: 0;
+		top: 9px;
+		width: 16px;
+		height: 12px;
+		position: absolute;
+	}
+}
 
+.form-btn{
+	background-color: #363838;
+    border: none;
+    color: #FFFFF0;
+    border-radius: 21px;
+    font-weight: 600;
+    padding: 6px 12px;
+    min-width: 160px;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
 
+}
