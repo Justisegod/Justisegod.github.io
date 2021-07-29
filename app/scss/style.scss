@@ -83,25 +83,7 @@
         font-family: 'Open Sans', sans-serif;
         color: $default;
     }
-    &__info-email{
-        font-weight: 600;
-        font-size: 14px;
-        color: $title;
-        margin-bottom: 22px;
-        padding-left: 30px;
-        display: inline-block;
-        font-family: 'Open Sans', sans-serif;
-        position: relative;
-        &::before{
-            content: '';
-            background-image: url(../images/mail.svg);
-            left: 0;
-            top: 6px;
-            width: 16px;
-            height: 12px;
-            position: absolute;
-        }
-    }
+  
     &__form{
         display: flex;
     }
@@ -885,4 +867,101 @@ position: relative;
 .map{
     margin-top: -53px;
     margin-bottom: 50px;
+}
+
+.contact{
+    padding-bottom: 100px;
+    &__title{
+        @extend %title-font;
+        color: $title;
+        padding-bottom: 30px;
+        margin-bottom: 40px;
+        font-size: 36px;
+        line-height: 60px;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #6D7278;
+            width: 200px;
+        }
+    }
+    &__inner{
+        display: flex;
+        flex-direction: column;
+        padding-left: 284px;
+    }
+    &__social{
+        display: flex;
+    }
+    &__social-item + .contact__social-item{
+        padding-left: 40px;
+        padding-bottom: 21px;
+    }
+    &__text{
+        padding-bottom: 10px;
+    }
+    &__sity{
+        margin-bottom: 16px;
+    }
+    &__email{
+       
+    }
+    &__phone,
+    &__st,
+    &__sity{
+        color: $default;
+    }
+    
+    &__form{
+        display: flex;
+        flex-wrap: wrap;
+        // padding-top: 25px;
+        max-width: 100%;
+        justify-content: space-between;
+       
+    }
+    &__form-input{
+        border: 1px solid #DFDFDF;
+        padding: 6px 17px;
+        width: 49%;
+        border-radius: 20px;
+        margin-bottom: 13px;
+        &::placeholder{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            line-height: 27px;
+            font-weight: 400;
+            color: #DFDFDF;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    &__form-area{
+        width: 100%;
+        padding: 14px 17px;
+        border: 1px solid #DFDFDF;
+        border-radius: 24px;
+        min-height: 125px;
+        resize: none;
+        &::placeholder{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            line-height: 27px;
+            font-weight: 400;
+            color: #DFDFDF;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    &__form-btn{
+        margin-top: 20px;
+        width: 181px;
+    }
 }
