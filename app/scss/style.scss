@@ -965,3 +965,35 @@ position: relative;
         width: 181px;
     }
 }
+
+.contact-slider{
+    
+    &__items{
+       
+    }
+    &__item{
+        
+    }
+    
+    &__item-title{
+        position: absolute;       
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        text-align: center;
+        @extend %title-font;
+        color: rgba(54, 56, 56, 0.9033);
+        background-color: rgba(#fff, .6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 22px;
+    }
+    &__item-image{
+        width: 170px;
+        height: 170px;
+        object-fit: cover;
+    }
+
+}
