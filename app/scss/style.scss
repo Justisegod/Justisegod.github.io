@@ -969,10 +969,27 @@ position: relative;
 .contact-slider{
     
     &__items{
-       
+        display: grid;
+        grid-template-columns: repeat(1,minmax(100px, 1fr));
+        // grid-template-rows: 1fr 1fr;
+        gap: 15px;
+       margin-bottom: 105px;
+       &:first-child{
+           padding: 0;
+       }
     }
     &__item{
+        position: relative;
+        margin-bottom: 35px;
+        padding: 0 6px;
+        // padding-right: 18px;
+        &:hover{
+            .contact-slider__item-title{
+                opacity: 1;
+            }
+        }
         
+
     }
     
     &__item-title{
@@ -986,9 +1003,12 @@ position: relative;
         color: rgba(54, 56, 56, 0.9033);
         background-color: rgba(#fff, .6);
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         line-height: 22px;
+        opacity: 0;
+        padding: 0 5px;
+        transition: all 0.6s ease;
     }
     &__item-image{
         width: 170px;
@@ -996,4 +1016,11 @@ position: relative;
         object-fit: cover;
     }
 
+}
+.slick-slide{
+    &:hover{
+        .contact-slider__title{
+            opacity: 1;
+        }
+    }
 }
