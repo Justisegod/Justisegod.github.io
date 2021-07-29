@@ -685,8 +685,6 @@
     &__links{
         margin: 30px 0 0 0;
         
-        // display: grid;
-        // grid-auto-rows: minmax();
     }
    
     &__links{
@@ -972,7 +970,7 @@ position: relative;
        
     }
     &__item{
-        
+        // display: flex !important;
     }
     
     &__item-title{
