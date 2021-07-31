@@ -21,6 +21,25 @@ $(function () {
     slidesToShow: 10
   });
 
+ 
+    
+
+
+//   $('.gallery__inner').mixItUp({
+//     selectors: {
+//       filter: '.living'
+//     }
+//   });
+
+//   $('.blog__items-content').mixItUp({
+//     selectors: {
+//       filter: '.all'
+//     }
+//   });
+// });
+
+
+
 
   var mixer = mixitup('.gallery__inner',{
     load: {
@@ -28,6 +47,7 @@ $(function () {
     }
   });
 
+ 
 
 
 })
