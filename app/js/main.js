@@ -20,6 +20,19 @@ $(function () {
     slidesToScroll: 10,
     slidesToShow: 10
   });
+  $('.article-slider__box').slick({
+    nextArrow:
+    '<button  type="button" class="article-slider__arrow article-slider__arrowright "><img src="images/arrow-slider-right.svg" alt="arrow right"></button>',
+    
+
+
+    prevArrow:
+    '<button  type="button" class="article-slider__arrow  article-slider__arrowleft"><img src="images/arrow-slider-left.svg" alt="arrow left"></button>'
+
+
+    
+    
+  });
 
  
     
