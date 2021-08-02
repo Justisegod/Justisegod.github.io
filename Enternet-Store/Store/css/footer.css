@@ -1,0 +1,47 @@
+/*Footer*/
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 85%;
+  border-radius: 10px 10px 0px 0px;
+  background-color: white;
+  padding: 18px 30px 18px 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: row;
+}
+
+.footerNav p {
+  margin: 0px 10px 0px 10px;
+}
+
+.footerLogo {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerLogo img {
+  font-size: 20px;
+}
+
+.footerLogo p {
+  font-size: 16px;
+}
+
+.footerNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
