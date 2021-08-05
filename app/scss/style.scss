@@ -594,7 +594,9 @@
         padding: 6px 16px;
         font-weight: 600;
         cursor: pointer;
-        
+        &:focus{
+            outline: none;
+        }
     }
     // &__inner{
         
