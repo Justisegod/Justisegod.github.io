@@ -878,6 +878,9 @@ position: relative;
 .map{
     margin-top: -53px;
     margin-bottom: 50px;
+    iframe{
+        height: 578px;
+    }
 }
 
 .contact{
@@ -916,6 +919,7 @@ position: relative;
     &__text{
         padding-bottom: 10px;
     }
+    
     &__sity{
         margin-bottom: 16px;
     }
@@ -993,14 +997,17 @@ position: relative;
         position: relative;
         margin-bottom: 35px;
         padding: 0 6px;
+        
         // padding-right: 18px;
         &:hover{
             .contact-slider__item-title{
                 opacity: 1;
             }
         }
-        
-
+    }
+    &__image{
+        width: 100%;
+        object-fit: cover;
     }
     
     &__item-title{
@@ -1022,8 +1029,14 @@ position: relative;
         transition: all 0.6s ease;
     }
     &__item-image{
-        width: 170px;
-        height: 170px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &__item-img{
+        width: 100%;
+        height: 100%;
+        
         object-fit: cover;
     }
 
