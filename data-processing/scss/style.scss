@@ -1,0 +1,301 @@
+@import 'vars';
+@import 'fonts';
+@import 'reset';
+@import 'libs';
+@import 'global';
+
+
+.header {
+
+    &__inner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+    }
+    &__buttons{
+        margin-left: auto;
+        font-weight: 500;
+        display: flex;
+    }
+   
+    
+    &__btn:last-child{
+        margin-left: 20px;
+    }
+}
+.menu {
+
+    &__list{
+        display: flex;
+        margin-left: 40px;
+    }
+    &__list-item{
+        margin-right: 22px;
+        font-size: 12px;
+        line-height: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    &__list-link{
+        color: #B5B5B5;
+    }
+}
+.main {
+    
+}
+.main-screen{
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: .6;
+        background-image: url(../images/main/man.svg);
+        background-repeat: no-repeat;
+        background-position: right 15% bottom 100%;
+        background-size: contain;
+    }
+
+    padding-top: 100px;
+
+    &__content{
+        max-width: 531px;
+    }
+    &__title{
+        @extend %title-font;
+        font-size: 44px;
+        line-height: 50px;
+    }
+    &__text{
+        color: $default-text;
+        padding: 20px 0 40px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    &__buttons{
+        display: flex;
+    }
+    &__btn {
+        padding: 13px 31px;
+        margin-right: 20px;
+        margin-bottom: 40px;
+    }
+    &__btn--transparent{
+        padding: 13px 59px;
+    }
+    &__preview{
+        display: flex;
+    }
+    &__preview-popupbtn{
+        width: 140px;
+        height: 80px;
+        border-radius: 4px;
+        background-blend-mode: multiply;
+        background-color: rgba(#361C5D, .9);
+        position: relative;
+    }
+    &__preview-img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+    &__preview-content{
+        width: 380px;
+        margin-left: 20px;
+    }
+    &__preview-text{
+        color: $default-text;
+        font-size: 16px;
+        line-height: 22px;
+    }
+    &__preview-action{
+        padding-top: 6px;
+        color: #6D6D78;
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+.partners{
+    position: relative;
+    
+    &__items{
+        display: grid;
+        grid-template-columns: repeat(6 , 1fr);
+        justify-content: center;
+        align-items: center;
+    }
+    &__item{
+        display: flex;
+        justify-content: center;
+    }
+    &__item-logo{
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+    }
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+}
+.partners-choice-wrapper{
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: .15;
+        background-image: url(../images/choice/stars.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right bottom 0%;
+    }
+   
+
+}
+
+.choice{
+
+    &__title{
+        @extend %title-font;
+        font-size: 42px;
+        line-height: 50px;
+        margin-bottom: 13px;
+        text-align: center;
+    }
+    &__subtitle{
+        font-size: 16px;
+        line-height: 22px;
+        color: $default-text;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    &__items{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 300px);
+        // grid-template: 1fr 1fr / repeat(3, )
+        justify-content: space-between;
+    }
+    &__item{
+        position: relative;
+        margin-bottom: 40px;
+        padding-left: 50px;
+        
+        
+    }
+    &__item--flip{
+        background-image: url(../images/choice/Flip-horizontal.svg);
+        background-repeat: no-repeat;
+    }
+    &__item--airpods{
+        background-image: url(../images/choice/Airpods.svg);
+        background-repeat: no-repeat;
+    }
+    &__item--network{
+        background-image: url(../images/choice/LTE.svg);
+        background-repeat: no-repeat;
+    }
+    &__item--thunder{
+        background-image: url(../images/choice/Thunder-move.svg);
+        background-repeat: no-repeat;
+    }
+    &__item--pils{
+        background-image: url(../images/choice/pils.svg);
+        background-repeat: no-repeat;
+    }
+    &__item--bulb{
+        background-image: url(../images/choice/Bulb.svg);
+        background-repeat: no-repeat;
+    }
+
+    &__item-title{
+        color: #99EFD0;
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    &__item-text{
+        font-size: 14px;
+        line-height: 22px;
+        color: $default-text;
+    }
+}
+
+.footer {
+
+    &--margin{
+        padding-top: 140px;
+    }
+    &__top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__top-title{
+        color: #F2994A;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 26px;
+        line-height: 32px;
+    }
+    &__social{
+        display: flex;
+    }
+    &__social-link{
+        margin-left: 16px;
+    }
+    &__content{
+        margin-top: 86px;
+    }
+    &__items{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item{
+
+    }
+    &__list{
+
+    }
+    &__list-title{
+        color: #fff;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 18px;
+        margin-bottom: 9px;
+    }
+    &__list-link{
+        display: block;
+        color: #fff;
+        font-size: 15px;
+        line-height: 20px;
+        margin-top: 16px;
+    }
+    &__copy{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 120px;
+        padding-bottom: 100px;
+        p{
+            color: #8D8D8D;
+            font-size: 14px;
+            line-height: 20px;
+            margin: 0 32px;
+        }
+        
+    }
+}
