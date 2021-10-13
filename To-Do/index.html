@@ -31,14 +31,19 @@
               </label>
               <ul class="todo__list" v-if="notes.length !== 0">
                 <li class="todo__list-item" v-for="(myNote, index) of notes">
-                  {{ notes[index] }}
-                  <button class="todo__list-btn">
+                  <p class="todo__list-text">
+                    {{ notes[index] }}
+                  </p>
+                  <button class="todo__list-btn" v-on:click="deleteNote(index)">
                     Delete
                   </button>
                 </li>
               </ul>
               <div class="empty" v-if="notes.length == 0">
-                You can add a new note =)
+                <h3>Зря ты удалил все записи</h3>
+                <div class="empty__img-body">
+                  <img class="empty__img" src="img/4.jpg" alt="">
+                </div>
               </div>
             </div>
           </div>

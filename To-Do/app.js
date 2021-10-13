@@ -69,8 +69,9 @@ const App = {
                 this.addNewNote();
             }
         },
-        deleteNote() {
-            
+        deleteNote(index) {
+            console.log(index);
+            this.notes.splice(index, 1);
         }
     }
 }
