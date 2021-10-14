@@ -201,11 +201,12 @@ h3 {
   text-align: center;
   align-items: center;
   background-blend-mode: multiply;
-  background-image: url(img/t-bg.jpg);
+  background-image: url(img/sea1.jpg);
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover ;
   background-attachment: fixed;
+  padding: 10px 0;
 }
 .title{
   margin: 0;

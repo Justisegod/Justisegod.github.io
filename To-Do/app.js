@@ -50,11 +50,12 @@ const App = {
             inputPlaceholderString: 'Enter the note',
             inputValue: '',
             counter: 0,
+            toUpperCaseOnClick: false,
         }
     },
     methods: {
         inputChangeHandler() {
-            console.log('inputChangeHandler', event.target.value);
+            // console.log('inputChangeHandler', event.target.value);
             this.inputValue = event.target.value;
         },
         addNewNote(){
@@ -64,14 +65,39 @@ const App = {
             }
         },
         inputKeyPress() {
-            console.log(event.key);
+            // console.log(event.key);
             if(event.key === 'Enter') {
                 this.addNewNote();
             }
         },
         deleteNote(index) {
-            console.log(index);
+            // console.log(index);
             this.notes.splice(index, 1);
+        },
+       
+        toUpperCase(index) {
+            if(this.toUpperCaseOnClick == false){
+                console.log('on');
+                this.notes[index] = this.notes[index].toUpperCase();
+                this.toUpperCaseOnClick = true;
+            }else{
+                this.notes[index] = this.notes[index].toLowerCase();
+                this.toUpperCaseOnClick = false;
+
+            }
+            
+            console.log(this.toUpperCaseOnClick);
+        },
+    },
+    computed: {
+        doubleCountComputed() {
+            console.log('doubleCountComputed');
+            return this.notes.length * 2;
+        }  
+    },
+    watch: {
+        inputValue(value) {
+            console.log(value);
         }
     }
 }

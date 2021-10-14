@@ -30,8 +30,8 @@
                 <button class="form-control__btn" v-on:click="addNewNote">Add a note</button>
               </label>
               <ul class="todo__list" v-if="notes.length !== 0">
-                <li class="todo__list-item" v-for="(myNote, index) of notes">
-                  <p class="todo__list-text">
+                <li class="todo__list-item" v-for="(myNote, index) of notes" >
+                  <p class="todo__list-text" v-on:click="toUpperCase(index)">
                     {{ notes[index] }}
                   </p>
                   <button class="todo__list-btn" v-on:click="deleteNote(index)">
@@ -45,6 +45,10 @@
                   <img class="empty__img" src="img/4.jpg" alt="">
                 </div>
               </div>
+              <hr>
+              <h4>
+                total amount: {{ notes.length }} | doubled:  {{ doubleCountComputed }}
+              </h4>
             </div>
           </div>
         </div>
