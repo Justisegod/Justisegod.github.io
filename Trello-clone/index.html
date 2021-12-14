@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trello clone</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+  <div class="app">
+    <div class="change">
+      <div class="change__inner">
+        <button class="change__btn">
+          Сменить Фон
+        </button>
+      </div>
+    </div>
+    <div class="boards">
+      <div class="boards__item">
+        <span class="title" contenteditable="true">Введите название</span>
+        <div class="list">
+            <div class="list__item" draggable="true">
+              Стартовая карточка
+            </div>
+        </div>
+        <div class="form">
+          <textarea class="form__textarea" placeholder="Введите название карточки"></textarea>
+          <div class="buttons">
+            <button class="add__item-btn">Добавить карточку</button>
+            <button class="cancel__item-btn">Отмена</button>
+          </div>
+        </div>
+        <div class="add__btn">
+          <span> + </span> 
+          Добавить карточку
+        </div>
+      </div>
+    </div>
+    <div class="button">
+      Добавить доску
+    </div>
+  </div>
+
+  <!-- <div class="wrapper">
+    <header class="header"></header>
+    <main class="main"></main>
+    <footer class="footer"></footer>
+  </div> -->
+
+
+
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>

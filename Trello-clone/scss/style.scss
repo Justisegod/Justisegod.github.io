@@ -1,0 +1,171 @@
+@import 'vars';
+@import 'fonts';
+@import 'reset';
+@import 'libs';
+@import 'global';
+
+.change{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &__btn{
+        background: transparent;
+        border: 1px dashed black;
+        padding: 10px;
+        font-weight: bold;
+        cursor: pointer;
+
+    }
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 10px;
+    background: url(../images/bg-beach.jpg) center / cover no-repeat;
+    background-blend-mode: multiply;
+    background-color: rgba(#333, .05);
+    height: 100vh;
+    transition: all 1s ease;
+}
+
+.boards {
+    display: flex;
+    width: 100%;
+
+    &__item{
+        display: flex;
+        flex-direction: column;
+        align-self: baseline;
+        max-width: 250px;
+        width: 100%;
+        background-color: rgba(0,0,0, .6);
+        margin: 0 15px;
+        padding: 10px;
+        transition: .3 all ease;
+        border-radius: 3px;
+    }
+    
+}
+
+.title{
+    padding: 5px;
+    color: #fefefe;
+    font-family: 'Open Sans', sans-serif;
+
+    &:focus{
+        outline: 1px solid rgba(168,168,168, .45);
+    }
+}
+
+.list {
+    min-height: 40px;
+
+    &__item {
+        font-weight: bold;
+        background-color: #fefefe;
+        border-radius: 3px;
+        text-align: center;
+        padding: 10px;
+        margin: 6px 0;
+        font-size: 14px;
+        outline: none;
+        cursor: pointer;
+    }
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-top: 6px;
+
+    .add__item-btn{
+        background: rgb(13, 136, 218);
+        padding: 10px 4px;
+        color: white;
+        cursor: pointer;
+        border-radius: 3px;
+        display: flex;
+        margin-right: 8px;
+        text-align: center;
+        border: none;
+        // font-size: 14px;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+    }
+    .cancel__item-btn{
+        padding: 10px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        background: rgb(160, 17, 12);
+        color: white;
+        // font-size: 14px;
+        width: 30%;
+        margin-left: auto;
+    }
+}
+
+.add__btn {
+    cursor: pointer;
+    padding: 5px;
+    background: rgba(155,155,155, .3);
+    margin-top: 2px;
+    border-radius: 3px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: white;
+    font-size: 13px;
+    align-items: center;
+    // font-weight: 500;
+    letter-spacing: 1px;
+    span{
+        padding-right: 2px;
+        font-size: 20px;
+    }
+}
+
+.form {
+    // border-radius: 3px;
+    margin-top: auto;
+    display: none;
+    &__textarea{
+        resize: none;
+        height: 60px;
+        font-size: 14px;
+        width: 100%;
+        border: none;
+        background: #fff;
+        padding: 10px;
+        &::placeholder{
+            font-family: 'Open Sans', sans-serif;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+}
+
+.button {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(19,30, 204, .62);
+    border: none;
+    width: 150px;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 3px;
+    color: white;
+    transform: translateX(-50%);
+    bottom: 50px;
+    left: 50%;
+}
