@@ -35,15 +35,17 @@
     width: 100%;
 
     &__item{
+        position: relative;
         display: flex;
         flex-direction: column;
         align-self: baseline;
         max-width: 250px;
+        min-height: 140px;
         width: 100%;
         background-color: rgba(0,0,0, .6);
         margin: 0 15px;
         padding: 10px;
-        transition: .3 all ease;
+        transition: all .5s ease;
         border-radius: 3px;
     }
     
@@ -115,7 +117,7 @@
     cursor: pointer;
     padding: 5px;
     background: rgba(155,155,155, .3);
-    margin-top: 2px;
+    margin-top: auto;
     border-radius: 3px;
     min-height: 30px;
     display: flex;
@@ -168,4 +170,42 @@
     transform: translateX(-50%);
     bottom: 50px;
     left: 50%;
+}
+
+
+
+.close{
+    transition: all 0.3s ease 0s;
+    width: 20px;
+    height: 20px;
+    // background: #000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: grid;
+    margin: 5px;
+    
+    
+    &__menu{
+        width: 1px;
+        height: 90%;
+        background: #fff;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        transform: rotate(-45deg);
+    }
+    &::after{
+        
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        transform: rotate(45deg);
+        width: 1px;
+        height: 90%;
+        background: #fff;
+    }
 }

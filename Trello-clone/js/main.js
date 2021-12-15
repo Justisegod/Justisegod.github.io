@@ -55,7 +55,6 @@ function addTask() {
                 addBtn.style.display = 'none';
             }
         });
-        
     })
 
     cancelBtn.addEventListener('click', () => {
@@ -76,6 +75,9 @@ function addTask() {
         value = '';
         form.style.display = 'none';
         btn.style.display = 'flex';
+
+        dragNdrop();
+
     })
 
 }
@@ -88,11 +90,17 @@ function addBoard() {
     board.classList.add('boards__item');
     board.innerHTML = `
     <span class="title" contenteditable="true">Введите название</span>
-    <div class="list"></div>
+    <div class="list"></div>  
+    <div class="close">
+          <span class="close__menu"></span>
+    </div>  
     `;
     boards.append(board);
 
     chageTitle();
+    dragNdrop();
+    delBoard();
+
 }
 addTableBtn.addEventListener('click', addBoard);
 
@@ -111,3 +119,82 @@ function chageTitle() {
 }
 
 chageTitle();
+
+
+let draggedItem = null;
+
+function dragNdrop() {
+    const listItems = document.querySelectorAll('.list__item');
+    const lists = document.querySelectorAll('.list');
+
+    for(let i = 0; i < listItems.length; i++) {
+        const item = listItems[i];
+
+        item.addEventListener('dragstart', () => {
+            draggedItem = item;
+            setTimeout(() =>{
+                item.style.display = 'none';
+                // console.log(item);
+            }, 0)
+        });
+
+        item.addEventListener('dragend', () =>{
+            setTimeout(() =>{
+                item.style.display = 'block';
+                draggedItem = null;
+            }, 0)
+        });
+
+        item.addEventListener('dblclick', () => {
+            item.remove();
+        })
+
+
+        for(let j = 0; j < lists.length; j++){
+            const list = lists[j];
+
+            list.addEventListener('dragover', event =>{
+                event.preventDefault();
+            })
+
+            list.addEventListener('dragenter', function(event) {
+                event.preventDefault();
+                this.style.backgroundColor = 'rgba(0,0,0, .3)';
+            })
+
+            list.addEventListener('dragleave', function (event) {
+                this.style.backgroundColor = 'rgba(0,0,0, 0)';
+            })
+
+            list.addEventListener('drop', function (event) {
+                this.style.backgroundColor = 'rgba(0,0,0, 0)';
+                this.append(draggedItem);
+            })
+        }
+    }
+}
+
+dragNdrop();
+
+
+
+function delBoard() {
+
+    const boards = document.querySelectorAll('.boards');
+    const lists = document.querySelectorAll('.boards__item');
+    const closeTable = document.querySelectorAll('.close');
+
+
+    for(let i = 0; i < closeTable.length; i++){
+
+        closeTable[i].addEventListener('click', () => {
+            lists[i].remove();
+
+        });
+    }
+
+    
+    
+}
+
+delBoard();
