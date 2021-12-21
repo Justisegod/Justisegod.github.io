@@ -102,7 +102,7 @@
 }
 
 .main{
-    background: url(../images/main/sky.png) center bottom  / cover  no-repeat;  
+    background: url(../images/main/sky.webp) center bottom  / cover  no-repeat;  
     width: 100%;
     height: 960px;
     position: relative;
@@ -113,7 +113,7 @@
         right: 0;
         width: 100%;
         height: 600px;
-        background: url(../images/main/main-bg.png) bottom center / 100% 86% no-repeat;
+        background: url(../images/main/main-bg.webp) bottom center / 100% 86% no-repeat;
         z-index: 5;
     }
     &__clouds{
@@ -123,7 +123,7 @@
         width: 100%;
         height: 351px;
         background: url(../images/main/gradient.png) center / 100% 100% no-repeat,
-                    url(../images/main/clouds.svg) center / 100% 100% no-repeat;
+                    url(../images/main/clouds.webp) center / 100% 100% no-repeat;
         z-index: 7;
     }
 
@@ -134,7 +134,7 @@
         right: 0;
         width: 100%;
         height: 687px;
-        background: url(../images/main/back-main-bg.png) center center / cover no-repeat;
+        background: url(../images/main/back-main-bg.webp) center center / cover no-repeat;
     }
 
     &::after{
@@ -146,7 +146,7 @@
         width: 100%;
         background-blend-mode: multiply;
         z-index: 6;
-        background-image: url(../images/main/mountains.png);
+        background-image: url(../images/main/mountains.webp);
         background-position: bottom right;
         background-repeat: no-repeat;
         background-size: 100% 90%;
@@ -442,7 +442,7 @@
     
     }
     &__item--australia{
-        background: url(../images/experiences/australia-bg-min.png) center center / cover no-repeat;
+        background: url(../images/experiences/australia-bg-min.webp) center center / cover no-repeat;
         border-radius: 10px 10px 10px 10px;
         
     }
@@ -450,10 +450,10 @@
         background: url(../images/experiences/peru-bg-min.png) center center / cover no-repeat;
     }
     &__item--croastia{
-        background: url(../images/experiences/croatia-bg-min.png) center center / cover no-repeat;
+        background: url(../images/experiences/croatia-bg-min.webp) center center / cover no-repeat;
     }
     &__item--jordan{
-        background: url(../images/experiences/jordan-bg-min.png) center center / cover no-repeat;
+        background: url(../images/experiences/jordan-bg-min.webp) center center / cover no-repeat;
     }
     &__info-wrapper{
         padding: 20px 36px 35px 34px;
