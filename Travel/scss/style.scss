@@ -1,0 +1,525 @@
+@import 'vars';
+@import 'fonts';
+@import 'reset';
+@import 'libs';
+@import 'global';
+
+.wrapper{
+    overflow-x: hidden;
+}
+
+
+.header {
+    
+    &__container{
+        margin: 20px 44px 40px 44px;
+    }
+    &__logo-link{
+        display: flex;
+        cursor: pointer;
+    }
+    &__inner{
+        display: flex;
+        max-height: 80px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__logo{
+        flex: 0 1 auto;
+    }
+
+    &__btn{
+        position: relative;
+        background: transparent;
+        border: 1px solid #ffffff;
+        padding: 11px 24px;
+        border-radius: 33px;
+        text-transform: uppercase;
+        font-family: 'Forum', sans-serif;
+        cursor: pointer;
+       
+    }
+    &__btn-inner{
+        position: relative;
+        z-index: 5;
+        display: flex;
+
+        &::after{
+            content: '';
+            width: 30px;
+            height: 14px;
+            position: absolute;
+            bottom: -9px;
+            right: 50%;
+            transform: translateX(50%);
+            background-image: url(../images/main/arr-down.svg);
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-color: #99B9D6;
+            z-index: 6;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        &::before{
+            content: '';
+            width: 30px;
+            height: 14px;
+            position: absolute;
+            top: -13px;
+            right: 50%;
+            transform: translateX(50%);
+            background-image: url(../images/main/arr-up.svg);
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-color: #87B4D5;
+            z-index: 6;
+            justify-content: center;
+            margin: 0 auto;
+        }
+    }
+}
+
+.menu{
+    width: 60%;
+    flex: 0 1 60%;
+    font-family: Forum;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    &__list{
+        display: flex;
+        justify-content: center;
+    }
+    &__list-item{
+        padding: 0 20px;
+    }
+    &__link{
+        color: #000;
+        font-family: Forum;
+    }
+}
+
+.main{
+    background: url(../images/main/sky.png) center bottom  / cover  no-repeat;  
+    width: 100%;
+    height: 960px;
+    position: relative;
+
+    &__overlay{
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        width: 100%;
+        height: 600px;
+        background: url(../images/main/main-bg.png) bottom center / 100% 86% no-repeat;
+        z-index: 5;
+    }
+    &__clouds{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 351px;
+        background: url(../images/main/gradient.png) center / 100% 100% no-repeat,
+                    url(../images/main/clouds.svg) center / 100% 100% no-repeat;
+        z-index: 7;
+    }
+
+    &::before{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 687px;
+        background: url(../images/main/back-main-bg.png) center center / cover no-repeat;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        height: 430px;
+        bottom: 0px;
+        right: 0;
+        width: 100%;
+        background-blend-mode: multiply;
+        z-index: 6;
+        background-image: url(../images/main/mountains.png);
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        background-size: 100% 90%;
+    }
+    
+    &__inner{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+    }
+    &__suptitle{
+        position: relative;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        color: #0C0B10;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 0.3em;  
+        margin-bottom: 64px;
+        z-index: 6;
+    }
+    &__title{
+        position: relative;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 190px;
+        text-align: center;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #FCFCFC;
+        line-height: 123px;
+        width: 1186px;
+
+        &::after{
+            content: '';
+            position: absolute;
+            top: 45%;
+            transform: translateX(40%);
+            // left: 0;
+            right: 45%;
+            height: 288px;
+            width: 100%;
+            // background: #000;
+            background: url(../images/main/pins.svg);
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            // background-size: 1186px 228px;
+            z-index: 11;
+
+        }
+    }
+    &__title-continue{
+        position: relative;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 141px;
+        color: #FCFCFC;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        z-index: 6 ;
+        
+    }
+}
+
+.search{
+    position: relative;
+    z-index: 10;
+    width: 100%;
+
+    &__inner{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &__params-row{
+        width: 100%;
+        display: flex;
+        background-color: #fff;
+        border-radius: 10px;
+        min-height: 114px;
+        justify-content: space-around;
+        margin-bottom: 62px;
+    }
+    &__title{
+        position: relative;
+        min-width: 330px;
+        border-radius: 33px 33px 0 0;
+        margin: 0 auto;
+        margin-top: 23px;
+        text-align: center;
+        background-color: #fff;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        text-align: center;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #79655E;
+        padding: 13px 46px 0 46px;
+
+        &::before{
+            content: '';
+            position: absolute;
+            top: -17px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100%;
+            height: 100%;
+            background: url(../images/main/big-arr-up.png) center top / 80% 100% no-repeat;
+            z-index: -1;
+        }
+    }
+    &__param-item{
+        position: relative;
+        margin-top: 36px;
+        margin-bottom: 29px;
+        padding-left: 24px;
+        margin-left: 37px;
+        background-repeat: no-repeat;
+        background-position: top 2px left;
+    }
+    &__param-item--destination{
+        background-image: url(../images/main/destination.svg);
+        background-repeat: no-repeat;
+        background-position: top 2px  left 6px;
+    }
+    &__param-item--travel{
+        background-image: url(../images/main/travel.svg);
+    }
+    &__param-item--calendar{
+        background-image: url(../images/main/when.svg);
+    }
+    &__param-item--travelers{
+        background-image: url(../images/main/travelers.svg);
+    }
+    &__param{
+        font-family: Manrope;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 25px;
+        color: #79655E;
+    }
+    &__param-link{
+        font-family: Manrope;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    }
+    &__btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        width: 126px;
+        height: 70px;
+        margin: auto 0;
+        border-radius: 33px;
+        border: 1px solid #000;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 26px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #fff;
+    }
+    &__btn-img{
+        margin-right: 10px;
+    }
+}
+
+
+
+
+.experiances{
+    height: 851px;
+    background: linear-gradient(180deg, #E2D3CE 0%, #C9C8D8 30.73%, #D4D8C6 59.37%, #E2D3CE 100%);
+    
+   
+    &__title{
+        position: relative;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 60px;
+        line-height: 58px;
+        color: #0C0B10;
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        z-index: 2;
+        margin-bottom: 10px;
+
+        &::after{
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            background: url(../images/experiences/title-romb.svg) top center / contain no-repeat;
+            z-index: -1;
+            border-radius: 0 0 10px 10px;
+        }
+        &__inner{
+            position: relative;
+            margin-bottom: 126px;
+        }
+    }
+    &__country-list{
+        display: flex;
+        // grid-template: 1fr / repeat(auto, 1fr);
+        justify-content: center;
+        // grid-template-columns: repeat(auto-fit, minmax(50px, 100px));
+        margin-bottom: 35px;
+    }
+    &__country-item{
+        display: flex;
+        justify-content: center;
+        padding: 0 19px;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+    }
+    &__country-link{
+        color: #79655E;
+    }
+    &__country--active{
+        position: relative;
+        color: #0C0B10;  
+
+        &::after{
+            content: '';
+            bottom: -11px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 18px;
+            height: 12px;
+
+            position: absolute;
+            background: url(../images/experiences/country-active.svg) bottom center / contain no-repeat; 
+
+        }
+    }
+    
+    &__row{
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: translateX(13%);
+        display: grid;
+        grid-template: repeat(1, minmax(300px, 520px)) / repeat(4, minmax(250px,350px));
+        // grid-template-rows:  1fr;
+        gap: 30px;
+        overflow: hidden;
+        z-index: 5;
+    }
+    &__item{
+        position: relative;
+        min-height: 400px;
+        background: #fff;
+        border-radius: 10px 10px 10px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background-blend-mode: multiply;
+        // background: url(../images/experiences/overlay-bg.png);
+        z-index: 11;
+
+        &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 60%;
+        bottom: 0;
+        left: 0;
+        background: url(../images/experiences/overlay-bg.png);
+        // background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #0B2034 100%);
+        z-index: -1;
+        border-radius: 10px;
+        }
+    
+    }
+    &__item--australia{
+        background: url(../images/experiences/australia-bg-min.png) center center / cover no-repeat;
+        border-radius: 10px 10px 10px 10px;
+        
+    }
+    &__item--peru{
+        background: url(../images/experiences/peru-bg-min.png) center center / cover no-repeat;
+    }
+    &__item--croastia{
+        background: url(../images/experiences/croatia-bg-min.png) center center / cover no-repeat;
+    }
+    &__item--jordan{
+        background: url(../images/experiences/jordan-bg-min.png) center center / cover no-repeat;
+    }
+    &__info-wrapper{
+        padding: 20px 36px 35px 34px;
+    }
+    &__info{
+        // background-color: rgba(#000, .6);
+        // border-radius: 3px;
+    }
+    &__country{
+        position: relative;
+        font-family: Manrope;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: #FFFFFF;
+        padding-left: 16px;
+
+        &::after{
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url(../images/experiences/country-lamp.svg) left / 11px 13px no-repeat;
+        }
+    }
+    &__name-title{
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 32px;
+        color: #FFFFFF;
+        padding-bottom: 30px;
+    }
+    &__from{
+        font-family: Manrope;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    &__price{
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        color: #FFFFFF;
+    }
+    &__arrow{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    &__arrow-img{
+        z-index: 12;
+        position: absolute;
+        top: 50%;
+        margin: auto 0;
+        transform: translateY(-40%);
+        right: 50px;
+        display: block;
+        cursor: pointer;
+    }
+    
+}
