@@ -25,14 +25,16 @@
         align-items: center;
     }
     &__logo{
+        width: 121px;
+        height: 64px;
         flex: 0 1 auto;
     }
 
     &__btn{
         position: relative;
         background: transparent;
-        border: 1px solid #ffffff;
-        padding: 11px 24px;
+        border: 0px solid #ffffff;
+        margin: 20px 24px;
         border-radius: 33px;
         text-transform: uppercase;
         font-family: 'Forum', sans-serif;
@@ -46,37 +48,51 @@
 
         &::after{
             content: '';
-            width: 30px;
-            height: 14px;
             position: absolute;
-            bottom: -9px;
-            right: 50%;
-            transform: translateX(50%);
-            background-image: url(../images/main/arr-down.svg);
-            background-position: center bottom;
-            background-repeat: no-repeat;
-            background-color: #99B9D6;
-            z-index: 6;
-            justify-content: center;
-            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: url(../images/main/button-call.webp) center  / 100% 100%  no-repeat;
+            cursor: pointer;
+            
         }
-        &::before{
-            content: '';
-            width: 30px;
-            height: 14px;
-            position: absolute;
-            top: -13px;
-            right: 50%;
-            transform: translateX(50%);
-            background-image: url(../images/main/arr-up.svg);
-            background-position: center bottom;
-            background-repeat: no-repeat;
-            background-color: #87B4D5;
-            z-index: 6;
-            justify-content: center;
-            margin: 0 auto;
-        }
+        // &::after{
+        //     content: '';
+        //     width: 30px;
+        //     height: 14px;
+        //     position: absolute;
+        //     bottom: -9px;
+        //     right: 50%;
+        //     transform: translateX(50%);
+        //     background-image: url(../images/main/arr-down.svg);
+        //     background-position: center bottom;
+        //     background-repeat: no-repeat;
+        //     background-color: #99B9D6;
+        //     z-index: 6;
+        //     justify-content: center;
+        //     margin: 0 auto;
+        // }
+        // &::before{
+        //     content: '';
+        //     width: 30px;
+        //     height: 14px;
+        //     position: absolute;
+        //     top: -13px;
+        //     right: 50%;
+        //     transform: translateX(50%);
+        //     background-image: url(../images/main/arr-up.svg);
+        //     background-position: center bottom;
+        //     background-repeat: no-repeat;
+        //     background-color: #87B4D5;
+        //     z-index: 6;
+        //     justify-content: center;
+        //     margin: 0 auto;
+        // }
     }
+   
 }
 
 .menu{
@@ -365,6 +381,9 @@
             position: relative;
             margin-bottom: 126px;
         }
+        &__container{
+            height: 100%;
+        }
     }
     &__country-list{
         display: flex;
@@ -427,6 +446,9 @@
         // background: url(../images/experiences/overlay-bg.png);
         z-index: 11;
 
+        &:hover{
+            border: 0.5px solid #C9C8D7 ;
+        }
         &::after{
         content: '';
         position: absolute;
@@ -522,4 +544,316 @@
         cursor: pointer;
     }
     
+}
+
+.luxury{
+    position: relative;
+
+    background: linear-gradient(180deg, #E2D3CE 0%, #C9C8D8 30.73%, #D4D8C6 59.37%, #E2D3CE 100%);
+    &::after{
+        content: '';
+        position: absolute;
+        height: 981px;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: url(../images/luxury/lluxury-bottom-bg.webp) bottom / cover no-repeat;
+        z-index: 1;
+    }
+
+    &__offset{
+        // padding-top: 50px;
+        // padding-bottom: 100px;
+    }
+    &__inner{
+        width: 100%;
+        height: 1850px; //559 + 1291px
+    }
+    &__row{
+        position: relative;
+        display: grid;
+        height: 1291px;
+        width: 100%;
+
+        grid-template: repeat(11, 1fr) / repeat(3, 1fr);
+        gap: 31px;
+        z-index: 11;
+    }
+    &__item{
+        position: relative;
+        // border: 1px solid #fff;
+        border-radius: 13px;
+        background-blend-mode: multiply;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover{
+            border: 0.1px solid #C9C8D7 ;
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            height: 180px;
+            width: 100%;
+            top: 0;
+            right: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #0B2034 100%);
+            transform: rotate(180deg);
+            border-radius: 13px 13px 13px 13px;
+            z-index: 1;
+        }
+    
+    }
+    &__title-item{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        grid-area: 2 / 1 / 6 / 1;
+
+        &::before{
+            content: '';
+            background: transparent;
+        }
+        &:hover{
+            border: 0px solid #C9C8D7 ;
+        }
+    }
+    &__title{
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 60px;
+        line-height: 58px;
+        color: #0C0B10;
+
+    }
+    &__btn{
+        align-self: flex-start;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #0C0B10;
+        background: transparent;
+        border-radius: 20px;
+        padding: 11px 36px 9px 36px;
+        border: 1px solid #0C0B10;
+        margin-top: 30px;
+        cursor: pointer;
+        position: relative;
+        z-index: 10;
+    }
+    &__item--best-winter{
+        grid-column: 2 / 2;
+        grid-row: 2 / 7;
+        background: url(../images/luxury/best-winter.webp) center / 100% 100% no-repeat;
+    }
+    &__item--most-e-places{
+        grid-column: 3 / 3;
+        grid-row: 1 / 6;
+        background: url(../images/luxury/the-world.webp) center / 100% 100% no-repeat;
+
+    }
+    &__item--new-destinations{
+        grid-area: 6 / 1 / 11 / 1;
+        background: url(../images/luxury/new-destinations.webp) center / 100% 100% no-repeat;
+
+    }
+    &__item--your-health{
+        grid-area: 7 / 2 / 12 / 2;
+        background: url(../images/luxury/your-health.webp) center / 100% 100% no-repeat;
+
+
+    }
+    &__item--away-from{
+        grid-area: 6 / 3 / 11 / 3;
+        background: url(../images/luxury/experiences-away.webp) center / 100% 100% no-repeat;
+
+        
+    }
+    &__item-text{
+        width: 251px;
+        margin: 67px auto 20px auto;
+        position: relative;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        color: #FFFFFF;
+        z-index: 10;
+        text-align: center;
+    }
+    &__count-places{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 45px;
+        margin-top: 40px;
+    }
+    &__count-info{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        left: 0;
+        padding: 50px 25px;
+        margin: auto 0;
+    }
+    &__count-btn{
+        opacity: .85;
+    }
+    &__counter{
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 32px;
+        text-align: center;
+        color: #FFFFFF;
+        overflow-x:hidden;
+        word-break: break-all;
+    }
+    &__counter-info{
+        position: relative;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 21px;
+        text-align: center;
+        color: #FFFFFF;
+        word-break: break-all;
+
+        &::after{
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 6px;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            background: url(../images/luxury/arr-right.svg) bottom / cover  no-repeat;
+        }
+    }
+}
+
+.book--absolute{
+    position: relative;
+    bottom: 370px;
+    right: 0;
+    z-index: 111;
+    // padding-top: 111px;
+}
+.book{
+    // background: linear-gradient(180deg, #E2D3CE 0%, #C9C8D8 30.73%, #D4D8C6 59.37%, #E2D3CE 100%);
+
+    &__inner{
+        padding-bottom: 120px;
+        
+    }
+    &__title{
+        width: 200px;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 60px;
+        line-height: 58px;
+        text-align: center;
+        color: #0C0B10;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 74px;
+    }
+    &__row{
+        display: grid;
+        grid-template: repeat(3, minmax(150px, 191px)) / repeat(2, minmax(300px, 540px));
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    &__row-item{
+        border-radius: 13px;
+        min-height: 191px;
+        cursor: pointer;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.1s ease;
+
+        &:hover{
+            border: 1px solid #E5DCD4;
+            
+        }
+    }
+    &__row-item--supercars{
+        background: url(../images/book/supercars.webp) center / 100% 100% no-repeat;
+    }
+    &__row-item--hotels{
+        background: url(../images/book/hotels.webp) center / 100% 100% no-repeat;
+
+    }
+    &__row-item--villas{
+        background: url(../images/book/villlas.webp) center / 100% 100% no-repeat;
+
+    }
+    &__row-item--yachts{
+        background: url(../images/book/yachts.webp) center / 100% 100% no-repeat;
+
+    }
+    &__row-item--p-helicopter{
+        background: url(../images/book/privat-helocopter.webp) center / 100% 100% no-repeat;
+
+    }
+    &__row-item--p-jet{
+        background: url(../images/book/privat-jet.webp) center / 100% 100% no-repeat;
+
+    }
+    &__row-link{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        font-family: Forum;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 38px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    &__row-text{
+        position: relative;
+        width: 241px;
+        z-index: 11;
+
+        &::after{
+            content: '';
+            position: absolute;
+            width: 141px;
+            height: 75px;
+            top: -40%;
+            transform: translateY(-50%);
+            right: 50%;
+            transform: translateX(50%);
+            background: url(../images/book/text-romb.webp) center / 100% 100% no-repeat;
+            z-index: -1;
+            opacity: .6;
+        }
+    }
+
+
 }
