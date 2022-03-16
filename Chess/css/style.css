@@ -124,9 +124,23 @@ body{
     background: url(../board-temp/fullBoard.png) center center / 100% 100% no-repeat;
 }
 
+.timer-body__counter{
+  display: flex;
+}
+.timer__minutess{
+  position: relative;
+  padding: 0 5px;
+}
+.timer__secondss{
+  position: relative;
+  padding: 0 5px;
+}
+.timer__minutess:not(:last-child)::after {
+  content: ':';
+  position: absolute;
+  right: -2px;
 
-
-
+}
 
 /*<Media>=======================================================*/
 .container {
@@ -377,10 +391,10 @@ body{
       margin-bottom: 35px;
     }
     .profileimg{
-      min-width: 62px;
-      min-height: 62px;
-      height: 62px;
-      width: 62px;
+      min-width: 54px;
+      min-height: 54px;
+      height: 54px;
+      width: 54px;
       max-height: 62px;
       max-width: 62px;
       border-radius: 50%;
@@ -420,21 +434,69 @@ body{
       margin-right: 6px;
     }
     .timer-body{
-      background-color: #463643;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .game-footer__user-name{
       margin-left: auto;
       
     }
     .timer-body__circle{
-      
+      position: relative;
+      background-color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #443740;
+      align-items: center;
+      justify-content: center;
+    }
+    .timer-body__arrow{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      left: 50%;
+      /* transform: translateX(-50%); */
+      background-color: #443740;
+      height: 28px;
+      width: 28px;
+      border-radius: 50%;
+    }
+    .timer-body__arrow::after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-top: 14px transparent solid;
+      border-left: 14px transparent solid;
+      border-right: 14px transparent solid;
+      border-bottom: 14px transparent solid;
+      background-color: transparent;
+      border-radius: 50%;
+    }
+    .game-footer__user-icon-inner  {
+      margin-right: 10px;
+    }
+    .game-footer__user-name{
+      font-size: 20px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      color: #403940;
+      word-wrap: break-word;
+      word-break: break-all;
+      margin-right: 8px;
+    }
+    .timer-body__counter{
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      color: #443740;
+      margin-top: 4px;
+      text-align: center;
     }
   }
 
   @media (max-width: 321px) {
-
   }
   /*</Media>=======================================================*/
