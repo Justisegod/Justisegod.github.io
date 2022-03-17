@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
           allSeconds--;
           console.log(oneHalfOfRound);
 
-          if()
       }
       
       timerId = setInterval(countdownTimerr, 1000);
