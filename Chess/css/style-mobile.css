@@ -81,20 +81,20 @@ h1, h2, h3, h4, h5, h6 {
   height: 100vh;
 }
 .phone{
+  position: relative;
   width: 360px;
   max-width: 360px;
   min-height: 710px;
   height: 710px;
-  background: url(../img/apple-iphone-13-pro-max-2021-medium.png) center center / 100% 100%;
   margin: auto auto;
   border-radius: 30px 30px 30px 30px;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 .phone__inner{
   height: 100%;
   width: 100%;
   border-radius: 30px 30px 30px 30px;
-  padding: 18px 20px 20px 21px;
+  padding: 17px 20px 17px 20px;
 }
 .phone__body{
   width: 100%;
@@ -117,7 +117,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   width: 100%;
   min-height: 100%;
-
+  position: relative;
+  /* background: linear-gradient(90deg, #aea4e3, #d3ffe8); */
+	/* background: linear-gradient(90deg, #cfecd0, #a0cea7, #9ec0db); */
 }
 .game__header-settings{
   width: 30px;
@@ -128,6 +130,7 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   background: url(../board-temp/settings.webp) center center / 100% 100% no-repeat;
   grid-area: settings;
+  z-index: 11;
 }
 .game__content{
   height: 100%;   
@@ -297,6 +300,7 @@ h1, h2, h3, h4, h5, h6 {
     align-self: flex-end;
     margin-bottom: 10px;
     padding-bottom: 10px;
+    z-index: 11;
 }
 .header__bottom{
   overflow: hidden;
@@ -334,7 +338,7 @@ h1, h2, h3, h4, h5, h6 {
     "A B C D E F J H"
     "A B C D E F J H"
     "A B C D E F J H";
-    transition: all 1s ease;
+    /* transition: all 1s ease; */
 
 }
 .board__row--A{
@@ -418,3 +422,41 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 1s ease;
 }
 /* /Selected */
+.menu{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  transition: all 1s ease;
+  display: none;
+  transition: all 10.5s ease;
+
+}
+.menu-active {
+  display: flex;
+  flex-direction: column;
+  transition: all 10.5s ease;
+
+}
+.menu__inner{
+  width: 100%;
+  height: 100%;
+  border-radius: 36px 36px 33px 33px;
+  background: linear-gradient(90deg, #aea4e3, #d3ffe8);
+  transition: all 10.5s ease;
+  /* background: 
+		radial-gradient(ellipse farthest-corner at right bottom, #fedb37 0%, #FDB931 8%, #9f7928 30%, #8a6e2f 40%, transparent 80%),
+		radial-gradient(ellipse farthest-corner at left top, #ffffff 0%, #ffffac 8%, #d1b464 25%, #5d4a1f 62.5%, #5d4a1f 100%); */
+}
+.phone::after{
+  width: 100%;
+  height: 100%;
+  content: '';
+  position: absolute;
+  background: url(../img/apple-iphone-13-pro-max-2021-medium.png) center center / 100% 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 11;
+  pointer-events: none;
+}

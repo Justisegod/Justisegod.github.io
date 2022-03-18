@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
     constructor() {
       this.maxGameDurationMinutes = 60;
       this.arrayCells = [];
+      this.btnSettings = document.querySelector('.game__header-settings');
+      this.gameSettingsMenu = document.querySelector('.menu');
     }
     
     drawBoard(){
@@ -137,6 +139,28 @@ document.addEventListener('DOMContentLoaded', function () {
         cell.classList.remove('selected--cell');
       }
     }
+    bindMenu() {
+      const title = document.querySelector('.game__header-title');
+      const defaultTitle = title.textContent;
+      let classList = this.gameSettingsMenu.className.split(' ');// got classlist
+      let result = classList.includes('menu-active');
+
+      this.btnSettings.addEventListener('click', () => {
+        if(!result) {
+          this.gameSettingsMenu.classList.add('menu-active');
+          this.changeTextInElement(title, 'Настройки');
+          result = true;
+        }else{
+          this.gameSettingsMenu.classList.remove('menu-active');
+          this.changeTextInElement(title, defaultTitle);
+          result = false;
+        }
+        console.log(result)
+      });
+    }
+    changeTextInElement(element, text) {
+      element.textContent = `${text}`;
+    }
     // seclectCell(count = 'all') {
     //   let countToSelect = count;
 
@@ -148,8 +172,9 @@ document.addEventListener('DOMContentLoaded', function () {
   
   const game = new ChessApi();
 
-  game.drawBoard();
-  game.parseAllCells();
+  game.drawBoard();//устанавливаем размер игральной доски
+  game.parseAllCells();//вешает на все ячейки евент
+  game.bindMenu();//заставляет меню работать
 
 
 
