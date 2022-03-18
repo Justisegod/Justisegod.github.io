@@ -77,7 +77,7 @@
   }
   
 body{
-    background: #703D1D;
+    /* background: #703D1D; */
 }
 .wrapper{
     /* display: flex; */
@@ -141,6 +141,8 @@ body{
   right: -2px;
 
 }
+
+
 
 /*<Media>=======================================================*/
 .container {
@@ -321,7 +323,7 @@ body{
     .game__header{
       /* flex: 1 1 auto; */
       max-height: 300px;
-      overflow: hidden;
+      /* overflow: hidden; */
     }
     .game__header-top-inner{
       position: relative;
@@ -388,7 +390,7 @@ body{
       margin-top: 6px;
       padding: 0 40px;
       display: flex;
-      margin-bottom: 35px;
+      margin-bottom: 25px;
     }
     .profileimg{
       min-width: 54px;
@@ -463,8 +465,29 @@ body{
       height: 28px;
       width: 28px;
       border-radius: 50%;
+      display: grid;
+      grid-template: 1fr 1fr / 1fr 1fr;
     }
-    .timer-body__arrow::after{
+    .timer-body__arrow-item{
+      transition: all 0.4s ease;
+    }
+    .timer-body__item--one{
+      background-color: transparent;
+      border-radius: 60% 0 0 0;
+    }
+    .timer-body__item--two{
+      background-color: transparent;
+      border-radius:  0 60% 0 0;
+    }
+    .timer-body__item--three{
+      background-color: transparent;
+      border-radius: 0 0 0 60%;
+    }
+    .timer-body__item--four{
+      background-color: transparent;
+      border-radius: 0 0 60% 0;
+    }
+    /* .timer-body__arrow::after{
       content: '';
       position: absolute;
       width: 100%;
@@ -475,7 +498,7 @@ body{
       border-bottom: 14px transparent solid;
       background-color: transparent;
       border-radius: 50%;
-    }
+    } */
     .game-footer__user-icon-inner  {
       margin-right: 10px;
     }
