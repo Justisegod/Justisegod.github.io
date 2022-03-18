@@ -94,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   width: 100%;
   border-radius: 30px 30px 30px 30px;
-  padding: 18px 20px 20px 20px;
+  padding: 18px 20px 20px 21px;
 }
 .phone__body{
   width: 100%;
@@ -334,6 +334,7 @@ h1, h2, h3, h4, h5, h6 {
     "A B C D E F J H"
     "A B C D E F J H"
     "A B C D E F J H";
+    transition: all 1s ease;
 
 }
 .board__row--A{
@@ -409,5 +410,11 @@ h1, h2, h3, h4, h5, h6 {
 .board__markup{
   width: 100%;
   height: 100%;
-  
 }
+
+/* Selected */
+.selected--cell{
+  border: 1px #000 solid;
+  transition: all 1s ease;
+}
+/* /Selected */

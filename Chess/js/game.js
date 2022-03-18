@@ -7,30 +7,7 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    function drawBoard(){
-        const header = document.querySelector('.header');
-        const footer = document.querySelector('.footer');
-        const board = document.querySelector('.board');
-        const game = document.querySelector('.game');
-        // const gameHeight = game.clientHeight - header.clientHeight - footer.clientHeight;
-        const gameContainer = document.querySelector('.game__container');
-        let gameContainerWSize = gameContainer.clientWidth;
     
-        function setBoardSize(width = gameContainer.clientWidth, height = gameContainer.clientWidth) {
-            board.style.width = `${width}px`;
-            board.style.height = `${height}px`;
-        }
-        if(board.clientWidth < 600) {
-            setBoardSize();
-        }
-    
-    
-    
-    }
-    drawBoard();
-    
-   
-
     function countIt(seconds = 0, minutes = 0) {
       // id таймера
       let timerId = null;
@@ -93,8 +70,86 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
 
+  class ChessApi {
 
+    constructor() {
+      this.maxGameDurationMinutes = 60;
+      this.arrayCells = [];
+    }
+    
+    drawBoard(){
+      const header = document.querySelector('.header');
+      const footer = document.querySelector('.footer');
+      const board = document.querySelector('.board');
+      const game = document.querySelector('.game');
+      // const gameHeight = game.clientHeight - header.clientHeight - footer.clientHeight;
+      const gameContainer = document.querySelector('.game__container');
+      let gameContainerWSize = gameContainer.clientWidth;
 
+      function setBoardSize(width = gameContainer.clientWidth, height = gameContainer.clientWidth) {
+         board.style.width = `${width}px`;
+         board.style.height = `${height}px`;
+      }
+      if(board.clientWidth < 600) {
+          setBoardSize();
+      }
+    }
+    
+    parseAllCells() {
+      const arrayOfRows = [
+         document.querySelectorAll('.board__item--A'),
+         document.querySelectorAll('.board__item--B'),
+         document.querySelectorAll('.board__item--C'),
+         document.querySelectorAll('.board__item--D'),
+         document.querySelectorAll('.board__item--E'),
+         document.querySelectorAll('.board__item--F'),
+         document.querySelectorAll('.board__item--J'),
+         document.querySelectorAll('.board__item--H'),
+      ]
+      let previousCell = null;
+
+      for(let row of arrayOfRows) {// get row
+        // console.log(row);
+        for(let cell of row) {
+          // console.log(cell);
+          cell.addEventListener('click', () => {
+            this.unselectCell(previousCell);
+            this.selectCell(cell);
+            previousCell = cell;
+          });
+        }
+      }
+    }
+    selectCell(cell) {
+      let cellClasses = cell.getAttribute('class').split(' ');
+
+      if(!cell.hasAttribute('selected--cell')){
+        cell.classList.add(`selected--cell`);
+      }else{
+        this.unselectCell(cell);
+      }
+
+      console.log(cell, cellClasses, cell.hasAttribute('selected-cell'));
+      return cell;
+    }
+    unselectCell(cell) {
+      if(cell != null) {
+        cell.classList.remove('selected--cell');
+      }
+    }
+    // seclectCell(count = 'all') {
+    //   let countToSelect = count;
+
+    //   if(count === 'all') 
+    // } 
+   
+}
+
+  
+  const game = new ChessApi();
+
+  game.drawBoard();
+  game.parseAllCells();
 
 
 
