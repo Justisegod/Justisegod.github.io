@@ -390,12 +390,12 @@ h1, h2, h3, h4, h5, h6 {
 .board__item--F:nth-child(even) {
   background-color: #F7DFBD;
 }
-.board__row--J{
+.board__row--G{
   grid-area: J;
   display: grid;
   grid-template: repeat(8, 1fr) / 1fr;
 }
-.board__item--J:nth-child(odd) {
+.board__item--G:nth-child(odd) {
   background-color: #F7DFBD;
 }
 .board__row--H{
@@ -459,4 +459,71 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   z-index: 11;
   pointer-events: none;
+}
+
+/* Оформление всех фигур */
+.figure{
+  width: 100%;
+  height: 100%;
+  /* padding: 5px; */
+  background: url(../img/figures/b-pawn.webp) center / 75% 85% no-repeat;
+}
+
+.black-king{
+  background: url(../img/figures/b-king.webp) center / 75% 85% no-repeat;
+}
+.black-queen{
+  background: url(../img/figures/b-queen.webp) center / 75% 85% no-repeat;
+}
+.black-bishop{
+  background: url(../img/figures/b-bishop.webp) center / 75% 85% no-repeat;
+}
+.black-knight{
+  background: url(../img/figures/b-horse.webp) center / 75% 85% no-repeat;
+}
+.black-rook{
+  background: url(../img/figures/b-rook.webp) center / 75% 85% no-repeat;
+}
+.black-pawn{
+  background: url(../img/figures/w-pawn.webp) center / 75% 85% no-repeat;
+}
+
+.white-king{
+  background: url(../img/figures/w-king.webp) center / 75% 85% no-repeat;
+}
+.white-queen{
+  background: url(../img/figures/w-queen.webp) center / 75% 85% no-repeat;
+}
+.white-bishop{
+  background: url(../img/figures/w-bishop.webp) center / 75% 85% no-repeat;
+}
+.white-knight{
+  background: url(../img/figures/w-horse.webp) center / 75% 85% no-repeat;
+}
+.white-rook{
+  background: url(../img/figures/w-rook.webp) center / 75% 85% no-repeat;
+}
+.white-pawn{
+  background: url(../img/figures/w-pawn.webp) center / 75% 85% no-repeat;
+}
+/* <конец оформления иконок */
+
+.menu__list{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.menu__item-link{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #403940;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  word-wrap: break-word;
 }

@@ -77,6 +77,10 @@ document.addEventListener('DOMContentLoaded', function () {
       this.arrayCells = [];
       this.btnSettings = document.querySelector('.game__header-settings');
       this.gameSettingsMenu = document.querySelector('.menu');
+      
+      this.board = {
+        element : document.querySelector('.board'),
+      }
     }
     
     drawBoard(){
@@ -105,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
          document.querySelectorAll('.board__item--D'),
          document.querySelectorAll('.board__item--E'),
          document.querySelectorAll('.board__item--F'),
-         document.querySelectorAll('.board__item--J'),
+         document.querySelectorAll('.board__item--G'),
          document.querySelectorAll('.board__item--H'),
       ]
       let previousCell = null;
@@ -114,6 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // console.log(row);
         for(let cell of row) {
           // console.log(cell);
+          this.arrayCells.push(cell);
+
           cell.addEventListener('click', () => {
             this.unselectCell(previousCell);
             this.selectCell(cell);
@@ -122,10 +128,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
+    
     selectCell(cell) {
       let cellClasses = cell.getAttribute('class').split(' ');
+      let result = cellClasses.includes('selected--cell');
 
-      if(!cell.hasAttribute('selected--cell')){
+      if(!result){
         cell.classList.add(`selected--cell`);
       }else{
         this.unselectCell(cell);
@@ -161,20 +169,355 @@ document.addEventListener('DOMContentLoaded', function () {
     changeTextInElement(element, text) {
       element.textContent = `${text}`;
     }
-    // seclectCell(count = 'all') {
-    //   let countToSelect = count;
+    createBoardObject() {
+      let numberOfCell = '';
+      let cellId = '';
+      let combineName = '';
 
-    //   if(count === 'all') 
-    // } 
-   
+      for(let cell of this.arrayCells) {// Get cellID
+        numberOfCell = cell.className.split(' ');
+        numberOfCell = numberOfCell[0].split('--');
+        cellId = numberOfCell[1];
+
+        combineName = '.board__item--' + cellId;//Получаем имя класса елемента
+
+        this.board[cellId] = {//Записываем в момент цикла свойства снизу
+          node: document.querySelector(combineName),// елемент узел
+          isEmpty : true,
+          defaultFigure: null,
+
+          currentFigure : {
+            type : null,
+          }
+        };
+        // console.log(combineName);
+      }
+      console.log(this.board);
+    }
+    changeCurrentPosition(cellId) {
+      this.board[cellId].currentFigure = this.board[cellId].defaultFigure;
+      this.board[cellId].isEmpty = false;
+    }
+    setDefaultFigurePosition() {
+      let numberOfCell = '';
+      let cellId = '';
+
+      for(let cell of this.arrayCells) {
+        numberOfCell = cell.className.split(' ');
+        numberOfCell = numberOfCell[0].split('--');
+        cellId = numberOfCell[1];
+        
+        switch (cellId) {//set Dark side
+          case 'A8':
+            console.log(this.board[cellId].node)
+            this.board[cellId].defaultFigure = Black.createFigure('rook', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+
+            break;
+          case 'A7':
+            this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+          case 'B8':
+            this.board[cellId].defaultFigure = Black.createFigure('knight', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+          case 'B7':
+            this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+          case 'C8':
+            this.board[cellId].defaultFigure = Black.createFigure('bishop', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+          case 'C7':
+            this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+            case 'D8':
+              console.log(this.board[cellId].node)
+              this.board[cellId].defaultFigure = Black.createFigure('queen', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+  
+              break;
+            case 'D7':
+              this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'E8':
+              this.board[cellId].defaultFigure = Black.createFigure('king', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'E7':
+              this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'F8':
+              this.board[cellId].defaultFigure = Black.createFigure('bishop', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'F7':
+              this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'G8':
+              this.board[cellId].defaultFigure = Black.createFigure('knight', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'G7':
+              this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'H8':
+              this.board[cellId].defaultFigure = Black.createFigure('rook', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+                
+              break;
+            case 'H7':
+              this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+                
+              break;
+        
+          default:
+            break;
+        }
+        switch (cellId) {//set White side
+          case 'A1':
+            console.log(this.board[cellId].node)
+            this.board[cellId].defaultFigure = White.createFigure('rook', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+
+            break;
+          case 'A2':
+            this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+          case 'B1':
+            this.board[cellId].defaultFigure = White.createFigure('knight', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+          case 'B2':
+            this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+          case 'C1':
+            this.board[cellId].defaultFigure = White.createFigure('bishop', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+          case 'C2':
+            this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
+            this.changeCurrentPosition(cellId);
+            
+            break;
+            case 'D1':
+              console.log(this.board[cellId].node)
+              this.board[cellId].defaultFigure = White.createFigure('queen', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+  
+              break;
+            case 'D2':
+              this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'E1':
+              this.board[cellId].defaultFigure = White.createFigure('king', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'E2':
+              this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'F1':
+              this.board[cellId].defaultFigure = White.createFigure('bishop', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'F2':
+              this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'G1':
+              this.board[cellId].defaultFigure = White.createFigure('knight', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'G2':
+              this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+              
+              break;
+            case 'H1':
+              this.board[cellId].defaultFigure = White.createFigure('rook', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+                
+              break;
+            case 'H2':
+              this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
+              this.changeCurrentPosition(cellId);
+                
+              break;
+        
+          default:
+            break;
+        }
+      }
+    }
+    
 }
 
+
+class BlackSide {
+  constructor() {
+    this.sideName = 'Black'; 
+    this.counterId = 0;
+    this.pawn = {
+      src: `img/figures/b-pawn.webp`,
+      type: 'pawn',
+    };
+    this.rook = {
+      src: `img/figures/b-rook.webp`,
+      type: 'rook',
+    };
+    this.knight = {
+      src: `img/figures/b-horse.webp`,
+      type: 'knight',
+    };
+    this.bishop = {
+      src: `img/figures/b-bishop.webp`,
+      type: 'bishop',
+    };
+    this.queen = {
+      src: `img/figures/b-queen.webp`,
+      type: 'queen',
+    };
+    this.king = {
+      src: `img/figures/b-king.webp`,
+      type: 'king',
+    };
+    this.figuresWasLost = [];
+    this.figuresWasbeaten = [];
+  }
+  
+  createFigure(type,where) {
+    const typeWithoutConvert = type;
+    this.counterId++;
+    type = this.convertType(type);
+
+    // if(this.sideName.toLowerCase() = "black") let sideName = b;
+    
+    where.innerHTML = `<div class="-${typeWithoutConvert} id_${this.counterId} figure"></div>`;//вставляем созданный див
+    let createdFigure = where.firstChild;
+    createdFigure.style.background = `url(${type}) center / 75% 85% no-repeat`;
+
+    console.log(this.counterId, type, createdFigure);
+    return {
+      type: typeWithoutConvert,
+      id: this.counterId,
+      node: createdFigure,
+      side: this.sideName,
+    };
+  }
+  convertType(type) {
+    if(type == 'pawn'.toLowerCase()) return this.pawn.src; 
+    if(type == 'rook'.toLowerCase()) return this.rook.src; 
+    if(type == 'knight'.toLowerCase()) return this.knight.src; //horse
+    if(type == 'bishop'.toLowerCase()) return this.bishop.src; 
+    if(type == 'queen'.toLowerCase()) return this.queen.src; 
+    if(type == 'king'.toLowerCase()) return this.king.src; 
+  }
+}
+
+class WhiteSide {
+  constructor() {
+    this.sideName = 'Black'; 
+    this.counterId = 0;
+    this.pawn = {
+      src: `img/figures/w-pawn.webp`,
+      type: 'pawn',
+    };
+    this.rook = {
+      src: `img/figures/w-rook.webp`,
+      type: 'rook',
+    };
+    this.knight = {
+      src: `img/figures/w-horse.webp`,
+      type: 'knight',
+    };
+    this.bishop = {
+      src: `img/figures/w-bishop.webp`,
+      type: 'bishop',
+    };
+    this.queen = {
+      src: `img/figures/w-queen.webp`,
+      type: 'queen',
+    };
+    this.king = {
+      src: `img/figures/w-king.webp`,
+      type: 'king',
+    };
+    this.figuresWasLost = [];
+    this.figuresWasbeaten = [];
+  }
+  
+  createFigure(type,where) {
+    const typeWithoutConvert = type;
+    this.counterId++;
+    type = this.convertType(type);
+
+    // if(this.sideName.toLowerCase() = "black") let sideName = b;
+    
+    where.innerHTML = `<div class="-${typeWithoutConvert} id_${this.counterId} figure"></div>`;//вставляем созданный див
+    let createdFigure = where.firstChild;
+    createdFigure.style.background = `url(${type}) center / 75% 85% no-repeat`;
+
+    console.log(this.counterId, type, createdFigure);
+    return {// возврат обьекта
+      type: typeWithoutConvert,
+      id: this.counterId,
+      node: createdFigure,
+      side: this.sideName,
+    };
+  }
+  convertType(type) {
+    if(type == 'pawn'.toLowerCase()) return this.pawn.src; 
+    if(type == 'rook'.toLowerCase()) return this.rook.src; 
+    if(type == 'knight'.toLowerCase()) return this.knight.src; //horse
+    if(type == 'bishop'.toLowerCase()) return this.bishop.src; 
+    if(type == 'queen'.toLowerCase()) return this.queen.src; 
+    if(type == 'king'.toLowerCase()) return this.king.src; 
+  }
+}
   
   const game = new ChessApi();
+  const White = new WhiteSide();
+  const Black = new BlackSide();
 
   game.drawBoard();//устанавливаем размер игральной доски
   game.parseAllCells();//вешает на все ячейки евент
   game.bindMenu();//заставляет меню работать
+  game.createBoardObject();//создание таблици в js с привязкой в html
+  game.setDefaultFigurePosition();
 
 
 
@@ -183,18 +526,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+// 1) нужно построить игровую доску в js 
+// - доска будет обьектом board со свойствами названий ячеек,
+//  каждая ячейка будет обьектом,
+//   со своими свойствами, главные из них фигура, которя стоит на этой ячейке, цвет ячейки 
+// создаём  обьект board 
+// 
+// 
+// 
+// 
 
 
 
