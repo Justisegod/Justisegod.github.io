@@ -418,7 +418,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Selected */
 .selected--cell{
-  border: 1px #000 solid;
+  border: 1px transparent solid;
   transition: all 1s ease;
 }
 /* /Selected */

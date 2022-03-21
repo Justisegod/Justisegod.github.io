@@ -194,100 +194,102 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       console.log(this.board);
     }
-    changeCurrentPosition(cellId) {
-      this.board[cellId].currentFigure = this.board[cellId].defaultFigure;
+    changeCurrentPosition(cellId, newCurrentFigure) {
+      // this.board[cellId].currentFigure = this.board[cellId].defaultFigure;
+      this.board[cellId].currentFigure = newCurrentFigure;
       this.board[cellId].isEmpty = false;
     }
     setDefaultFigurePosition() {
       let numberOfCell = '';
       let cellId = '';
+      let currentFigure;
 
       for(let cell of this.arrayCells) {
         numberOfCell = cell.className.split(' ');
         numberOfCell = numberOfCell[0].split('--');
         cellId = numberOfCell[1];
-        
+        // currentFigure = this.board[cellId].defaultFigure;
+
         switch (cellId) {//set Dark side
           case 'A8':
-            console.log(this.board[cellId].node)
             this.board[cellId].defaultFigure = Black.createFigure('rook', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
 
             break;
           case 'A7':
             this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
           case 'B8':
             this.board[cellId].defaultFigure = Black.createFigure('knight', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
           case 'B7':
             this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
           case 'C8':
             this.board[cellId].defaultFigure = Black.createFigure('bishop', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
           case 'C7':
             this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
             case 'D8':
               console.log(this.board[cellId].node)
               this.board[cellId].defaultFigure = Black.createFigure('queen', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
   
               break;
             case 'D7':
               this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'E8':
               this.board[cellId].defaultFigure = Black.createFigure('king', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'E7':
               this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'F8':
               this.board[cellId].defaultFigure = Black.createFigure('bishop', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'F7':
               this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'G8':
               this.board[cellId].defaultFigure = Black.createFigure('knight', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'G7':
               this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'H8':
               this.board[cellId].defaultFigure = Black.createFigure('rook', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
                 
               break;
             case 'H7':
               this.board[cellId].defaultFigure = Black.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
                 
               break;
         
@@ -298,83 +300,83 @@ document.addEventListener('DOMContentLoaded', function () {
           case 'A1':
             console.log(this.board[cellId].node)
             this.board[cellId].defaultFigure = White.createFigure('rook', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
 
             break;
           case 'A2':
             this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
           case 'B1':
             this.board[cellId].defaultFigure = White.createFigure('knight', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
           case 'B2':
             this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
           case 'C1':
             this.board[cellId].defaultFigure = White.createFigure('bishop', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
           case 'C2':
             this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
-            this.changeCurrentPosition(cellId);
+            this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
             
             break;
             case 'D1':
               console.log(this.board[cellId].node)
               this.board[cellId].defaultFigure = White.createFigure('queen', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
   
               break;
             case 'D2':
               this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'E1':
               this.board[cellId].defaultFigure = White.createFigure('king', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'E2':
               this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'F1':
               this.board[cellId].defaultFigure = White.createFigure('bishop', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'F2':
               this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'G1':
               this.board[cellId].defaultFigure = White.createFigure('knight', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'G2':
               this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
               
               break;
             case 'H1':
               this.board[cellId].defaultFigure = White.createFigure('rook', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
                 
               break;
             case 'H2':
               this.board[cellId].defaultFigure = White.createFigure('pawn', this.board[cellId].node);
-              this.changeCurrentPosition(cellId);
+              this.changeCurrentPosition(cellId, this.board[cellId].defaultFigure);
                 
               break;
         
@@ -383,14 +385,104 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
-    
+    moveFigure(figureToMove, cellToMove, type, side) {
+      let id = figureToMove.className.split(' ')[1];
+      
+      figureToMove.remove();
+      Black.createFigure('pawn', cellToMove, id);
+    }
+    // moveFigureOnBoard() {
+    //   let figureToMove;
+    //   let figureToSwap;
+    //   let cellToMove;
+    //   let firstFigureWasSelected = false;
+    //   let secondFigureWasSelected = false;
+
+    //   function getFigureOnClick()  {
+    //     for (const cell of this.arrayCells) {
+    //       cell.addEventListener('click', () => {//нажимаем на ячейку
+
+    //         if(firstFigureWasSelected && figureToMove != figureToSwap) {//Если первая фигура была выбрана
+    //           // figureToSwap = cell.firstChild;
+    //           cellToMove = cell;
+    //           secondFigureWasSelected = true;
+    //           this.moveFigure(figureToMove, cellToMove);
+
+    //           secondFigureWasSelected = false;
+    //         }else{
+              
+    //         }
+
+    //         if(!firstFigureWasSelected) {
+    //           figureToMove = cell.firstChild;//получаем фигуру в ячейке сохраняем фигуру
+    //           firstFigureWasSelected = true;
+
+    //         }else{
+    //           firstFigureWasSelected = false;
+    //         }
+
+    //         console.log(firstFigureWasSelected, figureToMove.className.split(' ')[1]);
+    //       });
+    //     }
+    //   }
+    //   getFigureOnClick.call(this);
+    // }
+    moveFigureOnBoard() {
+      
+      function getFigureOnClick() {
+        let figureToMove;
+        let figureToSwap;
+        let cellToMove;
+        let firstFigureWasSelected = false;
+        let secondFigureWasSelected = false;
+        let typeOfFigure;
+        let sideOfFigure;
+        let cellObject;
+        
+        for(const cell of Object.values(this.board)) {
+          if(cell != document.querySelector('.board')) {
+            cell.node.addEventListener('click', () => {//нажимаем на ячейку
+              if(firstFigureWasSelected && figureToMove != figureToSwap) {//Если первая фигура была выбрана
+                // figureToSwap = cell.firstChild;
+                cellToMove = cell.node;
+                secondFigureWasSelected = true;
+                this.moveFigure(figureToMove, cellToMove, typeOfFigure, sideOfFigure);
+                // this.changeCurrentPosition(cellToMove, cellObject.currentFigure);
+
+                secondFigureWasSelected = false;
+                }else{
+                          
+                }
+            
+                if(!firstFigureWasSelected) {
+                  figureToMove = cell.node.firstChild;//получаем фигуру в ячейке сохраняем фигуру
+                  firstFigureWasSelected = true;
+                  typeOfFigure = cell.currentFigure.type;
+                  sideOfFigure = cell.currentFigure.side;
+                  cellObject = cell;
+            
+                }else{
+                  firstFigureWasSelected = false;
+                }
+              console.log(cell);
+            });
+          }
+          console.log(cell);
+        }
+      }
+      getFigureOnClick.call(this);
+    }
+
+    //если она не пустая получаем фигуру в ячейке
+    //сохраняем фигуру и её классы
+    //нажимаем на другую ячейку, если она пустая, удаляем фигуру с первой ячейки, и записываем в пустую ячейку
 }
 
 
 class BlackSide {
   constructor() {
     this.sideName = 'Black'; 
-    this.counterId = 0;
+    this.counterId = 1;
     this.pawn = {
       src: `img/figures/b-pawn.webp`,
       type: 'pawn',
@@ -419,21 +511,21 @@ class BlackSide {
     this.figuresWasbeaten = [];
   }
   
-  createFigure(type,where) {
+  createFigure(type,where, id = this.counterId) {
     const typeWithoutConvert = type;
     this.counterId++;
     type = this.convertType(type);
 
     // if(this.sideName.toLowerCase() = "black") let sideName = b;
     
-    where.innerHTML = `<div class="-${typeWithoutConvert} id_${this.counterId} figure"></div>`;//вставляем созданный див
+    where.innerHTML = `<div class="${typeWithoutConvert} id_${id} figure"></div>`;//вставляем созданный див
     let createdFigure = where.firstChild;
     createdFigure.style.background = `url(${type}) center / 75% 85% no-repeat`;
 
-    console.log(this.counterId, type, createdFigure);
+    console.log(id, type, createdFigure);
     return {
       type: typeWithoutConvert,
-      id: this.counterId,
+      id: id,
       node: createdFigure,
       side: this.sideName,
     };
@@ -446,12 +538,17 @@ class BlackSide {
     if(type == 'queen'.toLowerCase()) return this.queen.src; 
     if(type == 'king'.toLowerCase()) return this.king.src; 
   }
+  
 }
-
+//Логика создания функции хода разных фигур
+//они должны брать позицию из this.board.айди фигуры
+//менять currentPosition
+//функция должна менять позицию фигуры, и понимать как ходит фигура 
+//
 class WhiteSide {
   constructor() {
     this.sideName = 'Black'; 
-    this.counterId = 0;
+    this.counterId = 16;
     this.pawn = {
       src: `img/figures/w-pawn.webp`,
       type: 'pawn',
@@ -487,7 +584,7 @@ class WhiteSide {
 
     // if(this.sideName.toLowerCase() = "black") let sideName = b;
     
-    where.innerHTML = `<div class="-${typeWithoutConvert} id_${this.counterId} figure"></div>`;//вставляем созданный див
+    where.innerHTML = `<div class="${typeWithoutConvert} id_${this.counterId} figure"></div>`;//вставляем созданный див
     let createdFigure = where.firstChild;
     createdFigure.style.background = `url(${type}) center / 75% 85% no-repeat`;
 
@@ -518,7 +615,7 @@ class WhiteSide {
   game.bindMenu();//заставляет меню работать
   game.createBoardObject();//создание таблици в js с привязкой в html
   game.setDefaultFigurePosition();
-
+  game.moveFigureOnBoard();
 
 
 
