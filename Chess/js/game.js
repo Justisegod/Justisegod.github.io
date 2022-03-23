@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
         this.unselectCell(cell);
       }
 
-      console.log(cell, cellClasses, cell.hasAttribute('selected-cell'));
+      // console.log(cell, cellClasses, cell.hasAttribute('selected-cell'));
       return cell;
     }
     unselectCell(cell) {
@@ -186,9 +186,10 @@ document.addEventListener('DOMContentLoaded', function () {
           isEmpty : true,
           defaultFigure: null,
 
-          currentFigure : {
-            type : null,
-          }
+          currentFigure : null,
+          // currentFigure : {
+          //   type : null,
+          // }
         };
         // console.log(combineName);
       }
@@ -385,58 +386,60 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
-    moveFigure(figureToMove, cellToMove, objectCell) {
-      let id = figureToMove.className.split(' ')[1];
-      
 
-      figureToMove.remove();  
-      let createdFigure = Black.createFigure(objectCell.currentFigure.type, cellToMove, id);
-      objectCell.currentFigure = createdFigure;
-      // let result = Object.assign(createdFigure, objectCell.currentFigure);
-      console.log( objectCell);
-    }
-    currentPositonChange(firstObject, secondObject) {
-      let currentFigure = firstObject.currentFigure;
+    moveFigure(figureToMove, figureToSwap) {
+      let id = figureToMove.currentFigure.id;
+      let createdFigure;
+      figureToMove.node.firstChild.remove();  
 
-      Object.assign(currentFigure, secondObject.currentFigure);
-      firstObject.currentFigure = null;
+      if(figureToMove.currentFigure.side == 'Black') {
+        createdFigure = Black.createFigure(figureToMove.currentFigure.type, figureToSwap.node, id);
+
+      }else{
+        createdFigure = White.createFigure(figureToMove.currentFigure.type, figureToSwap.node, id);
+      }
+      figureToSwap.currentFigure = createdFigure;// заменяем обьект currentFigure в ячейке куда мы ходили
+      figureToMove.currentFigure = null;
+
+      figureToMove.isEmpty = true;
+      figureToSwap.isEmpty = false;
+
+
     }
+
     moveFigureOnBoard() {
       
       function getFigureOnClick() {
         let figureToMove;
         let figureToSwap;
-        let cellToMove;
         let firstFigureWasSelected = false;
         let secondFigureWasSelected = false;
-        let typeOfFigure;
-        let sideOfFigure;
-        let cellObject;
         
         for(const cell of Object.values(this.board)) {
           if(cell != document.querySelector('.board')) {
             cell.node.addEventListener('click', () => {//нажимаем на ячейку
-              if(firstFigureWasSelected && figureToMove != figureToSwap) {//Если первая фигура была выбрана
-                // figureToSwap = cell.firstChild;
-                cellToMove = cell.node;
+
+
+              if(firstFigureWasSelected) {//Если первая фигура была выбрана
+                figureToSwap = cell;
+
+                this.moveFigure(figureToMove, figureToSwap);
+
+                firstFigureWasSelected = false;
                 secondFigureWasSelected = true;
+                console.log(figureToMove, figureToSwap);
 
-                this.moveFigure(figureToMove, cellToMove, cellObject);
-                // this.currentPositonChange(cellObject, cell);
-
-                console.log(cell);
-                secondFigureWasSelected = false;
+                return true;// заканчиваем
                 }else{
                           
                 }
             
                 if(!firstFigureWasSelected && cell.node.firstChild != null) {
-                  figureToMove = cell.node.firstChild;//получаем фигуру в ячейке сохраняем фигуру
+                  figureToMove = cell;//получаем фигуру в ячейке сохраняем фигуру
                   firstFigureWasSelected = true;
-                  typeOfFigure = cell.currentFigure.type;
-                  sideOfFigure = cell.currentFigure.side;
-                  cellObject = cell;
-            
+
+
+                  console.log(figureToMove, figureToSwap);
                 }else{
                   firstFigureWasSelected = false;
                 }
@@ -445,6 +448,38 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           // console.log(cell);
         }
+        // for(const cell of Object.values(this.board)) {
+        //   if(cell != document.querySelector('.board')) {
+        //     cell.node.addEventListener('click', () => {//нажимаем на ячейку
+        //       if(firstFigureWasSelected && figureToMove != figureToSwap) {//Если первая фигура была выбрана
+        //         figureToSwap = cell;
+        //         cellToMove = cell.node;
+        //         secondFigureWasSelected = true;
+
+        //         this.moveFigure(figureToMove, cellToMove, cellObject);
+        //         // this.currentPositonChange(cellObject, cell);
+
+        //         console.log(cell, figureToSwap);
+        //         secondFigureWasSelected = false;
+        //         }else{
+                          
+        //         }
+            
+        //         if(!firstFigureWasSelected && cell.node.firstChild != null) {
+        //           figureToMove = cell.node.firstChild;//получаем фигуру в ячейке сохраняем фигуру
+        //           firstFigureWasSelected = true;
+        //           typeOfFigure = cell.currentFigure.type;
+        //           sideOfFigure = cell.currentFigure.side;
+        //           cellObject = cell;
+            
+        //         }else{
+        //           firstFigureWasSelected = false;
+        //         }
+        //       // console.log(firstFigureWasSelected,figureToMove, cell.node.firstChild);
+        //     });
+        //   }
+        //   // console.log(cell);
+        // }
       }
       getFigureOnClick.call(this);
     }
@@ -523,7 +558,7 @@ class BlackSide {
 //
 class WhiteSide {
   constructor() {
-    this.sideName = 'Black'; 
+    this.sideName = 'White'; 
     this.counterId = 16;
     this.pawn = {
       src: `img/figures/w-pawn.webp`,
