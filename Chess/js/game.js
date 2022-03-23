@@ -385,48 +385,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
-    moveFigure(figureToMove, cellToMove, type, side) {
+    moveFigure(figureToMove, cellToMove, objectCell) {
       let id = figureToMove.className.split(' ')[1];
       
-      figureToMove.remove();
-      Black.createFigure('pawn', cellToMove, id);
+
+      figureToMove.remove();  
+      let createdFigure = Black.createFigure(objectCell.currentFigure.type, cellToMove, id);
+      objectCell.currentFigure = createdFigure;
+      // let result = Object.assign(createdFigure, objectCell.currentFigure);
+      console.log( objectCell);
     }
-    // moveFigureOnBoard() {
-    //   let figureToMove;
-    //   let figureToSwap;
-    //   let cellToMove;
-    //   let firstFigureWasSelected = false;
-    //   let secondFigureWasSelected = false;
+    currentPositonChange(firstObject, secondObject) {
+      let currentFigure = firstObject.currentFigure;
 
-    //   function getFigureOnClick()  {
-    //     for (const cell of this.arrayCells) {
-    //       cell.addEventListener('click', () => {//нажимаем на ячейку
-
-    //         if(firstFigureWasSelected && figureToMove != figureToSwap) {//Если первая фигура была выбрана
-    //           // figureToSwap = cell.firstChild;
-    //           cellToMove = cell;
-    //           secondFigureWasSelected = true;
-    //           this.moveFigure(figureToMove, cellToMove);
-
-    //           secondFigureWasSelected = false;
-    //         }else{
-              
-    //         }
-
-    //         if(!firstFigureWasSelected) {
-    //           figureToMove = cell.firstChild;//получаем фигуру в ячейке сохраняем фигуру
-    //           firstFigureWasSelected = true;
-
-    //         }else{
-    //           firstFigureWasSelected = false;
-    //         }
-
-    //         console.log(firstFigureWasSelected, figureToMove.className.split(' ')[1]);
-    //       });
-    //     }
-    //   }
-    //   getFigureOnClick.call(this);
-    // }
+      Object.assign(currentFigure, secondObject.currentFigure);
+      firstObject.currentFigure = null;
+    }
     moveFigureOnBoard() {
       
       function getFigureOnClick() {
@@ -446,15 +420,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 // figureToSwap = cell.firstChild;
                 cellToMove = cell.node;
                 secondFigureWasSelected = true;
-                this.moveFigure(figureToMove, cellToMove, typeOfFigure, sideOfFigure);
-                // this.changeCurrentPosition(cellToMove, cellObject.currentFigure);
 
+                this.moveFigure(figureToMove, cellToMove, cellObject);
+                // this.currentPositonChange(cellObject, cell);
+
+                console.log(cell);
                 secondFigureWasSelected = false;
                 }else{
                           
                 }
             
-                if(!firstFigureWasSelected) {
+                if(!firstFigureWasSelected && cell.node.firstChild != null) {
                   figureToMove = cell.node.firstChild;//получаем фигуру в ячейке сохраняем фигуру
                   firstFigureWasSelected = true;
                   typeOfFigure = cell.currentFigure.type;
@@ -464,10 +440,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }else{
                   firstFigureWasSelected = false;
                 }
-              console.log(cell);
+              // console.log(firstFigureWasSelected,figureToMove, cell.node.firstChild);
             });
           }
-          console.log(cell);
+          // console.log(cell);
         }
       }
       getFigureOnClick.call(this);
