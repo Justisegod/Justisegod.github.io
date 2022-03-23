@@ -588,21 +588,21 @@ class WhiteSide {
     this.figuresWasbeaten = [];
   }
   
-  createFigure(type,where) {
+  createFigure(type,where, id = this.counterId) {
     const typeWithoutConvert = type;
     this.counterId++;
     type = this.convertType(type);
 
     // if(this.sideName.toLowerCase() = "black") let sideName = b;
     
-    where.innerHTML = `<div class="${typeWithoutConvert} id_${this.counterId} figure"></div>`;//вставляем созданный див
+    where.innerHTML = `<div class="${typeWithoutConvert} id_${id} figure"></div>`;//вставляем созданный див
     let createdFigure = where.firstChild;
     createdFigure.style.background = `url(${type}) center / 75% 85% no-repeat`;
 
-    console.log(this.counterId, type, createdFigure);
-    return {// возврат обьекта
+    console.log(id, type, createdFigure);
+    return {
       type: typeWithoutConvert,
-      id: this.counterId,
+      id: id,
       node: createdFigure,
       side: this.sideName,
     };
