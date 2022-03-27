@@ -1,10 +1,3 @@
-//Импортируем Chess API
-// let ChessWebAPI = require('chess-web-api');
-
-// let chessAPI = new ChessWebAPI();
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
     
@@ -386,6 +379,102 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
+    getAcceptedCells(figure) {// получаем тип фигуры, и возвращаем массив с разрещёнными ячейками в зависимости от типа
+      let acceptedCells = [];
+      const allCellsLetters = [
+        'A','B','C','D','E','F','G','H'
+      ];
+      const mainFigureCellLetter = figure.node.classList[1].split('--')[1];// получаем букву текущей ячейки
+      const currentFigurePosition = figure.node.classList[0].split('--')[1];// получаем полное название текущей ячейки
+      const currentFigureNumber = currentFigurePosition.split(`${mainFigureCellLetter}`)[1];//получаем цифру текущей ячейки
+      
+      if(figure.currentFigure.type.toLowerCase() == 'pawn') {//определить как ходит пешка
+        let counterFigureNumber = currentFigureNumber;//делаем копию цифры текущей ячейки, котораю будем изменять
+        let isFirstPawnTurn = figure.currentFigure == figure.defaultFigure ? true : false;// если стандартная позиция равна текущей
+        let numForTurn = currentFigureNumber;
+
+        if(figure.currentFigure.side.toLowerCase() == 'white') {//если фигура белая
+          if(isFirstPawnTurn) {//если это первый ход
+            counterFigureNumber = Number(counterFigureNumber) + 2;
+            numForTurn++;
+
+            acceptedCells.push(this.board[`${mainFigureCellLetter}${numForTurn}`]);
+          }else{
+            counterFigureNumber++;
+          }
+          acceptedCells.push(this.board[`${mainFigureCellLetter}${counterFigureNumber}`]);
+        }else{//если фигура чёрная
+          if(isFirstPawnTurn) {//если это первый ход
+            counterFigureNumber = Number(counterFigureNumber) - 2;
+            numForTurn--;
+
+            acceptedCells.push(this.board[`${mainFigureCellLetter}${numForTurn}`]);
+          }else{
+            counterFigureNumber--;
+          }
+          acceptedCells.push(this.board[`${mainFigureCellLetter}${counterFigureNumber}`]);
+        }
+
+        console.log(isFirstPawnTurn);
+        return acceptedCells
+      }
+      if(figure.currentFigure.type.toLowerCase() == 'rook') {//определить как ходит слон
+        getVerticalCells.call(this);//получаем все вертикальные ячейки
+        getGorisontalCells.call(this);//получаем все горизонтальные ячейки
+        return acceptedCells;
+      }
+      
+
+      function getVerticalCells(verticalCells = 'all') {//получаем все вертикальные ячейки
+        if(verticalCells === 'all') {
+          for(let i = 1; i < 9; i++) {
+            if(this.board[`${mainFigureCellLetter}${i}`] != this.board[`${currentFigurePosition}`]) {
+              acceptedCells.push(this.board[`${mainFigureCellLetter}${i}`]);
+            }
+          }
+        }else{//получаем выбранные вертикальные ячейки 
+          for(let i = 0; i < verticalCells.length; i++) {
+            if(typeof(verticalCells[i]) == 'number') {
+              acceptedCells.push(this.board[`${verticalCells[i]}`]);
+            }
+          }
+        }
+        return verticalCells;
+      }
+      function getGorisontalCells(gorisontalCells = 'all') {//получаем все горизонтальные ячейки
+        if(gorisontalCells === 'all') {
+            for(let letter of allCellsLetters) {
+              if(this.board[`${letter}${currentFigureNumber}`] != this.board[`${currentFigurePosition}`]) {
+                acceptedCells.push(this.board[`${letter}${currentFigureNumber}`]);
+              }
+            }
+        }else{//получаем выбранные горизонтальные ячейки 
+          for(let i = 0; i < gorisontalCells.length; i++) {
+            if(typeof(gorisontalCells[i]) == 'number'){
+              acceptedCells.push(this.board[`${gorisontalCells[i]}`]);
+            }
+          }
+        }
+        return gorisontalCells;
+      }
+      function getDiagonalCells() {
+
+      }
+
+      console.log(mainFigureCellLetter, currentFigurePosition, currentFigureNumber, allCellsLetters);
+      return acceptedCells;
+    }
+    // как реализовать ход фигур по разному ?
+    // как сделать так, чтобы слон ходил только по горизонтали и вертикали своей ячейки ?
+    // - нужно парсить все ячейки, и если на ячейке которая на нашем пути стоит фигура, мы должны записать где именно стоит 
+    // фигура и заблокировать перемешение на ячейку после этой фигуры включаяя и её ячейку. как отличать 
+    // функция которая будет возвращать массив ячеек, доступных для ходьбы
+    // A7 - A1, A8, B8, C8, D8, E8, F8, J8, G8 тоесть чтобы получить ячейки в которые может ходить rook нужно
+    // - проверить все ячейки в букве в которой он стоит, кроме его (буква1 - 8)
+    // -также все буквы с числом ячейки которая у фигуры
+    // когда в ячейке будет чужая фигура
+    // пешка ходит:
+    // - 
 
     moveFigure(figureToMove, figureToSwap) {
       let id = figureToMove.currentFigure.id;
@@ -404,7 +493,6 @@ document.addEventListener('DOMContentLoaded', function () {
       figureToMove.isEmpty = true;
       figureToSwap.isEmpty = false;
 
-
     }
 
     moveFigureOnBoard() {
@@ -414,6 +502,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let figureToSwap;
         let firstFigureWasSelected = false;
         let secondFigureWasSelected = false;
+        let acceptedСellsToMove;//массив разрешённых ячеек для ходьбы
         
         for(const cell of Object.values(this.board)) {
           if(cell != document.querySelector('.board')) {
@@ -422,12 +511,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
               if(firstFigureWasSelected) {//Если первая фигура была выбрана
                 figureToSwap = cell;
-
-                this.moveFigure(figureToMove, figureToSwap);
-
                 firstFigureWasSelected = false;
+
+                if(figureToSwap.currentFigure != null && figureToMove.currentFigure.side == figureToSwap.currentFigure.side) return 'Frendly Figure';// если друж фигура то стоп
+
+                  if(acceptedСellsToMove.includes(figureToSwap)) {//Если клетка, на которую вы нажимаете находится в массиве разрешённых ходов 
+                    this.moveFigure(figureToMove, figureToSwap);
+                  }else{
+                    console.log('Фигура так не ходит');
+                  }
+
                 secondFigureWasSelected = true;
-                console.log(figureToMove, figureToSwap);
+                // console.log(figureToMove, figureToSwap, firstFigureWasSelected);
 
                 return true;// заканчиваем
                 }else{
@@ -438,8 +533,10 @@ document.addEventListener('DOMContentLoaded', function () {
                   figureToMove = cell;//получаем фигуру в ячейке сохраняем фигуру
                   firstFigureWasSelected = true;
 
+                  acceptedСellsToMove = this.getAcceptedCells(figureToMove);// получаем массив разрешённых ячеек для ходьбы
 
                   console.log(figureToMove, figureToSwap);
+                  console.log(acceptedСellsToMove);
                 }else{
                   firstFigureWasSelected = false;
                 }
@@ -448,41 +545,12 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           // console.log(cell);
         }
-        // for(const cell of Object.values(this.board)) {
-        //   if(cell != document.querySelector('.board')) {
-        //     cell.node.addEventListener('click', () => {//нажимаем на ячейку
-        //       if(firstFigureWasSelected && figureToMove != figureToSwap) {//Если первая фигура была выбрана
-        //         figureToSwap = cell;
-        //         cellToMove = cell.node;
-        //         secondFigureWasSelected = true;
-
-        //         this.moveFigure(figureToMove, cellToMove, cellObject);
-        //         // this.currentPositonChange(cellObject, cell);
-
-        //         console.log(cell, figureToSwap);
-        //         secondFigureWasSelected = false;
-        //         }else{
-                          
-        //         }
-            
-        //         if(!firstFigureWasSelected && cell.node.firstChild != null) {
-        //           figureToMove = cell.node.firstChild;//получаем фигуру в ячейке сохраняем фигуру
-        //           firstFigureWasSelected = true;
-        //           typeOfFigure = cell.currentFigure.type;
-        //           sideOfFigure = cell.currentFigure.side;
-        //           cellObject = cell;
-            
-        //         }else{
-        //           firstFigureWasSelected = false;
-        //         }
-        //       // console.log(firstFigureWasSelected,figureToMove, cell.node.firstChild);
-        //     });
-        //   }
-        //   // console.log(cell);
-        // }
       }
       getFigureOnClick.call(this);
     }
+    
+    
+     
 
     //если она не пустая получаем фигуру в ячейке
     //сохраняем фигуру и её классы
@@ -527,7 +595,6 @@ class BlackSide {
     this.counterId++;
     type = this.convertType(type);
 
-    // if(this.sideName.toLowerCase() = "black") let sideName = b;
     
     where.innerHTML = `<div class="${typeWithoutConvert} id_${id} figure"></div>`;//вставляем созданный див
     let createdFigure = where.firstChild;
@@ -593,8 +660,6 @@ class WhiteSide {
     this.counterId++;
     type = this.convertType(type);
 
-    // if(this.sideName.toLowerCase() = "black") let sideName = b;
-    
     where.innerHTML = `<div class="${typeWithoutConvert} id_${id} figure"></div>`;//вставляем созданный див
     let createdFigure = where.firstChild;
     createdFigure.style.background = `url(${type}) center / 75% 85% no-repeat`;
@@ -639,47 +704,3 @@ class WhiteSide {
 //  каждая ячейка будет обьектом,
 //   со своими свойствами, главные из них фигура, которя стоит на этой ячейке, цвет ячейки 
 // создаём  обьект board 
-// 
-// 
-// 
-// 
-
-
-
-
-
-
-
-
-
-// const timer = document.querySelector('.timer-body__counter');
-// function startCounter(seconds = 0, minutes = 0) {
-    
-//     // if(minutes < 10) {
-//     //     minutes = '0' + minutes;
-//     // }
-//     // if(seconds < 10) {
-//     //     seconds = '0' + seconds;
-//     // }
-
-//     function printTime() {
-//        console.log(timer.textContent = `${minutes}:${seconds}`);
-//     }
-
-//     function timerUpdate() {
-//         if(seconds > 0) {
-//             printTime();
-//         }
-//         if(seconds <= 0 && minutes > 0) {
-//             minutes--;
-//             seconds = 60;
-//             printTime();
-//         }else{
-//             console.log('timer was stopped');
-//         }
-
-//         printTime();
-//     }
-//     let key = setInterval(timerUpdate, 1000);
-// }
-// startCounter();

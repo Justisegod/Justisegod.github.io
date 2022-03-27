@@ -434,6 +434,8 @@ body{
     }
     .game-footer__firstbtn{
       margin-right: 6px;
+      color: #fff;
+      background: url(../img/buttons-bg/return.svg) center / 90% 90%;
     }
     .timer-body{
       display: flex;
