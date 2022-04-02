@@ -647,6 +647,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if(figureToSwap.currentFigure != null && figureToMove.currentFigure.side == figureToSwap.currentFigure.side){// если друж фигура то стоп
                   this.unselectCell(figureToMove.node);// убрать выделение клетки
+                  this.removeCircleToCells(acceptedСellsToMove);
                   return 'Frendly Figure';
                 }
                 
@@ -658,6 +659,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 secondFigureWasSelected = true;
                 this.unselectCell(figureToMove.node);// убрать выделение клетки
+                this.removeCircleToCells(acceptedСellsToMove);//убрать куда можно ходить
+
                 // console.log(figureToMove, figureToSwap, firstFigureWasSelected);
 
                 return true;// заканчиваем
@@ -672,10 +675,13 @@ document.addEventListener('DOMContentLoaded', function () {
                   acceptedСellsToMove = this.getAcceptedCells(figureToMove);// получаем массив разрешённых ячеек для ходьбы
                   this.selectCell(figureToMove.node);//добавить выделение клетки
 
+                  this.addCircleToCells(acceptedСellsToMove);//показываем куда можно ходить
                   // console.log(figureToMove, figureToSwap);
                   // console.log(acceptedСellsToMove);
                 }else{
                   firstFigureWasSelected = false;
+                  this.paintAcceptedCells(acceptedСellsToMove);//убрать куда можно ходить
+
                   // this.unselectCell(figureToMove.node);// убрать выделение клетки
                 }
               // console.log(firstFigureWasSelected,figureToMove, cell.node.firstChild);
@@ -686,9 +692,30 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       getFigureOnClick.call(this);
     }
-    
-    
-     
+
+    addCircleToCells(arrOfCells) {
+      for(let cell of arrOfCells) {
+        if(!cell.node.className.split(' ').includes('accepted--cell')) {
+          cell.node.classList.add('accepted--cell');
+
+          if(cell.currentFigure != null) {
+            cell.node.firstChild.style.position = "relative";
+            cell.node.firstChild.style.zIndex = "2";
+
+            cell.node.style.background = `linear-gradient(217deg, rgba(255,0,0, 0.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0, 0.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255, 0.8), rgba(0,0,255,0) 70.71%);`;
+            this.removeCircleToCells([cell]);
+
+          }
+        }
+      }
+    }
+    removeCircleToCells(arrOfCells) {
+      for(let cell of arrOfCells) {
+        cell.node.classList.remove('accepted--cell');
+      }
+    }
 
     //если она не пустая получаем фигуру в ячейке
     //сохраняем фигуру и её классы
