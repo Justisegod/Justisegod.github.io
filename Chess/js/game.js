@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
          document.querySelectorAll('.board__item--G'),
          document.querySelectorAll('.board__item--H'),
       ]
-      let previousCell = null;
+      // let previousCell = null;
 
       for(let row of arrayOfRows) {// get row
         // console.log(row);
@@ -113,11 +113,11 @@ document.addEventListener('DOMContentLoaded', function () {
           // console.log(cell);
           this.arrayCells.push(cell);
 
-          cell.addEventListener('click', () => {
-            this.unselectCell(previousCell);
-            this.selectCell(cell);
-            previousCell = cell;
-          });
+          // cell.addEventListener('click', () => {
+          //   this.unselectCell(previousCell);
+          //   this.selectCell(cell);
+          //   previousCell = cell;
+          // });
         }
       }
     }
@@ -129,10 +129,10 @@ document.addEventListener('DOMContentLoaded', function () {
       if(!result){
         cell.classList.add(`selected--cell`);
       }else{
-        this.unselectCell(cell);
+        
       }
 
-      // console.log(cell, cellClasses, cell.hasAttribute('selected-cell'));
+      console.log(cell, cellClasses, cell.hasAttribute('selected-cell'));
       return cell;
     }
     unselectCell(cell) {
@@ -423,15 +423,63 @@ document.addEventListener('DOMContentLoaded', function () {
         getGorisontalCells.call(this);//получаем все горизонтальные ячейки
         return acceptedCells;
       }
+      if(figure.currentFigure.type.toLowerCase() == 'bishop') {
+        getDiagonalCells.call(this);
+      }
+      if(figure.currentFigure.type.toLowerCase() == 'knight'){//определить как ходит конь
+        let gotArray = [];// массив всех горизонтальных ячеек
+        let numInArr;
+        let FigureNumber = Number(currentFigureNumber);
+
+        for(let i = 0; i < allCellsLetters.length; i++) {//получаем номер буквы в массиве букв allCellsLetters
+          if(allCellsLetters[i] === mainFigureCellLetter) {
+            numInArr = i;
+            break;
+          }
+        }
+
+        gotArray.push(this.board[`${allCellsLetters[numInArr - 2]}${FigureNumber + 1}`]);//up side
+        gotArray.push(this.board[`${allCellsLetters[numInArr - 1]}${FigureNumber + 2}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr + 1]}${FigureNumber + 2}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr + 2]}${FigureNumber + 1}`]);
+
+        gotArray.push(this.board[`${allCellsLetters[numInArr - 2]}${FigureNumber - 1}`]);//down side
+        gotArray.push(this.board[`${allCellsLetters[numInArr - 1]}${FigureNumber - 2}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr + 1]}${FigureNumber - 2}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr + 2]}${FigureNumber - 1}`]);
+
+        cycle: for(let cell of gotArray) {
+          if(cell == undefined) {
+            continue cycle;
+          }else{
+            acceptedCells.push(cell);
+          }
+        }
+
+        // console.log(`gotArray:`, gotArray, acceptedCells);
+      }
+      if(figure.currentFigure.type.toLowerCase() == 'queen'){//определить как ходит королева
+        getVerticalCells.call(this);//получаем все вертикальные ячейки
+        getGorisontalCells.call(this);//получаем все горизонтальные ячейки
+        getDiagonalCells.call(this);//получаем все ячейки по диагонале
+        return acceptedCells;
+      }
       
 
       function getVerticalCells(verticalCells = 'all') {//получаем все вертикальные ячейки
         if(verticalCells === 'all') {
-          for(let i = 1; i < 9; i++) {
-            if(this.board[`${mainFigureCellLetter}${i}`] != this.board[`${currentFigurePosition}`]) {
-              acceptedCells.push(this.board[`${mainFigureCellLetter}${i}`]);
+            up: for(let i = currentFigureNumber; i < 9; i++) {
+              if(this.board[`${mainFigureCellLetter}${i}`] != this.board[`${currentFigurePosition}`]) {//если не текущаяя ячейка
+                  acceptedCells.push(this.board[`${mainFigureCellLetter}${i}`]);
+                  if(this.board[`${mainFigureCellLetter}${i}`].currentFigure != null) break up;//если встречается не пустая ячейка  пушим ее и заканчиваем цикл
+              }
             }
-          }
+            down: for(let i = currentFigureNumber; i > 0; i--) {
+              if(this.board[`${mainFigureCellLetter}${i}`] != this.board[`${currentFigurePosition}`] ) {//если не текущаяя ячейка
+                  acceptedCells.push(this.board[`${mainFigureCellLetter}${i}`]);
+                  if(this.board[`${mainFigureCellLetter}${i}`].currentFigure != null) break down;//если встречается не пустая ячейка  пушим ее и заканчиваем цикл
+              }
+            }
         }else{//получаем выбранные вертикальные ячейки 
           for(let i = 0; i < verticalCells.length; i++) {
             if(typeof(verticalCells[i]) == 'number') {
@@ -439,13 +487,34 @@ document.addEventListener('DOMContentLoaded', function () {
             }
           }
         }
+
         return verticalCells;
       }
       function getGorisontalCells(gorisontalCells = 'all') {//получаем все горизонтальные ячейки
         if(gorisontalCells === 'all') {
-            for(let letter of allCellsLetters) {
-              if(this.board[`${letter}${currentFigureNumber}`] != this.board[`${currentFigurePosition}`]) {
-                acceptedCells.push(this.board[`${letter}${currentFigureNumber}`]);
+            let gotArray = [];// массив всех горизонтальных ячеек
+            let numInArr;
+
+            for(let letter of allCellsLetters) {//получаем все горизонтальные ячейки
+              gotArray.push(this.board[`${letter}${currentFigureNumber}`]);
+            }
+            for(let i = 0; i < allCellsLetters.length; i++) {//получаем номер буквы в массиве букв allCellsLetters
+              if(allCellsLetters[i] === mainFigureCellLetter) {
+                numInArr = i;
+                break;
+              }
+            }
+
+            right: for(let i = numInArr; i < gotArray.length; i++) {
+              if(gotArray[i].currentFigure != this.board[`${currentFigurePosition}`].currentFigure) {
+                acceptedCells.push(gotArray[i]);
+                if(gotArray[i].currentFigure != null) break right;//если встречается не пустая ячейка  пушим ее и заканчиваем цикл
+              }
+            }
+            left: for(let i = numInArr; i >= 0; i--) {
+              if(gotArray[i].currentFigure != this.board[`${currentFigurePosition}`].currentFigure) {
+                acceptedCells.push(gotArray[i]);
+                if(gotArray[i].currentFigure != null) break left;//если встречается не пустая ячейка  пушим ее и заканчиваем цикл
               }
             }
         }else{//получаем выбранные горизонтальные ячейки 
@@ -455,13 +524,76 @@ document.addEventListener('DOMContentLoaded', function () {
             }
           }
         }
+        console.log(acceptedCells);
         return gorisontalCells;
       }
       function getDiagonalCells() {
+        let gotArray = [];// массив всех горизонтальных ячеек
+        let numInArr;
+        let currentNum = Number(currentFigureNumber);
+
+        
+        for(let i = 0; i < allCellsLetters.length; i++) {//получаем номер буквы в массиве букв allCellsLetters
+          if(allCellsLetters[i] === mainFigureCellLetter) {
+            numInArr = i;
+            break;
+          }
+        }
+        
+        upleft: for(let i = numInArr; i >= 0; i--) {
+          if(allCellsLetters[i] != mainFigureCellLetter){
+            currentNum++;
+            if(this.board[`${allCellsLetters[i]}${currentNum}`] != undefined) {
+              acceptedCells.push(this.board[`${allCellsLetters[i]}${currentNum}`]);
+              if(this.board[`${allCellsLetters[i]}${currentNum}`].currentFigure != null) break upleft;//если встречается не пустая ячейка  пушим ее и заканчиваем цикл
+            }
+          }else{
+            continue upleft;
+          }
+        }
+        currentNum = currentFigureNumber//обнуляем
+
+        upright: for(let i = numInArr; i < allCellsLetters.length; i++) {
+          if(allCellsLetters[i] != mainFigureCellLetter){
+            currentNum++;
+            if(this.board[`${allCellsLetters[i]}${currentNum}`] != undefined) {
+              acceptedCells.push(this.board[`${allCellsLetters[i]}${currentNum}`]);
+              if(this.board[`${allCellsLetters[i]}${currentNum}`].currentFigure != null) break upright;//если встречается не пустая ячейка  пушим ее и заканчиваем цикл
+            }
+          }else{
+            continue upright;
+          }
+        }
+        currentNum = currentFigureNumber//обнуляем
+
+        downleft: for(let i = numInArr; i >= 0; i--) {
+          if(allCellsLetters[i] != mainFigureCellLetter){
+            currentNum--;
+            if(this.board[`${allCellsLetters[i]}${currentNum}`] != undefined) {
+              acceptedCells.push(this.board[`${allCellsLetters[i]}${currentNum}`]);
+              if(this.board[`${allCellsLetters[i]}${currentNum}`].currentFigure != null) break downleft;//если встречается не пустая ячейка  пушим ее и заканчиваем цикл
+            }
+          }else{
+            continue downleft;
+          }
+        }
+        currentNum = currentFigureNumber//обнуляем
+
+        downright:for(let i = numInArr; i < allCellsLetters.length; i++) {
+          if(allCellsLetters[i] != mainFigureCellLetter){
+            currentNum--;
+            if(this.board[`${allCellsLetters[i]}${currentNum}`] != undefined) {
+              acceptedCells.push(this.board[`${allCellsLetters[i]}${currentNum}`]);
+              if(this.board[`${allCellsLetters[i]}${currentNum}`].currentFigure != null) break downright;//если встречается не пустая ячейка  пушим ее и заканчиваем цикл
+            }
+          }else{
+            continue downright;
+          }
+        }
+        console.log(acceptedCells);
 
       }
 
-      console.log(mainFigureCellLetter, currentFigurePosition, currentFigureNumber, allCellsLetters);
       return acceptedCells;
     }
     // как реализовать ход фигур по разному ?
@@ -513,15 +645,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 figureToSwap = cell;
                 firstFigureWasSelected = false;
 
-                if(figureToSwap.currentFigure != null && figureToMove.currentFigure.side == figureToSwap.currentFigure.side) return 'Frendly Figure';// если друж фигура то стоп
-
-                  if(acceptedСellsToMove.includes(figureToSwap)) {//Если клетка, на которую вы нажимаете находится в массиве разрешённых ходов 
-                    this.moveFigure(figureToMove, figureToSwap);
-                  }else{
-                    console.log('Фигура так не ходит');
-                  }
+                if(figureToSwap.currentFigure != null && figureToMove.currentFigure.side == figureToSwap.currentFigure.side){// если друж фигура то стоп
+                  this.unselectCell(figureToMove.node);// убрать выделение клетки
+                  return 'Frendly Figure';
+                }
+                
+                if(acceptedСellsToMove.includes(figureToSwap)) {//Если клетка, на которую вы нажимаете находится в массиве разрешённых ходов 
+                  this.moveFigure(figureToMove, figureToSwap);
+                }else{
+                  console.log('Фигура так не ходит');
+                }
 
                 secondFigureWasSelected = true;
+                this.unselectCell(figureToMove.node);// убрать выделение клетки
                 // console.log(figureToMove, figureToSwap, firstFigureWasSelected);
 
                 return true;// заканчиваем
@@ -534,11 +670,13 @@ document.addEventListener('DOMContentLoaded', function () {
                   firstFigureWasSelected = true;
 
                   acceptedСellsToMove = this.getAcceptedCells(figureToMove);// получаем массив разрешённых ячеек для ходьбы
+                  this.selectCell(figureToMove.node);//добавить выделение клетки
 
-                  console.log(figureToMove, figureToSwap);
-                  console.log(acceptedСellsToMove);
+                  // console.log(figureToMove, figureToSwap);
+                  // console.log(acceptedСellsToMove);
                 }else{
                   firstFigureWasSelected = false;
+                  // this.unselectCell(figureToMove.node);// убрать выделение клетки
                 }
               // console.log(firstFigureWasSelected,figureToMove, cell.node.firstChild);
             });
