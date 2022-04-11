@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
       
-      timerId = setInterval(countdownTimerr, 1000);
+      // timerId = setInterval(countdownTimerr, 1000);
     }
     countIt(10, 0);
   });
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
       }
 
-      console.log(cell, cellClasses, cell.hasAttribute('selected-cell'));
+      // console.log(cell, cellClasses, cell.hasAttribute('selected-cell'));
       return cell;
     }
     unselectCell(cell) {
@@ -389,33 +389,84 @@ document.addEventListener('DOMContentLoaded', function () {
       const currentFigureNumber = currentFigurePosition.split(`${mainFigureCellLetter}`)[1];//получаем цифру текущей ячейки
       
       if(figure.currentFigure.type.toLowerCase() == 'pawn') {//определить как ходит пешка
-        let counterFigureNumber = currentFigureNumber;//делаем копию цифры текущей ячейки, котораю будем изменять
+        let counterFigureNumber = Number(currentFigureNumber);//делаем копию цифры текущей ячейки, котораю будем изменять
         let isFirstPawnTurn = figure.currentFigure == figure.defaultFigure ? true : false;// если стандартная позиция равна текущей
-        let numForTurn = currentFigureNumber;
+        let numForTurn = Number(currentFigureNumber);
 
         if(figure.currentFigure.side.toLowerCase() == 'white') {//если фигура белая
-          if(isFirstPawnTurn) {//если это первый ход
-            counterFigureNumber = Number(counterFigureNumber) + 2;
+          let gotArray = [];// массив всех горизонтальных ячеек
+          let numInArr;
+          let FigureNumber = Number(currentFigureNumber);
+  
+          for(let i = 0; i < allCellsLetters.length; i++) {//получаем номер буквы в массиве букв allCellsLetters
+            if(allCellsLetters[i] === mainFigureCellLetter) {
+              numInArr = i;
+              break;
+            }
+          }
+
+          if(this.board[`${mainFigureCellLetter}${numForTurn + 1}`].currentFigure == null) {//если спереди нет фигуры
             numForTurn++;
+            acceptedCells.push(this.board[`${mainFigureCellLetter}${numForTurn}`]);//получаем следущую ячейку
 
-            acceptedCells.push(this.board[`${mainFigureCellLetter}${numForTurn}`]);
-          }else{
-            counterFigureNumber++;
+            if(isFirstPawnTurn && this.board[`${mainFigureCellLetter}${counterFigureNumber + 2}`].currentFigure == null) {//если это первый ход
+              counterFigureNumber = Number(counterFigureNumber) + 2;
+  
+              acceptedCells.push(this.board[`${mainFigureCellLetter}${counterFigureNumber}`]);
+            }else{
+              counterFigureNumber++;
+            }
           }
-          acceptedCells.push(this.board[`${mainFigureCellLetter}${counterFigureNumber}`]);
+
+          gotArray.push(this.board[`${allCellsLetters[numInArr - 1]}${FigureNumber + 1}`]);
+          gotArray.push(this.board[`${allCellsLetters[numInArr + 1]}${FigureNumber + 1}`]);
+          for(let cell of gotArray) {
+            if(cell != undefined) {
+              if(cell.currentFigure != null && cell.currentFigure.side == 'Black'){//бить вражеские фигуры
+                acceptedCells.push(cell);
+              }
+            }
+          }
+
         }else{//если фигура чёрная
-          if(isFirstPawnTurn) {//если это первый ход
-            counterFigureNumber = Number(counterFigureNumber) - 2;
-            numForTurn--;
-
-            acceptedCells.push(this.board[`${mainFigureCellLetter}${numForTurn}`]);
-          }else{
-            counterFigureNumber--;
+          let gotArray = [];// массив всех горизонтальных ячеек
+          let numInArr;
+          let FigureNumber = Number(currentFigureNumber);
+  
+          for(let i = 0; i < allCellsLetters.length; i++) {//получаем номер буквы в массиве букв allCellsLetters
+            if(allCellsLetters[i] === mainFigureCellLetter) {
+              numInArr = i;
+              break;
+            }
           }
-          acceptedCells.push(this.board[`${mainFigureCellLetter}${counterFigureNumber}`]);
+
+          if(this.board[`${mainFigureCellLetter}${numForTurn - 1}`].currentFigure == null) {//если спереди нет фигуры
+            numForTurn--;
+            acceptedCells.push(this.board[`${mainFigureCellLetter}${numForTurn}`]);//получаем следущую ячейку
+
+            if(isFirstPawnTurn && this.board[`${mainFigureCellLetter}${counterFigureNumber - 2}`].currentFigure == null) {//если это первый ход
+              counterFigureNumber = Number(counterFigureNumber) - 2;
+  
+              acceptedCells.push(this.board[`${mainFigureCellLetter}${counterFigureNumber}`]);
+            }else{
+              counterFigureNumber--;
+            }
+          }
+
+          gotArray.push(this.board[`${allCellsLetters[numInArr - 1]}${FigureNumber - 1}`]);
+          gotArray.push(this.board[`${allCellsLetters[numInArr + 1]}${FigureNumber - 1}`]);
+
+          for(let cell of gotArray) {
+            if(cell != undefined) {
+              if(cell.currentFigure != null && cell.currentFigure.side == 'White'){//бить вражеские фигуры
+                acceptedCells.push(cell);
+              }
+            }
+          }
         }
 
-        console.log(isFirstPawnTurn);
+        // console.log(isFirstPawnTurn);
+        
         return acceptedCells
       }
       if(figure.currentFigure.type.toLowerCase() == 'rook') {//определить как ходит слон
@@ -463,6 +514,33 @@ document.addEventListener('DOMContentLoaded', function () {
         getGorisontalCells.call(this);//получаем все горизонтальные ячейки
         getDiagonalCells.call(this);//получаем все ячейки по диагонале
         return acceptedCells;
+      }
+      if(figure.currentFigure.type.toLowerCase() == 'king') {
+        let gotArray = [];// массив всех горизонтальных ячеек
+        let numInArr;
+        let FigureNumber = Number(currentFigureNumber);
+
+        for(let i = 0; i < allCellsLetters.length; i++) {//получаем номер буквы в массиве букв allCellsLetters
+          if(allCellsLetters[i] === mainFigureCellLetter) {
+            numInArr = i;
+            break;
+          }
+        }
+
+        gotArray.push(this.board[`${allCellsLetters[numInArr]}${FigureNumber + 1}`]);//up side
+        gotArray.push(this.board[`${allCellsLetters[numInArr]}${FigureNumber - 1}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr + 1]}${FigureNumber - 1}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr + 1]}${FigureNumber + 1}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr - 1]}${FigureNumber + 1}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr - 1]}${FigureNumber - 1}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr + 1]}${FigureNumber}`]);
+        gotArray.push(this.board[`${allCellsLetters[numInArr - 1]}${FigureNumber}`]);
+
+        for(let cell of gotArray) {
+          if(cell != undefined) {
+            acceptedCells.push(cell);
+          }
+        }
       }
       
 
@@ -607,11 +685,80 @@ document.addEventListener('DOMContentLoaded', function () {
     // когда в ячейке будет чужая фигура
     // пешка ходит:
     // - 
+    closeGameOverlay() {
+      const body = document.querySelector('.board');
+      const gameOverlay = document.querySelector('.game__overlay');
+
+      if(gameOverlay != undefined) {
+        gameOverlay.remove();
+      }
+    }
+    startGame() {
+      for(let cell of Object.values(this.board)){//Удаляем фигуры
+        if(cell != document.querySelector('.board') && cell.node.firstChild != null) {
+          cell.node.firstChild.remove();
+          console.log(cell);
+        }
+      }
+
+      this.setDefaultFigurePosition.call(this);//раставляем фигуры снова
+    }
+    async endGame(team){
+      const body = document.querySelector('.board');
+      let gameOverlay = document.createElement('div');
+
+      body.append(gameOverlay);
+
+      gameOverlay.innerHTML = await
+      `<h6>Game is Over</h6>
+      <h6>The ${team} team Won</h6>
+      <button class="repeat__game-btn" onclick="game.startGame(); game.closeGameOverlay();">repeat</button>
+      <button class="close-overlay__btn" onclick="game.closeGameOverlay();">CLOSE</button>`;
+      gameOverlay.style.position = `absolute`;
+      gameOverlay.style.width = `100%`;
+      gameOverlay.style.height = `100%`;
+      gameOverlay.style.background = `rgb(0,0,0, 0.8)`;
+      gameOverlay.style.color = `#fff`;
+      gameOverlay.style.fontSize = `30px`;
+      gameOverlay.style.padding = `auto`;
+      gameOverlay.style.textAlign = `center`;
+      gameOverlay.style.zIndex = `2`;
+      gameOverlay.style.padding = `20px`;
+      gameOverlay.style.display = `flex`;
+      gameOverlay.style.flexDirection = `column`;
+      gameOverlay.style.justifyContent = `space-around`;
+
+      gameOverlay.classList.add('game__overlay');
+
+      let repeatGameBtn = document.querySelector('.repeat__game-btn');
+      repeatGameBtn.style.border = `0.1px solid #fff`;
+      repeatGameBtn.style.background = `transparent`;
+      repeatGameBtn.style.color = `#fff`;
+      repeatGameBtn.style.margin = `20px`;
+      repeatGameBtn.style.padding = `2px 0`;
+
+      const closeGameOverlayBtn = document.querySelector('.close-overlay__btn');
+      closeGameOverlayBtn.style.position = `absolute`;
+      closeGameOverlayBtn.style.top = `0`;
+      closeGameOverlayBtn.style.right = `0`;
+      closeGameOverlayBtn.style.border = `0.1px solid #fff`;
+      closeGameOverlayBtn.style.background = `transparent`;
+      closeGameOverlayBtn.style.color = `#fff`;
+    }
 
     moveFigure(figureToMove, figureToSwap) {
       let id = figureToMove.currentFigure.id;
       let createdFigure;
       figureToMove.node.firstChild.remove();  
+
+      if(figureToSwap.currentFigure != null && figureToSwap.currentFigure.type === 'king' ) {// Если побили короля Game the End
+        if(figureToSwap.currentFigure.side === 'White') {
+          // alert(`the Black team won`);
+        }else{
+          // alert(`the White team won`);
+        }
+        this.endGame.call(this, `${figureToMove.currentFigure.side.toUpperCase()}`);
+      }
 
       if(figureToMove.currentFigure.side == 'Black') {
         createdFigure = Black.createFigure(figureToMove.currentFigure.type, figureToSwap.node, id);
@@ -661,7 +808,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.unselectCell(figureToMove.node);// убрать выделение клетки
                 this.removeCircleToCells(acceptedСellsToMove);//убрать куда можно ходить
 
-                // console.log(figureToMove, figureToSwap, firstFigureWasSelected);
+                // console.log(figureToMove, figureToSwap, firstFigureWasSelected);\\
 
                 return true;// заканчиваем
                 }else{
@@ -675,12 +822,12 @@ document.addEventListener('DOMContentLoaded', function () {
                   acceptedСellsToMove = this.getAcceptedCells(figureToMove);// получаем массив разрешённых ячеек для ходьбы
                   this.selectCell(figureToMove.node);//добавить выделение клетки
 
-                  this.addCircleToCells(acceptedСellsToMove);//показываем куда можно ходить
+                  this.addCircleToCells(acceptedСellsToMove, figureToMove);//показываем куда можно ходить
                   // console.log(figureToMove, figureToSwap);
                   // console.log(acceptedСellsToMove);
                 }else{
                   firstFigureWasSelected = false;
-                  this.paintAcceptedCells(acceptedСellsToMove);//убрать куда можно ходить
+                  // this.paintAcceptedCells(acceptedСellsToMove);//убрать куда можно ходить
 
                   // this.unselectCell(figureToMove.node);// убрать выделение клетки
                 }
@@ -693,7 +840,7 @@ document.addEventListener('DOMContentLoaded', function () {
       getFigureOnClick.call(this);
     }
 
-    addCircleToCells(arrOfCells) {
+    addCircleToCells(arrOfCells, currentFigure) {
       for(let cell of arrOfCells) {
         if(!cell.node.className.split(' ').includes('accepted--cell')) {
           cell.node.classList.add('accepted--cell');
@@ -702,10 +849,12 @@ document.addEventListener('DOMContentLoaded', function () {
             cell.node.firstChild.style.position = "relative";
             cell.node.firstChild.style.zIndex = "2";
 
-            cell.node.style.background = `linear-gradient(217deg, rgba(255,0,0, 0.8), rgba(255,0,0,0) 70.71%),
-            linear-gradient(127deg, rgba(0,255,0, 0.8), rgba(0,255,0,0) 70.71%),
-            linear-gradient(336deg, rgba(0,0,255, 0.8), rgba(0,0,255,0) 70.71%);`;
-            this.removeCircleToCells([cell]);
+            if(currentFigure.currentFigure.side != cell.currentFigure.side) {//Если сторона фигур не од одинакова
+              cell.node.style.backgroundImage = `linear-gradient(180deg, #ffb629 0, #ffa537 10%, #ff9243 20%, #ff7e4b 30%, #ff6951 40%, #f25353 50%, #d93f53 60%, #c22f54 70%, #ad2355 80%, #9b1b56 90%, #8c1859 100%)`;
+              cell.node.style.border = `0.1px solid #58D689 `;
+            }
+            // cell.node.style.background = `linear-gradient(217deg, rgba(255,0,0, 0.8), rgba(255,0,0,0) 70.71%)`;
+            // this.removeCircleToCells([cell]);
 
           }
         }
@@ -714,6 +863,9 @@ document.addEventListener('DOMContentLoaded', function () {
     removeCircleToCells(arrOfCells) {
       for(let cell of arrOfCells) {
         cell.node.classList.remove('accepted--cell');
+        cell.node.style.backgroundImage = `unset`;
+        cell.node.style.border = `unset `;
+
       }
     }
 

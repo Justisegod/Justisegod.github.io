@@ -330,6 +330,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .board{
+  position: relative;
   width: 100%;
   height: 250px;
   background: #B38866;
@@ -443,6 +444,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #58D689;
   border-radius: 50%;
   z-index: 1;
+  /* background-image: unset; */
 }
 /* /Selected */
 .menu{
@@ -549,4 +551,8 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.5px;
   text-transform: uppercase;
   word-wrap: break-word;
+}
+
+.game__overlay{
+  font-family: 'Nunito', sans-serif;
 }
