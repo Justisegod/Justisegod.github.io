@@ -563,6 +563,8 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.5px;
   text-transform: uppercase;
   word-wrap: break-word;
+  /* border: 1px dashed #333; */
+  background: transparent;
 }
 
 .game__overlay{

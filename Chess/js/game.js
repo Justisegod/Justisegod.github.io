@@ -6,7 +6,8 @@
       this.btnSettings = document.querySelector('.game__header-settings');
       this.gameSettingsMenu = document.querySelector('.menu');
       this.turnVolume = 0.1;
-      
+      this.isVideoPlaying = true;
+
       this.board = {
         element : document.querySelector('.board'),
       }
@@ -689,7 +690,7 @@
     // пешка ходит:
     // - 
 
-    showNotification({top = 0, right = 0, bottom = 'unset', className, html}) {
+    showNotification({top = 0, right = 0, bottom = 'unset', className, html, durationMs = 3000}) {
 
       let notification = document.createElement('div');
       notification.className = "notification";
@@ -705,7 +706,7 @@
       notification.innerHTML = html;
       document.body.querySelector('.header__bottom').append(notification);
     
-      setTimeout(() => notification.remove(), 1500);
+      setTimeout(() => notification.remove(), durationMs);
     }
 
     closeGameOverlay() {
@@ -928,6 +929,54 @@
     
       return song;
     }
+    createAnimationOptions() {
+      let button = document.querySelector('.stop-animations');
+      let allButtons = document.querySelectorAll('.menu__item-link');// Sound on click
+
+      for(let btn of allButtons) {
+        btn.addEventListener('click', ()=>{
+          this.playSound('sounds/menu-click.mp3');
+        })
+      }
+      
+      button.addEventListener('click', ()=> {
+        this.changeAnimationsOption();
+      })
+    }
+    changeAnimationsOption() {
+      let allVideos = document.querySelectorAll('video');
+
+      if(this.isVideoPlaying){
+        for(let video of allVideos) {
+          video.pause();
+          video.currentTime = 0;
+        }
+        this.isVideoPlaying = false;
+        
+        this.showNotification({
+          top: 'unset', // 10px от верхней границы окна (по умолчанию 0px)
+          right: 10, // 10px от правого края окна (по умолчанию 0px)
+          bottom: 10,
+          html: "Анимации выключены!", // HTML-уведомление
+          className: "" // дополнительный класс для div (необязательно)
+        });
+      }else{
+        for(let video of allVideos) {
+          video.play();
+        }
+        this.isVideoPlaying = true;
+
+        this.showNotification({
+          top: 'unset', // 10px от верхней границы окна (по умолчанию 0px)
+          right: 10, // 10px от правого края окна (по умолчанию 0px)
+          bottom: 10,
+          html: "Анимации включены!", // HTML-уведомление
+          className: "" // дополнительный класс для div (необязательно)
+        });
+      }
+
+      return allVideos;
+    }
 }
 
 class BlackSide {
@@ -1064,6 +1113,7 @@ class WhiteSide {
   game.createBoardObject();//создание таблици в js с привязкой в html
   game.setDefaultFigurePosition();
   game.moveFigureOnBoard();
+  game.createAnimationOptions();//вкл вкл все видео
 
 // 1) нужно построить игровую доску в js 
 // - доска будет обьектом board со свойствами названий ячеек,

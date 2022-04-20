@@ -7,6 +7,7 @@
     <!-- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style-mobile.css">
+    <link rel="shortcut icon" href="img/figures/w-horse.webp" type="image/x-icon">
     <title>Chess maket Mobile</title>
 </head>
 
@@ -36,7 +37,7 @@
                                                     src="img/profile-icons/gif-icon.gif"></img> -->
                                                 <!-- <video class="header__bottom-profileimg" src="img/profile-icons/original.mp4"></video>
                                                  -->
-                                                <video class="header__bottom-profileimg" autoplay loop muted poster="img/profile-icons/Grek.webp">
+                                                <video class="header__bottom-profileimg" autoplay loop muted preload="auto">
                                                     <source src="img/profile-icons/original.mp4" type="video/webm">
                                                     I'm sorry; your browser doesn't support HTML5 video.
                                                 </video>
@@ -144,7 +145,7 @@
                                     <div class="game-footer__user-icon-inner profileimg">
                                         <!-- <img class="game-footer__user-icon " src="img/profile-icons/1.jpg"
                                             alt="icon"> -->
-                                        <video class="game-footer__user-icon" autoplay loop muted>
+                                        <video class="game-footer__user-icon" autoplay loop muted preload="auto">
                                             <source src="img/profile-icons/pain.webm" type="video/webm">
                                             I'm sorry; your browser doesn't support HTML5 video.
                                         </video>
@@ -170,17 +171,19 @@
                             <div class="menu__inner">
                                 <ul class="menu__list">
                                     <li class="menu__item">
-                                        <a class="menu__item-link" href="#">
+                                        <button class="menu__item-link" href="#">
                                             The War Idi na Xyi =)
-                                        </a>
-                                    </li>
-                                    <li class="menu__item stop-notifications">
-                                        <a class="menu__item-link" href="#">
-                                            stop notifications
-                                        </a>
+                                        </button>
                                     </li>
                                     <li class="menu__item">
-                                        <a class="menu__item-link" href="#"></a>
+                                        <button class="menu__item-link stop-notifications" href="#">
+                                            stop notifications
+                                        </button>
+                                    </li>
+                                    <li class="menu__item">
+                                        <button class="menu__item-link stop-animations" href="#" onclick="">
+                                            stop animations
+                                        </button>
                                     </li>
                                     <li class="menu__item">
                                         <a class="menu__item-link" href="#"></a>
