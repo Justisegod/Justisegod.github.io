@@ -5,6 +5,10 @@
   margin: 0;
   border: 0;
 }
+video{
+  max-width: 100%;
+  max-height: 100%;
+}
 
 *, *:before, *:after {
   -moz-box-sizing: border-box;
@@ -131,6 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   background: url(../board-temp/settings.webp) center center / 100% 100% no-repeat;
   grid-area: settings;
   z-index: 11;
+  transition: all 0.5s ease;
 }
 .game__content{
   height: 100%;   
@@ -241,6 +246,12 @@ h1, h2, h3, h4, h5, h6 {
 } */
 .game-footer__user-icon-inner  {
   margin-right: 10px;
+ 
+}
+.game-footer__user-icon{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
 }
 .game-footer__user-name{
   font-size: 20px;
@@ -311,6 +322,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .header__bottom{
   overflow: hidden;
+  position: relative;
 }
 .header__bottom-inner{
   padding: 0 40px;
@@ -546,7 +558,7 @@ h1, h2, h3, h4, h5, h6 {
 .menu__item-link{
   font-family: 'Nunito', sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 19px;
   color: #403940;
   letter-spacing: -0.5px;
   text-transform: uppercase;
@@ -555,4 +567,31 @@ h1, h2, h3, h4, h5, h6 {
 
 .game__overlay{
   font-family: 'Nunito', sans-serif;
+}
+
+.notification {
+  background-color: black;
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  padding: 2px;
+}
+.menu__item{
+  margin: 10px;
+}
+
+.header__bottom-profileimg-inner{
+    min-width: 54px;
+    min-height: 54px;
+    height: 54px;
+    width: 54px;
+    max-height: 62px;
+    max-width: 62px;
+    border-radius: 50%;
+    object-position: start;
+    object-fit: cover;
+}
+.header__bottom-profileimg{
+  border-radius: 50%;
+  
 }

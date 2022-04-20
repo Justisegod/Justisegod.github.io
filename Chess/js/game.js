@@ -1,7 +1,18 @@
+  class ChessApi {
 
-document.addEventListener('DOMContentLoaded', function () {
-    
-    function countIt(seconds = 0, minutes = 0) {
+    constructor() {
+      this.maxGameDurationMinutes = 60;
+      this.arrayCells = [];
+      this.btnSettings = document.querySelector('.game__header-settings');
+      this.gameSettingsMenu = document.querySelector('.menu');
+      this.turnVolume = 0.1;
+      
+      this.board = {
+        element : document.querySelector('.board'),
+      }
+    }
+
+     countIt(seconds = 0, minutes = 0) {
       // id таймера
       let timerId = null;
     
@@ -28,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if(minutes === 0 & seconds <= 0) {
           clearInterval(timerId);
-          paintAllPeacesBack();
+          paintAllPeacesBack.call();
           console.log('the Time is over');
         }
         if(seconds <= 0 & minutes > 0) {
@@ -53,27 +64,13 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       function paintAllPeacesBack() {// закрашивает все части после конца таймера
         for(let i = 0; i < 4; i++) {
-          paintPeace(i, 'transparent');
+          paintPeace.call(i, 'transparent');
         }
       }
       
-      // timerId = setInterval(countdownTimerr, 1000);
-    }
-    countIt(10, 0);
-  });
-  
+      timerId = setInterval(countdownTimerr, 1000);
 
-  class ChessApi {
-
-    constructor() {
-      this.maxGameDurationMinutes = 60;
-      this.arrayCells = [];
-      this.btnSettings = document.querySelector('.game__header-settings');
-      this.gameSettingsMenu = document.querySelector('.menu');
-      
-      this.board = {
-        element : document.querySelector('.board'),
-      }
+      return timerId;
     }
     
     drawBoard(){
@@ -150,10 +147,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if(!result) {
           this.gameSettingsMenu.classList.add('menu-active');
           this.changeTextInElement(title, 'Настройки');
+          this.btnSettings.style.transform = `rotate(45deg)`;
+          this.playSound('sounds/gear.mp3', this.turnVolume);
+
           result = true;
         }else{
           this.gameSettingsMenu.classList.remove('menu-active');
           this.changeTextInElement(title, defaultTitle);
+          this.btnSettings.style.transform = ``;
+          this.playSound('sounds/gear.mp3', this.turnVolume);
+
           result = false;
         }
         console.log(result)
@@ -685,6 +688,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // когда в ячейке будет чужая фигура
     // пешка ходит:
     // - 
+
+    showNotification({top = 0, right = 0, bottom = 'unset', className, html}) {
+
+      let notification = document.createElement('div');
+      notification.className = "notification";
+      if (className) {
+        notification.classList.add(className);
+      }
+    
+      notification.style.top = top + 'px';
+      notification.style.right = right + 'px';
+      notification.style.bottom = bottom + 'px';
+      notification.style.position = `absolute`;
+    
+      notification.innerHTML = html;
+      document.body.querySelector('.header__bottom').append(notification);
+    
+      setTimeout(() => notification.remove(), 1500);
+    }
+
     closeGameOverlay() {
       const body = document.querySelector('.board');
       const gameOverlay = document.querySelector('.game__overlay');
@@ -757,6 +780,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }else{
           // alert(`the White team won`);
         }
+        this.playSound('sounds/victory.mp3', this.turnVolume);
         this.endGame.call(this, `${figureToMove.currentFigure.side.toUpperCase()}`);
       }
 
@@ -771,6 +795,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
       figureToMove.isEmpty = true;
       figureToSwap.isEmpty = false;
+      this.playSound('sounds/make-turn.mp3', this.turnVolume);//звук хода
+
+      // if(figureToSwap.currentFigure.side == 'Black') {
+      //   BlackSide.figuresWasLost(figureToSwap);
+      // }else{
+      //   WhiteSide.figuresWasLost(figureToSwap);
+      // }
 
     }
 
@@ -801,7 +832,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 if(acceptedСellsToMove.includes(figureToSwap)) {//Если клетка, на которую вы нажимаете находится в массиве разрешённых ходов 
                   this.moveFigure(figureToMove, figureToSwap);
                 }else{
-                  console.log('Фигура так не ходит');
+                  this.showNotification({
+                    top: 'unset', // 10px от верхней границы окна (по умолчанию 0px)
+                    right: 10, // 10px от правого края окна (по умолчанию 0px)
+                    bottom: 10,
+                    html: "Фигура так не ходит!", // HTML-уведомление
+                    className: "welcome" // дополнительный класс для div (необязательно)
+                  });
                 }
 
                 secondFigureWasSelected = true;
@@ -872,8 +909,26 @@ document.addEventListener('DOMContentLoaded', function () {
     //если она не пустая получаем фигуру в ячейке
     //сохраняем фигуру и её классы
     //нажимаем на другую ячейку, если она пустая, удаляем фигуру с первой ячейки, и записываем в пустую ячейку
-}
 
+
+     playSound(src, volume = 1, playbackRate = 1) {// функция воспроизведения звука
+      let song = document.createElement('audio');
+      song.classList.add('sound-of-turn');
+      song.setAttribute('preload', 'auto');
+      song.innerHTML = `<source src=${src} type="audio/mp3">`;
+
+      song.volume = volume;//громкость
+      song.playbackRate = playbackRate;//скорость воспроизведения
+
+      if (song.paused) {
+        song.play();
+      } else {
+        song.pause();
+      }
+    
+      return song;
+    }
+}
 
 class BlackSide {
   constructor() {
@@ -1010,14 +1065,18 @@ class WhiteSide {
   game.setDefaultFigurePosition();
   game.moveFigureOnBoard();
 
-
-
-
-
-
-
 // 1) нужно построить игровую доску в js 
 // - доска будет обьектом board со свойствами названий ячеек,
 //  каждая ячейка будет обьектом,
 //   со своими свойствами, главные из них фигура, которя стоит на этой ячейке, цвет ячейки 
 // создаём  обьект board 
+
+game.showNotification({
+  top: 10, // 10px от верхней границы окна (по умолчанию 0px)
+  right: 10, // 10px от правого края окна (по умолчанию 0px)
+  html: "Hello!", // HTML-уведомление
+  className: "welcome" // дополнительный класс для div (необязательно)
+});
+
+
+
