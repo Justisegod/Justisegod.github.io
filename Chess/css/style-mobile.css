@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-screen{
   display: flex;
   /* flex-direction: column; */
-  height: 100vh;
+  /* height: 100vh; */
 }
 .phone{
   position: relative;
@@ -93,6 +93,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: auto auto;
   border-radius: 30px 30px 30px 30px;
   overflow: hidden;
+  margin-top: 20px;
 }
 .phone__inner{
   height: 100%;
@@ -490,7 +491,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   content: '';
   position: absolute;
-  background: url(../img/apple-iphone-13-pro-max-2021-medium.png) center center / 100% 100%;
+  background: url(../img/apple-iphone-13-pro-max-2021-medium.webp) center center / 100% 100%;
   top: 0;
   right: 0;
   left: 0;
@@ -597,3 +598,28 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   
 }
+
+
+/* MEDIA=============================================================================================================================== */
+@media (max-width: 426px) {
+  .phone::after{
+    content: unset;
+  }
+  .menu__inner{
+    background: #fff;
+  }
+  .phone{
+    margin-top: 0;
+  }
+}
+@media (max-width: 376px) {
+  .phone__inner{
+    padding: 15px;
+  }
+}
+@media (max-width: 330px) {
+  .phone__inner{
+    padding: 0;
+  }
+}
+/* MEDIA=============================================================================================================================== */
