@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Local Storage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <h2>Создай Свою Пиццу!</h2>
+    <p></p>
+    <ul class="items-list">
+      <li>Загружаю ингредиенты...</li>
+    </ul>
+    <form class="add-items-form">
+      <input type="text" name="item" placeholder="Название..." autocomplete="off" required>
+      <input type="submit" value="+ Добавить ингредиент">
+    </form>
+  </div>
+
+  <script>
+    const addItemsForm = document.querySelector('.add-items-form');
+    const itemsList = document.querySelector('.items-list');
+    const items = JSON.parse(localStorage.getItem('items')) || [];
+
+    function addItem(e) {
+      e.preventDefault();
+      const text = e.target.item.value;
+      console.log(text)
+      const item = {
+        text,
+        checked: false
+      }
+
+      items.push(item);
+      localStorage.setItem('items', JSON.stringify(items));
+      displayItems(items, itemsList);
+      this.reset();
+    };
+
+    function displayItems(ingredients, ingredientsList) {
+
+      ingredientsList.innerHTML = ingredients.map((ingredient, index) => {
+        return `<li><input type='checkbox' id=item${index} data-index='${index}' ${ingredient.checked ? 'checked' : ''}/>
+          <label for='item${index}'>${ingredient.text}</label>
+          </li>`
+      }).join('');
+    };
+
+
+    function toggleClick(e) {
+      if (!e.target.matches('input')) return;
+
+      const element = e.target.dataset.index;
+      items[element].checked = !items[element].checked;
+      localStorage.setItem('items', JSON.stringify(items));
+      displayItems(items, itemsList);
+    }
+
+
+
+    addItemsForm.addEventListener('submit', addItem);
+    itemsList.addEventListener('click', toggleClick);
+    displayItems(items, itemsList);
+
+  </script>
+
+
+</body>
+
+</html>
