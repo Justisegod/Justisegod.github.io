@@ -7,6 +7,7 @@
       this.gameSettingsMenu = document.querySelector('.menu');
       this.turnVolume = 0.1;
       this.isVideoPlaying = true;
+      this.saveFigurePosition = JSON.parse(localStorage.getItem('saveFigurePosition')) || [];
 
       this.board = {
         element : document.querySelector('.board'),
@@ -723,8 +724,12 @@
           cell.node.firstChild.remove();
           console.log(cell);
         }
+
+        White.counterId = 17;
+        Black.counterId = 1;
       }
 
+      localStorage.clear();
       this.setDefaultFigurePosition.call(this);//раставляем фигуры снова
     }
     async endGame(team){
@@ -791,19 +796,16 @@
       }else{
         createdFigure = White.createFigure(figureToMove.currentFigure.type, figureToSwap.node, id);
       }
+      console.log(createdFigure);
+
       figureToSwap.currentFigure = createdFigure;// заменяем обьект currentFigure в ячейке куда мы ходили
       figureToMove.currentFigure = null;
 
       figureToMove.isEmpty = true;
       figureToSwap.isEmpty = false;
+
+      savePosition();// сохранить в локал сторедж
       this.playSound('sounds/make-turn.mp3', this.turnVolume);//звук хода
-
-      // if(figureToSwap.currentFigure.side == 'Black') {
-      //   BlackSide.figuresWasLost(figureToSwap);
-      // }else{
-      //   WhiteSide.figuresWasLost(figureToSwap);
-      // }
-
     }
 
     moveFigureOnBoard() {
@@ -912,7 +914,7 @@
     //нажимаем на другую ячейку, если она пустая, удаляем фигуру с первой ячейки, и записываем в пустую ячейку
 
 
-     playSound(src, volume = 1, playbackRate = 1) {// функция воспроизведения звука
+     playSound(src, volume = this.turnVolume, playbackRate = 1) {// функция воспроизведения звука
       let song = document.createElement('audio');
       song.classList.add('sound-of-turn');
       song.setAttribute('preload', 'auto');
@@ -935,7 +937,7 @@
 
       for(let btn of allButtons) {
         btn.addEventListener('click', ()=>{
-          this.playSound('sounds/menu-click.mp3');
+          this.playSound('sounds/menu-click.mp3'), this.turnVolume;
         })
       }
       
@@ -977,6 +979,50 @@
 
       return allVideos;
     }
+    
+    disableSound(){
+      
+      if(this.turnVolume != 0) {
+        this.turnVolume = 0;
+        // let allButtons = document.querySelectorAll('.menu__item-link');// Sound on click
+        
+        this.createAnimationOptions();
+
+        this.showNotification({
+          top: 'unset', // 10px от верхней границы окна (по умолчанию 0px)
+          right: 10, // 10px от правого края окна (по умолчанию 0px)
+          bottom: 10,
+          html: "Звук выключен!", // HTML-уведомление
+          className: "" // дополнительный класс для div (необязательно)
+        });
+      }else{
+        this.turnVolume = 0.1;
+        this.createAnimationOptions();
+
+        this.showNotification({
+          top: 'unset', // 10px от верхней границы окна (по умолчанию 0px)
+          right: 10, // 10px от правого края окна (по умолчанию 0px)
+          bottom: 10,
+          html: "Звук включен!", // HTML-уведомление
+          className: "" // дополнительный класс для div (необязательно)
+        });
+      }
+    }
+    bindButtons(){
+      let disableSoundBtn = document.querySelector('.disable-sound-btn');
+      const repeatBtn = document.querySelector('.game-footer__secondbtn');
+      
+      
+      repeatBtn.addEventListener('click', ()=>{
+        this.startGame();
+      
+      });
+
+      disableSoundBtn.addEventListener('click', ()=>{
+        this.disableSound();
+      })
+
+    }
 }
 
 class BlackSide {
@@ -1012,21 +1058,23 @@ class BlackSide {
   }
   
   createFigure(type,where, id = this.counterId) {
+
     const typeWithoutConvert = type;
     this.counterId++;
     type = this.convertType(type);
-
     
     where.innerHTML = `<div class="${typeWithoutConvert} id_${id} figure"></div>`;//вставляем созданный див
     let createdFigure = where.firstChild;
     createdFigure.style.background = `url(${type}) center / 75% 85% no-repeat`;
 
     console.log(id, type, createdFigure);
+
     return {
       type: typeWithoutConvert,
       id: id,
       node: createdFigure,
       side: this.sideName,
+      position: where.className.split(' ')[0].split('--')[1],
     };
   }
   convertType(type) {
@@ -1047,7 +1095,7 @@ class BlackSide {
 class WhiteSide {
   constructor() {
     this.sideName = 'White'; 
-    this.counterId = 16;
+    this.counterId = 17;
     this.pawn = {
       src: `img/figures/w-pawn.webp`,
       type: 'pawn',
@@ -1077,6 +1125,7 @@ class WhiteSide {
   }
   
   createFigure(type,where, id = this.counterId) {
+
     const typeWithoutConvert = type;
     this.counterId++;
     type = this.convertType(type);
@@ -1086,11 +1135,13 @@ class WhiteSide {
     createdFigure.style.background = `url(${type}) center / 75% 85% no-repeat`;
 
     console.log(id, type, createdFigure);
+
     return {
       type: typeWithoutConvert,
       id: id,
       node: createdFigure,
       side: this.sideName,
+      position: where.className.split(' ')[0].split('--')[1],
     };
   }
   convertType(type) {
@@ -1111,10 +1162,22 @@ class WhiteSide {
   game.parseAllCells();//вешает на все ячейки евент
   game.bindMenu();//заставляет меню работать
   game.createBoardObject();//создание таблици в js с привязкой в html
-  game.setDefaultFigurePosition();
+  if(JSON.parse(localStorage.getItem('board')) != null) {
+    // game.board = Object.assign(JSON.parse(localStorage.getItem('board')));
+    for(let cell of Object.values(game.board)) {
+      if(cell.currentFigure != null && cell.currentFigure != undefined) {
+        cell.currentFigure.firstChild.remove();
+        console.log('delete');
+      }
+    }
+    placeSavedFigures();
+  }else{
+    game.setDefaultFigurePosition();
+    savePosition();
+  }
   game.moveFigureOnBoard();
   game.createAnimationOptions();//вкл вкл все видео
-
+  game.bindButtons();//связать все кнопки
 // 1) нужно построить игровую доску в js 
 // - доска будет обьектом board со свойствами названий ячеек,
 //  каждая ячейка будет обьектом,
@@ -1129,4 +1192,44 @@ game.showNotification({
 });
 
 
+function savePosition() {
+  localStorage.setItem('board', JSON.stringify(game.board));
 
+  let newBoard = Object.assign(game.board);
+ 
+
+  let board = JSON.parse(localStorage.getItem('board'));
+
+  return board;
+}
+
+
+function placeSavedFigures() {
+  let board = JSON.parse(localStorage.getItem('board'));
+  let createdFigure ;
+  
+  for(let cell of Object.values(board)){
+    if(cell.currentFigure != null && cell.currentFigure != undefined) {
+      console.log(cell.currentFigure);
+
+      if(cell.currentFigure.side == 'White') {//Если фигура белая
+        createdFigure = White.createFigure(`${cell.currentFigure.type}`, game.board[`${cell.currentFigure.position}`].node);
+        // Black.createFigure('rook', this.board[cellId].node)
+        game.board[`${cell.currentFigure.position}`].currentFigure = createdFigure;
+
+      }else{//если фигура чёрная
+        createdFigure = Black.createFigure(`${cell.currentFigure.type}`, game.board[`${cell.currentFigure.position}`].node);
+        game.board[`${cell.currentFigure.position}`].currentFigure = createdFigure;
+
+      }
+    }
+  }
+
+  savePosition();
+}
+// if(JSON.parse(localStorage.getItem('board')) != null) {
+  
+
+
+//   placeSavedFigures();
+// }
